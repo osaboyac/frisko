@@ -17,6 +17,9 @@ namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 
+use Acl\Controller\Component\AclComponent;
+use Cake\Controller\ComponentRegistry;
+
 /**
  * Application Controller
  *
@@ -28,6 +31,11 @@ use Cake\Event\Event;
 class AppController extends Controller
 {
 
+    public $components = [
+        'Acl' => [
+            'className' => 'Acl.Acl'
+        ]
+    ];
     /**
      * Initialization hook method.
      *
@@ -43,6 +51,23 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+		$this->loadComponent('Cookie', ['expiry' => '1 day']);
+		$this->loadComponent('Auth', [
+            'loginRedirect' => [
+                'controller' => 'Pages',
+                'action' => 'display',
+				'home'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Users',
+                'action' => 'login'
+            ],
+			'authError' => __('No está autorizado para acceder a esta ubicación.', true),
+			'storage' => 'Session',
+			'authorize' => [
+                'Acl.Actions' => ['actionPath' => 'controllers/']
+            ]
+        ]);
     }
 
     /**
@@ -59,4 +84,28 @@ class AppController extends Controller
             $this->set('_serialize', true);
         }
     }
+	
+	public function beforeFilter(Event $event)
+    {
+        $this->Auth->allow(['display','logout','login']);
+		$this->set('current_user', $this->Auth->user());
+		$this->Cookie->config('name', 'CookieFrisko');
+    }
+	public function isAuthorized($user)
+	{
+		// Admin can access every action
+		/*if (isset($user['role_id']) && $user['role_id'] === 1) {
+			return true;
+		}
+		// Default deny
+		return false;*/
+		
+		$Collection = new ComponentRegistry();
+        $acl= new AclComponent($Collection);
+        $username=$user['username'];
+        $controller=$this->request->controller;
+        $action=$this->request->action;
+        $check=$acl->check($user['username'],"$controller/$action");
+        return $check;
+	}
 }
