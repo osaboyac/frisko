@@ -42,7 +42,17 @@
 						<!-- /.modal-dialog -->
 					</div>
 					<div class="col-lg-4 panel-heading">
-						<button type="button" class="btn btn-warning">Ingresar desde</button>
+						<?= $this->Html->link(__('Crear desde'), ['controller'=>'orden-compras','action' => 'info','ingresos_detalle'],['class'=>'btn btn-warning','data-toggle'=>'modal','data-target'=>'#ingresosInfo']) ?>
+					</div>
+					<div class="modal fade" id="ingresosInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-lg">
+								<div class="modal-content"></div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-success addOC" data-dismiss="modal">Agregar</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+								</div>
+						</div>
+						<!-- /.modal-dialog -->
 					</div>
 				</div>
 			</div>
