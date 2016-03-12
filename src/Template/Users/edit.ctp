@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+﻿<div class="panel panel-primary">
 	<div class="panel-heading">
 		Usuarios
 	</div>
@@ -13,8 +13,9 @@
 			</div>
 			<?php 
 				echo $this->Form->input('username',['label'=>'Usuario','class'=>'form-control','for'=>'inputSuccess']);
-				echo $this->Form->input('password',['label'=>'Contraseña','class'=>'form-control','for'=>'inputSuccess']);
+				//echo $this->Form->input('password',['label'=>'Contraseña','class'=>'form-control','for'=>'inputSuccess']);
 				echo $this->Form->input('socio_id', ['options' => $socios,'class'=>'form-control']);
+				echo $this->Form->input('deposito_id',array('label'=>'Acceso a sucursales','options'=>$depositos,'type'=>'select','multiple' => 'multiple','class'=>'form-control','for'=>'inputSuccess'));
 			?>
 			<div class="row">
 				<div class="col-lg-6">

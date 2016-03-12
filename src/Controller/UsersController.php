@@ -57,7 +57,9 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->data);
+			$data = $this->request->data ; 
+			$data['visibility_roles'] = $this->Users->encodeData($data['deposito_id']);
+            $user = $this->Users->patchEntity($user, $data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -65,9 +67,11 @@ class UsersController extends AppController
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
         }
+        $this->loadModel('Depositos');
+        $depositos = $this->Depositos->find('list');
         $roles = $this->Users->Roles->find('list', ['limit' => 200]);
         $socios = $this->Users->Socios->find('list', ['conditions' => ['empleado'=>'1']]);
-        $this->set(compact('user', 'roles', 'socios'));
+        $this->set(compact('user', 'roles', 'socios','depositos'));
         $this->set('_serialize', ['user']);
     }
 
@@ -83,8 +87,12 @@ class UsersController extends AppController
         $user = $this->Users->get($id, [
             'contain' => []
         ]);
+        $user['deposito_id'] = $this->Users->decodeData($user['visibility_roles']);
+        $user = $user;
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->Users->patchEntity($user, $this->request->data);
+			$data = $this->request->data ; 
+			$data['visibility_roles'] = $this->Users->encodeData($data['deposito_id']);
+            $user = $this->Users->patchEntity($user, $data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -92,9 +100,11 @@ class UsersController extends AppController
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
         }
+        $this->loadModel('Depositos');
+        $depositos = $this->Depositos->find('list');
         $roles = $this->Users->Roles->find('list', ['limit' => 200]);
         $socios = $this->Users->Socios->find('list', ['conditions' => ['empleado'=>'1']]);
-        $this->set(compact('user', 'roles', 'socios'));
+        $this->set(compact('user', 'roles', 'socios','depositos'));
         $this->set('_serialize', ['user']);
     }
 
@@ -120,21 +130,41 @@ class UsersController extends AppController
 	public function login()
 	{
 		$this->viewBuilder()->layout('login');
+		$this->loadModel('Depositos');
+		$depositos = $this->Depositos->find('list');
+		$this->set(compact('depositos'));
+		
 		if ($this->request->is('post')) {
 			$user = $this->Auth->identify();
-			if ($user) {
-				$this->Auth->setUser($user);
-				return $this->redirect($this->Auth->redirectUrl());
-			} else {
-				$this->Flash->error(__('Usuario o Contraseña incorrecto'), [
-					'key' => 'auth'
-				]);
-			}
+			$deposito_id = $this->request->data['deposito_id'];
+            $depositos = $this->Users->decodeData($user['visibility_roles']);
+            $user['visibility_roles'] = '';
+            foreach($depositos as $d){
+                if($deposito_id == $d){
+                    $user['visibility_roles'] = $deposito_id;
+                }
+            }
+            if($user['visibility_roles']){
+    			if ($user) {
+    				$this->Auth->setUser($user);
+    			    $this->Flash->success(__('Bienvenido, '. $user['username']));
+    				return $this->redirect($this->Auth->redirectUrl());
+    			} else {
+    				$this->Flash->error(__('Usuario o Contraseña incorrecto'), [
+    					'key' => 'auth'
+    				]);
+    			}
+            } else{
+                $deposito = $this->Depositos->get($deposito_id, [
+                    'contain' => []
+                ]);
+				$this->Flash->error(__('No tiene acceso a la sucursal '. $deposito['nombre']));
+            }
 		}
 	}
 	
 	public function logout()
 	{
-    return $this->redirect($this->Auth->logout());
+        return $this->redirect($this->Auth->logout());
 	}
 }

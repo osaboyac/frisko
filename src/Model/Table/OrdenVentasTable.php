@@ -54,6 +54,9 @@ class OrdenVentasTable extends Table
         $this->hasMany('Guias', [
             'foreignKey' => 'orden_venta_id'
         ]);
+        $this->hasMany('Ventas', [
+            'foreignKey' => 'orden_venta_id'
+        ]);
         $this->hasMany('OrdenVentasDetalle', [
             'foreignKey' => 'orden_venta_id'
         ]);
@@ -98,17 +101,5 @@ class OrdenVentasTable extends Table
         $rules->add($rules->existsIn(['forma_pago_id'], 'FormaPagos'));
         return $rules;
     }
-	public function afterSave(Event $event, Entity $entity, array $options) 
-	{
-		if($this->estado==1){
-//			$this->query('update orden_ventas_detalle set estado='.$this->estado.' and deposito_id='.$this->deposito_id.' where orden_compra_id='.$this->id);
-			$OrdenVentasDetalle = TableRegistry::get('OrdenVentasDetalle');
-			$query = $OrdenVentasDetalle->query();
-			$query->update()
-				->set(['estado' => true,'deposito_id'=>$this->deposito_id])
-				->where(['orden_venta_id' => $this->id])
-				->execute();
-		}
-	}
 
 }

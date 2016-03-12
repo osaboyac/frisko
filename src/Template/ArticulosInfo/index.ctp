@@ -6,7 +6,7 @@
 		<div class="form-group has-success">
 			<div class="row">
 				<div class="col-lg-6">
-					<?php echo $this->Form->input('d_id', ['label'=>'Sucursal','options' => $depositos,'empty'=>true,'class'=>'form-control infoArticuloParametro','data-column'=>'8','for'=>'inputSuccess']); ?>
+					<?php echo $this->Form->input('d_id', ['label'=>'Sucursal','options' => $depositos,'class'=>'form-control infoArticuloParametro','data-column'=>'8','for'=>'inputSuccess']); ?>
 				</div>
 				<div class="col-lg-6">
 					<?php echo $this->Form->input('l_p_id',array('label'=>'Lista de Precio','options' => $listaPrecios,'empty'=>true,'class'=>'form-control infoArticuloParametro','data-column'=>'9','for'=>'inputSuccess'));?>
@@ -125,11 +125,11 @@
 		});		
 		
 		$('.add-product').on( 'click', function () {
-			articulo_id =  $(this).parent().parent().children('td.articulo_id').text();
-			articulo_nombre =  $(this).parent().parent().children('td.articulo_nombre').text();
-			articulo_precio_minimo = $(this).parent().parent().children('td.articulo_precio_minimo').text();
-			articulo_precio_estandar = $(this).parent().parent().children('td.articulo_precio_estandar').text();
-			articulo_precio_maximo = $(this).parent().parent().children('td.articulo_precio_maximo').text();
+			var articulo_id =  $(this).parent().parent().children('td.articulo_id').text();
+			var articulo_nombre =  $(this).parent().parent().children('td.articulo_nombre').text();
+			var articulo_precio_minimo = $(this).parent().parent().children('td.articulo_precio_minimo').text();
+			var articulo_precio_estandar = $(this).parent().parent().children('td.articulo_precio_estandar').text();
+			var articulo_precio_maximo = $(this).parent().parent().children('td.articulo_precio_maximo').text();
 			
 			if('<?= $detalle; ?>'=='ingresos_detalle' || '<?= $detalle; ?>'=='guias_detalle'){
 				counter = taddIG.rows().count();
@@ -139,8 +139,9 @@
 //					'<input type="text" value="'+articulo_nombre+'" class="descripcion" name="<?= $detalle; ?>['+counter+'][descripcion]">',
 					'<input type="hidden" value="'+articulo_id+'" name="<?= $detalle; ?>['+counter+'][articulo_id]">\
 					<input type="text" value="1" class="cantidad" name="<?= $detalle; ?>['+counter+'][cantidad]">',
-					'<a href="#" class="fa fa-times del-product"></a>	'
+					'<a href="#" class="fa fa-times del-product"></a>'
 				] ).draw( false );
+				delLineProductIG();
 			} else {
 				counter = tadd.rows().count();
 				tadd.row.add( [
@@ -156,10 +157,10 @@
 					'<input type="text" value="'+articulo_precio_estandar+'" class="importe" disabled="true">', //cantidad * precio
 					'<a href="#" class="fa fa-times del-product"></a>	'
 				] ).draw( false );
+				delLineProduct();
+				cambiarImporte();
+				calculaTotal();
 			}
-			delLineProduct();
-			cambiarImporte();
-			calculaTotal();
 		});	
 	});
 </script>

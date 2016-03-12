@@ -11,6 +11,8 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Socio $socio
  * @property \Cake\I18n\Time $fecha
  * @property int $estado
+ * @property int $compra_id
+ * @property int $guia_id
  * @property \App\Model\Entity\Compra[] $compras
  * @property \App\Model\Entity\Ingreso[] $ingresos
  * @property \App\Model\Entity\OrdenComprasDetalle[] $orden_compras_detalle

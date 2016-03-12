@@ -15,6 +15,20 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-4">
+					<?php echo $this->Form->input('documento_id', ['type'=>'hidden','value'=>'','id'=>'documento-id']); ?>
+					<?php echo $this->Form->input('docserie_id', ['type'=>'hidden','value'=>'','id'=>'docserie-id']); ?>
+					<?php echo $this->Form->input('codigo_unico', ['type'=>'hidden','value'=>'','id'=>'codigo-unico']); ?>
+					<?php echo $this->Form->input('documento_serie_id', ['label'=>'Documento','options' => '', 'class'=>'form-control','required'=>true]); ?>
+				</div>
+				<div class="col-lg-4">
+					<?php echo $this->Form->input('serie',array('type'=>'text','class'=>'form-control','for'=>'inputSuccess','readonly'=>true)); ?>
+				</div>
+				<div class="col-lg-4">
+					<?php echo $this->Form->input('numero',array('type'=>'text','class'=>'form-control','for'=>'inputSuccess')); ?>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4">
 					<label>Fecha</label>
 					<div class='input-group date'>
 					<?php echo $this->Form->input('fecha',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control','for'=>'inputSuccess')); ?>
@@ -31,24 +45,10 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-4">
-					<?php echo $this->Form->input('documento_id', ['type'=>'hidden','value'=>'','id'=>'documento-id']); ?>
-					<?php echo $this->Form->input('docserie_id', ['type'=>'hidden','value'=>'','id'=>'docserie-id']); ?>
-					<?php echo $this->Form->input('codigo_unico', ['type'=>'hidden','value'=>'','id'=>'codigo-unico']); ?>
-					<?php echo $this->Form->input('documento_serie_id', ['label'=>'Documento','options' => '', 'class'=>'form-control','required'=>true]); ?>
-				</div>
-				<div class="col-lg-4">
-					<?php echo $this->Form->input('serie',array('type'=>'text','class'=>'form-control','for'=>'inputSuccess','readonly'=>true)); ?>
-				</div>
-				<div class="col-lg-4">
-					<?php echo $this->Form->input('numero',array('type'=>'text','class'=>'form-control','for'=>'inputSuccess')); ?>
-				</div>
-			</div>
-			<div class="row">
 				<div class="col-lg-4 panel-body">
 					<div class="row">
 						<div class="col-lg-6 panel-heading">
-							<?= $this->Html->link(__('Buscar Artículos'), ['controller'=>'articulos-info','action' => 'index','ventas_detalle'],['class'=>'btn btn-info','data-toggle'=>'modal','data-target'=>'#articulosInfo']) ?>
+							<?= $this->Html->link(__('Buscar Artículos'), ['controller'=>'articulos-info','action' => 'index','ventas_detalle'],['class'=>'btn btn-info','data-toggle'=>'modal','data-target'=>'#articulosInfo','id'=>'LinkArticulosInfo']) ?>
 						</div>							
 						<div class="modal fade" id="articulosInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog modal-lg">
@@ -59,8 +59,18 @@
 							</div>
 							<!-- /.modal-dialog -->
 						</div>
-						<div class="col-lg-6 panel-heading">
-							<button type="button" class="btn btn-warning">Ingresar desde</button>
+						<div class="col-lg-4 panel-heading">
+							<?= $this->Html->link(__('Crear desde'), ['controller'=>'orden-ventas','action' => 'info','ventas_detalle'],['class'=>'btn btn-warning','data-toggle'=>'modal','data-target'=>'#ordenVentasInfo']) ?>
+						</div>
+						<div class="modal fade" id="ordenVentasInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-lg">
+									<div class="modal-content"></div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-success addOV" data-dismiss="modal">Agregar</button>
+										<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+									</div>
+							</div>
+							<!-- /.modal-dialog -->
 						</div>
 					</div>
 				</div>

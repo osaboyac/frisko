@@ -318,8 +318,11 @@
                             <ul class="nav nav-second-level">
 								<li><a href="#"><i class="fa fa-database fa-fw"></i> Almacén<span class="fa arrow"></span></a>
 									<ul class="nav nav-third-level">
+                                        <li>
+                                            <?= $this->Html->link(__('Depositos'), ['controller'=>'depositos','action' => 'index']) ?>
+                                        </li>
 										<li>
-											<?= $this->Html->link(__('Ingreso de Articulos'), ['controller'=>'ingresos','action' => 'index']) ?>
+											<?= $this->Html->link(__('Ingresar Articulos'), ['controller'=>'ingresos','action' => 'index']) ?>
 										</li>
 										<li>
 											<?= $this->Html->link(__('Guías de Remisión'), ['controller'=>'guias','action' => 'index']) ?>
@@ -358,6 +361,56 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li>
+                            <a href="#"><i class="fa fa-money fa-fw"></i> Finanzas<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <?= $this->Html->link(__('Bancos'), ['controller'=>'bancos','action' => 'index']) ?>
+                                </li>
+                                <li>
+                                    <?= $this->Html->link(__('Monedas'), ['controller'=>'bancos','action' => 'index']) ?>
+                                </li>
+                                <li>
+                                    <?= $this->Html->link(__('Impuestos'), ['controller'=>'bancos','action' => 'index']) ?>
+                                </li>
+                                <li>
+                                    <?= $this->Html->link(__('Documentos'), ['controller'=>'documentos','action' => 'index']) ?>
+                                </li>
+                                <li>
+                                    <?= $this->Html->link(__('Serie de Documentos'), ['controller'=>'docseries','action' => 'index']) ?>
+                                </li>
+                                <li>
+                                    <?= $this->Html->link(__('Formas de Pago'), ['controller'=>'forma-pagos','action' => 'index']) ?>
+                                </li>
+                            </ul>
+						</li>
+                        <li>
+                            <a href="#"><i class="fa fa-gear fa-fw"></i> Configuración<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+								<li><a href="#"><i class="fa fa-list-alt fa-fw"></i> Localidades<span class="fa arrow"></span></a>
+									<ul class="nav nav-third-level">
+                                        <li>
+                                            <?= $this->Html->link(__('Departamentos'), ['controller'=>'departamentos','action' => 'index']) ?>
+                                        </li>
+                                        <li>
+                                            <?= $this->Html->link(__('Provincias'), ['controller'=>'provincias','action' => 'index']) ?>
+                                        </li>
+                                        <li>
+                                            <?= $this->Html->link(__('Distritos'), ['controller'=>'distritos','action' => 'index']) ?>
+                                        </li>
+									</ul>
+								</li>
+                                <li>
+                                    <?= $this->Html->link(__('Menus'), ['controller'=>'menus','action' => 'index']) ?>
+                                </li>
+                                <li>
+                                    <?= $this->Html->link(__('Roles'), ['controller'=>'roles','action' => 'index']) ?>
+                                </li>
+                                <li>
+                                    <?= $this->Html->link(__('Usuarios'), ['controller'=>'users','action' => 'index']) ?>
+                                </li>
+                            </ul>
+						</li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

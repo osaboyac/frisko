@@ -17,7 +17,6 @@
 						<thead>
 						<tr>
 							<th>ID</th>
-							<th>Almacen</th>
 							<th>Socio Negocio</th>
 							<th>Fecha</th>
 							<th>Estado</th>
@@ -28,7 +27,6 @@
 						<?php foreach ($ingresos as $ingreso):?>
 						<tr>
 							<td><?= $this->Number->format($ingreso->id) ?></td>
-							<td><?= h($ingreso->deposito->nombre) ?></td>
 							<td><?= h($ingreso->socio->nombre) ?></td>
 							<td><?= h($ingreso->fecha->format('Y-m-d')) ?></td>
 							<td><?php if(h($ingreso->estado)){ echo 'Procesado';} else{ echo 'Grabado'; } ?></td>

@@ -15,6 +15,20 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-4">
+					<?php echo $this->Form->input('documento_id', ['type'=>'hidden','id'=>'documento-id']); ?>
+					<?php echo $this->Form->input('docserie_id', ['type'=>'hidden','id'=>'docserie-id']); ?>
+					<?php echo $this->Form->input('codigo_unico', ['type'=>'hidden','id'=>'codigo-unico']); ?>
+					<?php echo $this->Form->input('documento_serie_id', ['label'=>'Documento','options' => $documentoSerie, 'class'=>'form-control','required'=>true]); ?>
+				</div>
+				<div class="col-lg-4">
+					<?php echo $this->Form->input('serie',array('type'=>'text','class'=>'form-control','for'=>'inputSuccess','readonly'=>true)); ?>
+				</div>
+				<div class="col-lg-4">
+					<?php echo $this->Form->input('numero',array('type'=>'text','class'=>'form-control','for'=>'inputSuccess')); ?>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4">
 					<label>Fecha</label>
 					<div class='input-group date'>
 					<?php echo $this->Form->input('fecha',array('div'=>null,'label'=>false,'type'=>'text','value'=>$venta->fecha->format('Y-m-d'),'class'=>'form-control','for'=>'inputSuccess')); ?>
@@ -28,20 +42,6 @@
 				</div>
 				<div class="col-lg-4">
 					<?php echo $this->Form->input('user_id', ['options' => $users,'label'=>'Usuario','class'=>'form-control','for'=>'inputSuccess']); ?>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-4">
-					<?php echo $this->Form->input('documento_id', ['type'=>'hidden','id'=>'documento-id']); ?>
-					<?php echo $this->Form->input('docserie_id', ['type'=>'hidden','id'=>'docserie-id']); ?>
-					<?php echo $this->Form->input('codigo_unico', ['type'=>'hidden','id'=>'codigo-unico']); ?>
-					<?php echo $this->Form->input('documento_serie_id', ['label'=>'Documento','options' => $documentoSerie, 'class'=>'form-control','required'=>true]); ?>
-				</div>
-				<div class="col-lg-4">
-					<?php echo $this->Form->input('serie',array('type'=>'text','class'=>'form-control','for'=>'inputSuccess','readonly'=>true)); ?>
-				</div>
-				<div class="col-lg-4">
-					<?php echo $this->Form->input('numero',array('type'=>'text','class'=>'form-control','for'=>'inputSuccess')); ?>
 				</div>
 			</div>
 			<div class="row">

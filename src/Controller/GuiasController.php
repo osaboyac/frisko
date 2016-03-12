@@ -20,7 +20,8 @@ class GuiasController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Depositos', 'OrdenVentas', 'Ventas', 'Socios', 'Documentos']
+            'contain' => ['Depositos', 'OrdenVentas', 'Ventas', 'Socios', 'Documentos'],
+            'conditions' => ['Guias.deposito_id'=>$this->Auth->user('visibility_roles')]
         ];
         $guias = $this->paginate($this->Guias);
 
@@ -41,7 +42,7 @@ class GuiasController extends AppController
             'contain' => ['GuiasDetalle','GuiasDetalle.Articulos']
         ]);
 
-        $depositos = $this->Guias->Depositos->find('list', ['limit' => 200]);
+        $depositos = $this->Guias->Depositos->find('list', ['conditions' => ['id'=>$this->Auth->user('visibility_roles')]]);
         $ordenVentas = $this->Guias->OrdenVentas->find('list', ['limit' => 200]);
         $ventas = $this->Guias->Ventas->find('list', ['limit' => 200]);
         $socios = $this->Guias->Socios->find('list', ['limit' => 200]);
@@ -62,6 +63,18 @@ class GuiasController extends AppController
         if ($this->request->is('post')) {
 			$data = $this->request->data ; 
 			$data['fecha'] = new Time($data['fecha']);
+            if($data['estado']){
+	            $c=0;
+    	        foreach($data['guias_detalle'] as $gd){
+    	            if($data['orden_venta_id']){
+        	            $data['guias_detalle'][$c]['estado']=2;
+    	            } else{
+        	            $data['guias_detalle'][$c]['estado']=$data['estado'];
+    	            }
+    	            $data['guias_detalle'][$c]['deposito_id']=$data['deposito_id'];
+    	            $c++;
+    	        }
+    	    }
             $guia = $this->Guias->patchEntity($guia, $data, ['associated' => ['GuiasDetalle']]);
             if ($this->Guias->save($guia)) {
                 $this->Flash->success(__('The guia has been saved.'));
@@ -70,7 +83,7 @@ class GuiasController extends AppController
                 $this->Flash->error(__('The guia could not be saved. Please, try again.'));
             }
         }
-        $depositos = $this->Guias->Depositos->find('list', ['limit' => 200]);
+        $depositos = $this->Guias->Depositos->find('list', ['conditions' => ['id'=>$this->Auth->user('visibility_roles')]]);
         $ordenVentas = $this->Guias->OrdenVentas->find('list', ['limit' => 200]);
         $ventas = $this->Guias->Ventas->find('list', ['limit' => 200]);
         $socios = $this->Guias->Socios->find('list', ['conditions' => ['cliente'=>1]]);
@@ -94,6 +107,14 @@ class GuiasController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
 			$data = $this->request->data ; 
 			$data['fecha'] = new Time($data['fecha']);
+            if($data['estado']){
+	            $c=0;
+    	        foreach($data['guias_detalle'] as $gd){
+    	            $data['guias_detalle'][$c]['estado']=$data['estado'];
+    	            $data['guias_detalle'][$c]['deposito_id']=$data['deposito_id'];
+    	            $c++;
+    	        }
+    	    }
             $guia = $this->Guias->patchEntity($guia, $data, ['associated' => ['GuiasDetalle']]);
             if ($this->Guias->save($guia)) {
                 $this->Flash->success(__('The guia has been saved.'));
@@ -102,7 +123,7 @@ class GuiasController extends AppController
                 $this->Flash->error(__('The guia could not be saved. Please, try again.'));
             }
         }
-        $depositos = $this->Guias->Depositos->find('list', ['limit' => 200]);
+        $depositos = $this->Guias->Depositos->find('list', ['conditions' => ['id'=>$this->Auth->user('visibility_roles')]]);
         $ordenVentas = $this->Guias->OrdenVentas->find('list', ['limit' => 200]);
         $ventas = $this->Guias->Ventas->find('list', ['limit' => 200]);
         $socios = $this->Guias->Socios->find('list', ['limit' => 200]);

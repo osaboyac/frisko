@@ -54,9 +54,9 @@ class AppController extends Controller
 		$this->loadComponent('Cookie', ['expiry' => '1 day']);
 		$this->loadComponent('Auth', [
             'loginRedirect' => [
-                'controller' => 'Pages',
+                'controller' => 'pages',
                 'action' => 'display',
-				'home'
+                'home'
             ],
             'logoutRedirect' => [
                 'controller' => 'Users',
@@ -87,10 +87,10 @@ class AppController extends Controller
 	
 	public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['display','logout','login']);
-		$this->set('current_user', $this->Auth->user());
-		$this->Cookie->config('name', 'CookieFrisko');
+        parent::beforeFilter($event);
+        $this->Auth->allow(['logout','login']);
     }
+    
 	public function isAuthorized($user)
 	{
 		// Admin can access every action

@@ -6,6 +6,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+
 /**
  * Users Model
  *
@@ -33,6 +34,7 @@ class UsersTable extends Table
 
         $this->addBehavior('Timestamp');
         $this->addBehavior('Acl.Acl', ['type' => 'requester']);
+        $this->addBehavior('Encoder');
 
         $this->belongsTo('Socios', [
             'foreignKey' => 'socio_id',
@@ -74,6 +76,9 @@ class UsersTable extends Table
             ->integer('agente')
             ->requirePresence('agente', 'create')
             ->notEmpty('agente');
+
+        $validator
+            ->allowEmpty('visibility_roles');
 
         $validator
             ->boolean('estado')

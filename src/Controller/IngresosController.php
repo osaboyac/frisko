@@ -20,7 +20,8 @@ class IngresosController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Depositos', 'Socios', 'Compras', 'OrdenCompras']
+            'contain' => ['Depositos', 'Socios', 'OrdenCompras'],
+            'conditions' => ['Ingresos.deposito_id'=>$this->Auth->user('visibility_roles')]
         ];
         $ingresos = $this->paginate($this->Ingresos);
 
@@ -42,9 +43,8 @@ class IngresosController extends AppController
         ]);
         $depositos = $this->Ingresos->Depositos->find('list', ['limit' => 200]);
         $socios = $this->Ingresos->Socios->find('list', ['conditions' => ['proveedor'=>1]]);
-        $compras = $this->Ingresos->Compras->find('list', ['limit' => 200]);
         $ordenCompras = $this->Ingresos->OrdenCompras->find('list', ['limit' => 200]);
-        $this->set(compact('ingreso', 'depositos', 'socios', 'compras', 'ordenCompras'));
+        $this->set(compact('ingreso', 'depositos', 'socios', 'ordenCompras'));
         $this->set('_serialize', ['ingreso']);
     }
 
@@ -67,11 +67,9 @@ class IngresosController extends AppController
                 $this->Flash->error(__('The ingreso could not be saved. Please, try again.'));
             }
         }
-        $depositos = $this->Ingresos->Depositos->find('list', ['limit' => 200]);
+        $depositos = $this->Ingresos->Depositos->find('list', ['conditions' => ['id'=>$this->Auth->user('visibility_roles')]]);
         $socios = $this->Ingresos->Socios->find('list', ['conditions' => array('proveedor'=>'1')]);
-        $compras = $this->Ingresos->Compras->find('list', ['limit' => 200]);
-        $ordenCompras = $this->Ingresos->OrdenCompras->find('list', ['limit' => 200]);
-        $this->set(compact('ingreso', 'depositos', 'socios', 'compras', 'ordenCompras'));
+        $this->set(compact('ingreso', 'depositos', 'socios'));
         $this->set('_serialize', ['ingreso']);
     }
 
@@ -100,9 +98,7 @@ class IngresosController extends AppController
         }
         $depositos = $this->Ingresos->Depositos->find('list', ['limit' => 200]);
         $socios = $this->Ingresos->Socios->find('list', ['conditions' => ['proveedor'=>1]]);
-        $compras = $this->Ingresos->Compras->find('list', ['limit' => 200]);
-        $ordenCompras = $this->Ingresos->OrdenCompras->find('list', ['limit' => 200]);
-        $this->set(compact('ingreso', 'depositos', 'socios', 'compras', 'ordenCompras'));
+        $this->set(compact('ingreso', 'depositos', 'socios'));
         $this->set('_serialize', ['ingreso']);
 		if($ingreso->estado){
                 return $this->redirect(['action' => 'view', $id]);			

@@ -17,6 +17,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\FormaPago $forma_pago
  * @property \Cake\I18n\Time $fecha
  * @property int $estado
+ * @property int $status
  * @property \App\Model\Entity\Guia[] $guias
  * @property \App\Model\Entity\OrdenVentasDetalle[] $orden_ventas_detalle
  */

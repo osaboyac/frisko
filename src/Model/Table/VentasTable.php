@@ -60,6 +60,10 @@ class VentasTable extends Table
             'foreignKey' => 'docserie_id',
             'joinType' => 'INNER'
         ]);
+        $this->belongsTo('OrdenVentas', [
+            'foreignKey' => 'orden_venta_id',
+            'joinType' => 'INNER'
+        ]);
         $this->hasMany('Guias', [
             'foreignKey' => 'venta_id'
         ]);

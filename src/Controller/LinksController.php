@@ -24,8 +24,10 @@ class LinksController extends AppController
                 'conditions' => ['menu_id'=>$menu_id]
             ];
             $links = $this->paginate($this->Links);
-    
-            $this->set(compact('links','menu_id'));
+            $menu = $this->Links->Menus->get($menu_id, [
+                'contain' => []
+            ]);
+            $this->set(compact('links','menu'));
             $this->set('_serialize', ['links']);
         } else{
             return $this->redirect(['controller'=>'menus','action' => 'index']);
@@ -64,7 +66,7 @@ class LinksController extends AppController
             
             if ($this->Links->save($link)) {
                 $this->Flash->success(__('The link has been saved.'));
-                return $this->redirect(['action' => 'index'], $data['menu_id']);
+                return $this->redirect(['action' => 'index',$menu_id]);
             } else {
                 $this->Flash->error(__('The link could not be saved. Please, try again.'));
             }
@@ -73,7 +75,12 @@ class LinksController extends AppController
         $roles = $this->Roles->find('list');
         $parentLinks = $this->Links->find('list',['conditions'=>['menu_id'=>$menu_id]]);
         $menus = $this->Links->Menus->find('list');
-        $this->set(compact('link', 'parentLinks', 'menus','roles','menu_id'));
+        
+        $menu = $this->Links->Menus->get($menu_id, [
+            'contain' => []
+        ]);
+
+        $this->set(compact('link', 'parentLinks', 'menus','roles','menu'));
         $this->set('_serialize', ['link']);
     }
 
@@ -89,11 +96,15 @@ class LinksController extends AppController
         $link = $this->Links->get($id, [
             'contain' => []
         ]);
+        $user['roles_id'] = $this->Users->decodeData($user['visibility_roles']);
+        $user = $user;
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $link = $this->Links->patchEntity($link, $this->request->data);
+			$data = $this->request->data ; 
+			$data['visibility_roles'] = $this->Links->encodeData($data['role_id']);
+            $link = $this->Links->patchEntity($link, $data);
             if ($this->Links->save($link)) {
                 $this->Flash->success(__('The link has been saved.'));
-                return $this->redirect(['action' => 'index'],$this->request->data['menu_id']);
+                return $this->redirect(['action' => 'index',$link->menu_id]);
             } else {
                 $this->Flash->error(__('The link could not be saved. Please, try again.'));
             }
@@ -102,7 +113,10 @@ class LinksController extends AppController
         $roles = $this->Roles->find('list');
         $parentLinks = $this->Links->find('list',['conditions'=>['menu_id'=>$link->menu_id]]);
         $menus = $this->Links->Menus->find('list');
-        $this->set(compact('link', 'parentLinks', 'menus','roles'));
+        $menu = $this->Links->Menus->get($menu_id, [
+            'contain' => []
+        ]);
+        $this->set(compact('link', 'parentLinks', 'menus','roles','menu'));
         $this->set('_serialize', ['link']);
     }
 
@@ -113,7 +127,7 @@ class LinksController extends AppController
      * @return \Cake\Network\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete($id = null)
+    public function delete($id = null, $menu_id=null)
     {
         $this->request->allowMethod(['post', 'delete']);
         $link = $this->Links->get($id);
@@ -122,6 +136,6 @@ class LinksController extends AppController
         } else {
             $this->Flash->error(__('The link could not be deleted. Please, try again.'));
         }
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['action' => 'index', $menu_id]);
     }
 }

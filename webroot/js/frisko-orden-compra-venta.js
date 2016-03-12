@@ -18,7 +18,7 @@ $(function () {
 			{"width": "50%"},
 			{"orderable": false },
 			null,
-			null,
+			{"orderable": false },
 			{"orderable": false, "width": "5%"}
 		]
 	});

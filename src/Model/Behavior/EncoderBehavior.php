@@ -80,7 +80,7 @@ class EncoderBehavior extends Behavior {
  * @param string $data
  * @return array
  */
-	public function decodeData(Entity $entity, $data) {
+	public function decodeData($data) {
 		if ($data == '') {
 			$output = '';
 		} else {

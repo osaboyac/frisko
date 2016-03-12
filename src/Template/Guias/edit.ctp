@@ -64,6 +64,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel panel-primary">
@@ -109,10 +110,9 @@
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
-		</div>
-		<?= $this->Form->button(__('Guardar'),array('class'=>'btn btn-primary')) ?>
-		<?= $this->Html->link(__('Cancelar'),['action' => 'index'],array('class'=>'btn btn-danger','action'=>'index')) ?>
-		<?= $this->Form->end() ?>
+			<?= $this->Form->button(__('Guardar'),array('class'=>'btn btn-primary')) ?>
+			<?= $this->Html->link(__('Cancelar'),['action' => 'index'],array('class'=>'btn btn-danger','action'=>'index')) ?>
+			<?= $this->Form->end() ?>
 	</div>
 </div>
 <script>

@@ -11,7 +11,6 @@ use Cake\I18n\Time;
  */
 class OrdenComprasController extends AppController
 {
-
     /**
      * Index method
      *
@@ -132,8 +131,14 @@ class OrdenComprasController extends AppController
      */
     public function info($detalle=null)
     {
-        $ordenCompras = $this->OrdenCompras->find('list',['conditions' => ['estado'=>1]]);
-		$oc = $this->OrdenCompras->find('all',['contain'=>['Socios'],'conditions' => ['OrdenCompras.estado'=>1]]);
+        if($detalle == 'compras_detalle' ){
+            $ordenCompras = $this->OrdenCompras->find('list',['conditions' => ['compra_id'=>1,'estado'=>1]]);
+    		$oc = $this->OrdenCompras->find('all',['contain'=>['Socios'],'conditions' => ['OrdenCompras.estado'=>1,'status in'=>[0,1]]]);
+        } else {
+            $ordenCompras = $this->OrdenCompras->find('list',['conditions' => ['ingreso_id'=>null,'estado'=>1]]);
+    		$oc = $this->OrdenCompras->find('all',['contain'=>['Socios'],'conditions' => ['OrdenCompras.estado'=>1,'status'=>0]]);
+        }
+
 		$id = '';
 		$socios = '';
 		$c = 0;

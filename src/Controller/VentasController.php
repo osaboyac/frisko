@@ -20,7 +20,8 @@ class VentasController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users', 'Socios', 'Documentos', 'Depositos', 'FormaPagos']
+            'contain' => ['Users', 'Socios', 'Documentos', 'Depositos', 'FormaPagos','OrdenVentas'],
+            'conditions' => ['Ventas.deposito_id'=>$this->Auth->user('visibility_roles')]
         ];
         $ventas = $this->paginate($this->Ventas);
 
@@ -70,10 +71,11 @@ class VentasController extends AppController
                 $this->Flash->error(__('The venta could not be saved. Please, try again.'));
             }
         }
-        $users = $this->Ventas->Users->find('list', ['limit' => 200]);
+        
+        $users = $this->Ventas->Users->find('list', ['conditions' => ['id'=>$this->Auth->user('id')]]);
         $socios = $this->Ventas->Socios->find('list', ['conditions' => ['cliente'=>1]]);
         $documentos = $this->Ventas->Depositos->Docseriev->find('all',['fields'=>['id','nombre','documento_id','deposito_id','serie','numero'],'conditions'=>['tipo'=>0]]);
-        $depositos = $this->Ventas->Depositos->find('list', ['limit' => 200]);
+        $depositos = $this->Ventas->Depositos->find('list', ['conditions' => ['id'=>$this->Auth->user('visibility_roles')]]);
         $formaPagos = $this->Ventas->FormaPagos->find('list', ['limit' => 200]);
         $this->set(compact('venta', 'users', 'socios', 'documentos', 'depositos', 'formaPagos'));
         $this->set('_serialize', ['venta']);
@@ -102,11 +104,11 @@ class VentasController extends AppController
                 $this->Flash->error(__('The venta could not be saved. Please, try again.'));
             }
         }
-        $users = $this->Ventas->Users->find('list', ['limit' => 200]);
+        $users = $this->Ventas->Users->find('list', ['conditions' => ['id'=>$this->Auth->user('id')]]);
         $socios = $this->Ventas->Socios->find('list', ['conditions' => ['cliente'=>1]]);
         $documentos = $this->Ventas->Depositos->Docseriev->find('all',['fields'=>['id','nombre','documento_id','deposito_id','serie','numero'],'conditions'=>['tipo'=>0]]);
         $documentoSerie = $this->Ventas->Depositos->Docseriev->find('list', ['fields'=>['id','nombre'],'conditions' => ['id'=>$venta->docserie_id,'deposito_id'=>$venta->deposito_id,'tipo'=>0]]);
-        $depositos = $this->Ventas->Depositos->find('list', ['limit' => 200]);
+        $depositos = $this->Ventas->Depositos->find('list', ['conditions' => ['id'=>$this->Auth->user('visibility_roles')]]);
         $formaPagos = $this->Ventas->FormaPagos->find('list', ['limit' => 200]);
         $this->set(compact('venta', 'users', 'socios', 'documentos','documentoSerie', 'depositos', 'formaPagos'));
         $this->set('_serialize', ['venta']);

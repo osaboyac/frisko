@@ -1,9 +1,9 @@
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		Links
+		Links - <?= $menu->title ?>
 	</div>
 	<div class="panel-body">
-        <?= $this->Html->link(__('Nuevo Enlance'), ['action' => 'add',$menu_id],array('class'=>'btn btn-info')) ?>
+        <?= $this->Html->link(__('Nuevo Enlance'), ['action' => 'add',$menu->id],array('class'=>'btn btn-info')) ?>
         <?= $this->Html->link(__('Menus'), ['controller'=>'menus','action' => 'index'],array('class'=>'btn btn-warning')) ?>
 	</div>
 	<div class="panel-body">
@@ -30,8 +30,8 @@
 									<td><?= h($link->title) ?></td>
 									<td><?php if(h($link->status)){echo 'Activo';} else{ echo 'Inactivo';} ?></td>
 									<td class="actions">
-									<?= $this->Html->link(__(''), ['action' => 'edit', $link->id],array('class'=>'fa fa-edit fa-fw')) ?>
-									<?= $this->Form->postLink(__(''),['action' => 'delete', $link->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $link->id),'class'=>'fa fa-times']) ?>
+									<?= $this->Html->link(__(''),['action'=>'edit', $link->id],['class'=>'fa fa-edit btn btn-warning btn-circle']) ?>
+									<?= $this->Form->postLink(__(''),['action' => 'delete', $link->id, $menu->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $link->id),'class'=>'fa fa-times btn btn-danger btn-circle']) ?>
 									</td>
 								</tr>
 								<?php endforeach; ?>

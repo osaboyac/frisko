@@ -32,7 +32,7 @@
 							<td><?php if(h($ordenCompra->estado)): echo 'Procesado'; else: echo'Grabado'; endif; ?></td>
 							<td class="actions">
 								<?= $this->Html->link(__(''),['action'=>'edit', $ordenCompra->id],['class'=>'fa fa-edit btn btn-warning btn-circle']) ?>
-								<?= $this->Form->postLink(__(''),['action' => 'delete', $ordenCompra->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $ordenCompra->id),'class'=>'fa fa-times btn btn-danger btn-circle']) ?>								
+								<?= $this->Form->postLink(__(''),['action' => 'delete', $ordenCompra->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $ordenCompra->id),'class'=>'fa fa-times btn btn-danger btn-circle']) ?>
 							</td>
 						</tr>
 						<?php endforeach; ?>

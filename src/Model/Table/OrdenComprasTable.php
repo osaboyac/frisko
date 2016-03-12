@@ -36,15 +36,11 @@ class OrdenComprasTable extends Table
             'foreignKey' => 'socio_id',
             'joinType' => 'INNER'
         ]);
-        $this->hasMany('Compras', [
-            'foreignKey' => 'orden_compra_id'
-        ]);
-        $this->hasMany('Ingresos', [
-            'foreignKey' => 'orden_compra_id'
-        ]);
         $this->hasMany('OrdenComprasDetalle', [
             'foreignKey' => 'orden_compra_id'
         ]);
+        $this->hasOne('Compras');
+        $this->hasOne('Ingresos');
     }
 
     /**

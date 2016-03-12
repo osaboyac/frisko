@@ -22,6 +22,7 @@ use Cake\ORM\Entity;
  * @property int $numero
  * @property int $estado
  * @property int $docserie_id
+ * @property int $orden_venta_id
  * @property \App\Model\Entity\Docseries $docseries
  * @property string $codigo_unico
  * @property \App\Model\Entity\Guia[] $guias

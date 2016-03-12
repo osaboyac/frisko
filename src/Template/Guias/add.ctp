@@ -10,7 +10,7 @@
 					<?php echo $this->Form->input('deposito_id', ['label'=>'Sucursal','options' => $depositos,'empty'=>true,'class'=>'form-control','for'=>'inputSuccess','required'=>true]); ?>
 				</div>
 				<div class="col-lg-6">
-					<?php echo $this->Form->input('socio_id',array('label'=>'Socio de Negocio','options' => $socios,'class'=>'form-control','for'=>'inputSuccess'));?>
+					<?php echo $this->Form->input('socio_id',array('label'=>'Socio de Negocio','options' => $socios,'class'=>'form-control addText','for'=>'inputSuccess','id'=>'socio-id'));?>
 				</div>
 			</div>
 			<div class="row">
@@ -48,7 +48,7 @@
 				<div class="col-lg-6 panel-body">
 					<div class="row">
 						<div class="col-lg-4 panel-heading">
-							<?= $this->Html->link(__('Buscar Artículos'), ['controller'=>'articulos-info','action' => 'index','guias_detalle'],['class'=>'btn btn-info','data-toggle'=>'modal','data-target'=>'#articulosInfo']) ?>
+							<?= $this->Html->link(__('Buscar Artículos'), ['controller'=>'articulos-info','action' => 'index','guias_detalle'],['class'=>'btn btn-info','data-toggle'=>'modal','data-target'=>'#articulosInfo','id'=>'LinkArticulosInfo']) ?>
 						</div>
 						<div class="modal fade" id="articulosInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog modal-lg">
@@ -60,10 +60,21 @@
 							<!-- /.modal-dialog -->
 						</div>
 						<div class="col-lg-4 panel-heading">
-							<button type="button" class="btn btn-warning">Ingresar desde</button>
+							<?= $this->Html->link(__('Crear desde'), ['controller'=>'orden-ventas','action' => 'info','guias_detalle'],['class'=>'btn btn-warning','data-toggle'=>'modal','data-target'=>'#ordenVentasInfo']) ?>
+						</div>
+						<div class="modal fade" id="ordenVentasInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-lg">
+									<div class="modal-content"></div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-success addOV" data-dismiss="modal">Agregar</button>
+										<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+									</div>
+							</div>
+							<!-- /.modal-dialog -->
 						</div>
 					</div>
 				</div>
+			</div>
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel panel-primary">
@@ -91,7 +102,6 @@
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
-		</div>
 		<?= $this->Form->button(__('Guardar'),array('class'=>'btn btn-primary')) ?>
 		<?= $this->Html->link(__('Cancelar'),['action' => 'index'],array('class'=>'btn btn-danger','action'=>'index')) ?>
 		<?= $this->Form->end() ?>

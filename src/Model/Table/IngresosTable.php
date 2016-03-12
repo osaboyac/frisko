@@ -42,18 +42,10 @@ class IngresosTable extends Table
             'foreignKey' => 'socio_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Compras', [
-            'foreignKey' => 'compra_id'
-        ]);
-        $this->belongsTo('OrdenCompras', [
-            'foreignKey' => 'orden_compra_id'
-        ]);
-        $this->hasMany('Compras', [
-            'foreignKey' => 'ingreso_id'
-        ]);
         $this->hasMany('IngresosDetalle', [
             'foreignKey' => 'ingreso_id'
         ]);
+        $this->hasOne('OrdenCompras');
     }
 
     /**

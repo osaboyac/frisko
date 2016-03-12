@@ -27,7 +27,7 @@ $(function () {
     }).draw();
 });
 
-	function delLineProduct(){
+	function delLineProductIG(){
 		$('.dataTables-addIG tbody').on('click', 'a.del-product', function () {
 			taddIG.row( $(this).parents('tr') ).remove().draw(false);
 

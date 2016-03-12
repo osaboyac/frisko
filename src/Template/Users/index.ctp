@@ -33,8 +33,8 @@
 							<td><?= h($user->socio->nombre) ?></td>
 							<td><?php if(h($user->estado)==1){ echo 'Activo';} else { echo 'Inactivo';} ?></td>
 							<td class="actions">
-								<?= $this->Html->link(__(''), ['action' => 'edit', $user->id],array('class'=>'fa fa-edit fa-fw')) ?>
-								<?= $this->Form->postLink(__(''),['action' => 'delete', $user->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $user->id),'class'=>'fa fa-times']) ?>								
+								<?= $this->Html->link(__(''),['action'=>'edit', $user->id],['class'=>'fa fa-edit btn btn-warning btn-circle']) ?>
+								<?= $this->Form->postLink(__(''),['action' => 'delete', $user->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $user->id),'class'=>'fa fa-times btn btn-danger btn-circle']) ?>
 							</td>
 						</tr>
 						<?php endforeach; ?>

@@ -10,10 +10,13 @@
 					<?= $this->Form->create() ?>
 						<fieldset>
 							<div class="form-group">
-								<?= $this->Form->input('username',['class'=>'form-control','placeholder'=>'Usuario','type'=>'text','autofocus'=>true]) ?>
+								<?= $this->Form->input('username',['label'=>false,'class'=>'form-control','placeholder'=>'Usuario','type'=>'text','autofocus'=>true,'value'=>'admin']) ?>
 							</div>
 							<div class="form-group">
-								<?= $this->Form->input('password',['class'=>'form-control','placeholder'=>'Contraseña','type'=>'password','value'=>'']) ?>
+								<?= $this->Form->input('password',['label'=>false,'class'=>'form-control','placeholder'=>'Contraseña','type'=>'password','value'=>'admin']) ?>
+							</div>
+							<div class="form-group">
+								<?= $this->Form->input('deposito_id',['label'=>false,'class'=>'form-control','placeholder'=>'Sucursal','options'=>$depositos]) ?>
 							</div>
 							<div class="checkbox">
 								<label>
