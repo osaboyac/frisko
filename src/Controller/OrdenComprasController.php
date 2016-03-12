@@ -19,7 +19,7 @@ class OrdenComprasController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Socios']
+            'contain' => ['Socios','Compras']
         ];
         $ordenCompras = $this->paginate($this->OrdenCompras);
 
@@ -132,13 +132,12 @@ class OrdenComprasController extends AppController
     public function info($detalle=null)
     {
         if($detalle == 'compras_detalle' ){
-            $ordenCompras = $this->OrdenCompras->find('list',['conditions' => ['compra_id'=>1,'estado'=>1]]);
-    		$oc = $this->OrdenCompras->find('all',['contain'=>['Socios'],'conditions' => ['OrdenCompras.estado'=>1,'status in'=>[0,1]]]);
+            $ordenCompras = $this->OrdenCompras->find('list',['conditions' => ['compra_id is null','estado'=>1]]);
+    		$oc = $this->OrdenCompras->find('all',['contain'=>['Socios'],'conditions' => ['compra_id is null','OrdenCompras.estado'=>1]]);
         } else {
-            $ordenCompras = $this->OrdenCompras->find('list',['conditions' => ['ingreso_id'=>null,'estado'=>1]]);
-    		$oc = $this->OrdenCompras->find('all',['contain'=>['Socios'],'conditions' => ['OrdenCompras.estado'=>1,'status'=>0]]);
+            $ordenCompras = $this->OrdenCompras->find('list',['conditions' => ['ingreso_id is null','estado'=>1]]);
+    		$oc = $this->OrdenCompras->find('all',['contain'=>['Socios'],'conditions' => ['ingreso_id is null','OrdenCompras.estado'=>1]]);
         }
-
 		$id = '';
 		$socios = '';
 		$c = 0;

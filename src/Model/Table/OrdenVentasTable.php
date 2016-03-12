@@ -15,7 +15,8 @@ use Cake\ORM\TableRegistry;
  * @property \Cake\ORM\Association\BelongsTo $Depositos
  * @property \Cake\ORM\Association\BelongsTo $Socios
  * @property \Cake\ORM\Association\BelongsTo $FormaPagos
- * @property \Cake\ORM\Association\HasMany $Guias
+ * @property \Cake\ORM\Association\HasOne $Guias
+ * @property \Cake\ORM\Association\HasOne $Ventas
  * @property \Cake\ORM\Association\HasMany $OrdenVentasDetalle
  */
 class OrdenVentasTable extends Table
@@ -51,15 +52,11 @@ class OrdenVentasTable extends Table
             'foreignKey' => 'forma_pago_id',
             'joinType' => 'INNER'
         ]);
-        $this->hasMany('Guias', [
-            'foreignKey' => 'orden_venta_id'
-        ]);
-        $this->hasMany('Ventas', [
-            'foreignKey' => 'orden_venta_id'
-        ]);
         $this->hasMany('OrdenVentasDetalle', [
             'foreignKey' => 'orden_venta_id'
         ]);
+        $this->hasOne('Guias');
+        $this->hasOne('Ventas');
     }
 
     /**

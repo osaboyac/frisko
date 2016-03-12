@@ -10,7 +10,7 @@
 					<?php echo $this->Form->input('deposito_id',array('label'=>'Sucursal','options' => $depositos,'class'=>'form-control','for'=>'inputSuccess'));?>
 				</div>
 				<div class="col-lg-6">
-					<?php echo $this->Form->input('socio_id',array('options' => $socios,'class'=>'form-control','for'=>'inputSuccess'));?>
+					<?php echo $this->Form->input('socio_id',array('options' => $socios,'class'=>'form-control addText','for'=>'inputSuccess'));?>
 				</div>
 			</div>
 			<div class="row">
@@ -30,7 +30,7 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="col-lg-4 panel-heading">
-						<?= $this->Html->link(__('Buscar Artículos'), ['controller'=>'articulos-info','action' => 'index','ingresos_detalle'],['class'=>'btn btn-info','data-toggle'=>'modal','data-target'=>'#articulosInfo']) ?>
+						<?= $this->Html->link(__('Buscar Artículos'), ['controller'=>'articulos-info','action' => 'index','ingresos_detalle'],['class'=>'btn btn-info','data-toggle'=>'modal','data-target'=>'#articulosInfo','id'=>'LinkArticulosInfo']) ?>
 					</div>							
 					<div class="modal fade" id="articulosInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog modal-lg">

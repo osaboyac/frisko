@@ -61,10 +61,6 @@ class GuiasDetalleTable extends Table
             ->requirePresence('cantidad', 'create')
             ->notEmpty('cantidad');
 
-        $validator
-            ->requirePresence('descripcion', 'create')
-            ->notEmpty('descripcion');
-
         return $validator;
     }
 

@@ -21,7 +21,7 @@ class OrdenVentasController extends AppController
     {
         $this->paginate = [
             'contain' => ['Users', 'Depositos', 'Socios', 'FormaPagos','Ventas'],
-            'conditions' => ['deposito_id'=>$this->Auth->user('visibility_roles')]
+            'conditions' => ['OrdenVentas.deposito_id'=>$this->Auth->user('visibility_roles')]
         ];
         $ordenVentas = $this->paginate($this->OrdenVentas);
 

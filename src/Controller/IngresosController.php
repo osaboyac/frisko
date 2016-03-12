@@ -59,6 +59,14 @@ class IngresosController extends AppController
         if ($this->request->is('post')) {
 			$data = $this->request->data ; 
 			$data['fecha'] = new Time($data['fecha']);
+            if($data['estado']){
+	            $c=0;
+    	        foreach($data['ingresos_detalle'] as $ingd){
+       	            $data['ingresos_detalle'][$c]['estado']=$data['estado'];
+    	            $data['ingresos_detalle'][$c]['deposito_id']=$data['deposito_id'];
+    	            $c++;
+    	        }
+    	    }
             $ingreso = $this->Ingresos->patchEntity($ingreso, $data, ['associated' => ['IngresosDetalle']]);
             if ($this->Ingresos->save($ingreso)) {
                 $this->Flash->success(__('The ingreso has been saved.'));

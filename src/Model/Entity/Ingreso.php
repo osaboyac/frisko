@@ -11,8 +11,6 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Deposito $deposito
  * @property int $socio_id
  * @property \App\Model\Entity\Socio $socio
- * @property int $compra_id
- * @property \App\Model\Entity\Compra $compra
  * @property int $orden_compra_id
  * @property \App\Model\Entity\OrdenCompra $orden_compra
  * @property \Cake\I18n\Time $fecha

@@ -11,8 +11,8 @@ use Cake\Validation\Validator;
  * OrdenCompras Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Socios
- * @property \Cake\ORM\Association\HasMany $Compras
- * @property \Cake\ORM\Association\HasMany $Ingresos
+ * @property \Cake\ORM\Association\HasOne $Compras
+ * @property \Cake\ORM\Association\HasOne $Ingresos
  * @property \Cake\ORM\Association\HasMany $OrdenComprasDetalle
  */
 class OrdenComprasTable extends Table

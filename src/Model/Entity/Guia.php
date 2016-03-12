@@ -11,8 +11,6 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Deposito $deposito
  * @property int $orden_venta_id
  * @property \App\Model\Entity\OrdenVenta $orden_venta
- * @property int $venta_id
- * @property \App\Model\Entity\Venta $venta
  * @property int $socio_id
  * @property \App\Model\Entity\Socio $socio
  * @property int $documento_id

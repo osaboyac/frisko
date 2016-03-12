@@ -12,9 +12,7 @@ use Cake\Validation\Validator;
  *
  * @property \Cake\ORM\Association\BelongsTo $Depositos
  * @property \Cake\ORM\Association\BelongsTo $Socios
- * @property \Cake\ORM\Association\BelongsTo $Compras
  * @property \Cake\ORM\Association\BelongsTo $OrdenCompras
- * @property \Cake\ORM\Association\HasMany $Compras
  * @property \Cake\ORM\Association\HasMany $IngresosDetalle
  */
 class IngresosTable extends Table
@@ -77,7 +75,6 @@ class IngresosTable extends Table
     {
         $rules->add($rules->existsIn(['deposito_id'], 'Depositos'));
         $rules->add($rules->existsIn(['socio_id'], 'Socios'));
-        $rules->add($rules->existsIn(['compra_id'], 'Compras'));
         $rules->add($rules->existsIn(['orden_compra_id'], 'OrdenCompras'));
         return $rules;
     }

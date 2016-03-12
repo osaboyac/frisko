@@ -17,7 +17,6 @@
 						<thead>
 						<tr>
 							<th>ID</th>
-							<th>Sucursal</th>
 							<th>Socio Negocio</th>
 							<th>Fecha</th>
 							<th>Documento</th>
@@ -30,7 +29,6 @@
 						<?php foreach ($guias as $guia):?>
 						<tr>
 							<td><?= $this->Number->format($guia->id) ?></td>
-							<td><?= h($guia->deposito->nombre) ?></td>
 							<td><?= h($guia->socio->nombre) ?></td>
 							<td><?= h($guia->fecha->format('Y-m-d')) ?></td>
 							<td><?= h($guia->documento->nombre) ?></td>

@@ -66,11 +66,7 @@ class GuiasController extends AppController
             if($data['estado']){
 	            $c=0;
     	        foreach($data['guias_detalle'] as $gd){
-    	            if($data['orden_venta_id']){
-        	            $data['guias_detalle'][$c]['estado']=2;
-    	            } else{
-        	            $data['guias_detalle'][$c]['estado']=$data['estado'];
-    	            }
+       	            $data['guias_detalle'][$c]['estado']=$data['estado'];
     	            $data['guias_detalle'][$c]['deposito_id']=$data['deposito_id'];
     	            $c++;
     	        }

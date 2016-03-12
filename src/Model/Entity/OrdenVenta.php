@@ -18,7 +18,10 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $fecha
  * @property int $estado
  * @property int $status
- * @property \App\Model\Entity\Guia[] $guias
+ * @property int $venta_id
+ * @property \App\Model\Entity\Venta $venta
+ * @property int $guia_id
+ * @property \App\Model\Entity\Guia $guia
  * @property \App\Model\Entity\OrdenVentasDetalle[] $orden_ventas_detalle
  */
 class OrdenVenta extends Entity

@@ -32,7 +32,9 @@
 										<th>Precio Máximo</th>
 										<th>Deposito</th>
 										<th>Lista Precio</th>
+										<?php if($detalle) {?>
 										<th>Agregar</th>
+										<?php } ?>
 									</tr>
 									</thead>
 									<tbody>
@@ -52,8 +54,6 @@
 											<td style="text-align:center">
 												<button type="button" class="btn btn-info btn-circle add-product"><i class="fa fa-check"></i></button>
 											</td>
-											<?php } else {?>
-											<td></td>
 											<?php } ?>
 										</tr>
 										<?php endforeach; ?>
@@ -114,8 +114,12 @@
 				null,
 				null,
 				null,
+				<?php if($detalle) {?>
 				null,
 				{"orderable": false, "width": "5%"}
+				<?php } else {?>
+				null
+				<?php }?>
 			]
 		});
 		$('select.infoArticuloParametro, select.lista-precio').on('change', function () {
