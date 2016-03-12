@@ -1,6 +1,6 @@
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		Links
+		Links <?= $menu->title ?>
 	</div>
 	<div class="panel-body">
 		<?= $this->Form->create($link) ?>

@@ -96,8 +96,9 @@ class LinksController extends AppController
         $link = $this->Links->get($id, [
             'contain' => []
         ]);
-        $user['roles_id'] = $this->Users->decodeData($user['visibility_roles']);
-        $user = $user;
+		$this->loadModel('Users');
+        $lnik['role_id'] = $this->Users->decodeData($link['visibility_roles']);
+        $link = $link;
         if ($this->request->is(['patch', 'post', 'put'])) {
 			$data = $this->request->data ; 
 			$data['visibility_roles'] = $this->Links->encodeData($data['role_id']);
@@ -113,7 +114,7 @@ class LinksController extends AppController
         $roles = $this->Roles->find('list');
         $parentLinks = $this->Links->find('list',['conditions'=>['menu_id'=>$link->menu_id]]);
         $menus = $this->Links->Menus->find('list');
-        $menu = $this->Links->Menus->get($menu_id, [
+        $menu = $this->Links->Menus->get($link->menu_id, [
             'contain' => []
         ]);
         $this->set(compact('link', 'parentLinks', 'menus','roles','menu'));

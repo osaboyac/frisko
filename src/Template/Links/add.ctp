@@ -26,7 +26,7 @@
             </div>
 		</div>
 		<?= $this->Form->button(__('Guardar'),array('class'=>'btn btn-primary')) ?>
-		<?= $this->Html->link(__('Cancelar'),['action' => 'index',$menu_id],array('class'=>'btn btn-danger')) ?>
+		<?= $this->Html->link(__('Cancelar'),['action' => 'index',$link->menu_id],array('class'=>'btn btn-danger')) ?>
 		<?= $this->Form->end() ?>
 	</div>
 </div>

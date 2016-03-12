@@ -33,7 +33,7 @@ class LinksTable extends Table
 
         $this->addBehavior('Timestamp');
         $this->addBehavior('Tree');
-        $this->addBehavior('Encoder');
+//        $this->addBehavior('Encoder');
         $this->addBehavior('CounterCache', ['Menus' => ['link_count']]);
 
         $this->belongsTo('Menus', [
