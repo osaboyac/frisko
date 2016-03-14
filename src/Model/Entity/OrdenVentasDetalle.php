@@ -14,6 +14,8 @@ use Cake\ORM\Entity;
  * @property float $cantidad
  * @property float $precio
  * @property int $estado
+ * @property int $incluir_impuesto
+ * @property float $tasa_impuesto
  * @property int $deposito_id
  */
 class OrdenVentasDetalle extends Entity

@@ -109,7 +109,9 @@
 									tadd.row.add( [
 										counter + 1,
 										"<?= $ovd->articulo->nombre ?>",
-										'<input type="hidden" value="<?= $ovd->articulo->id ?>" name="<?= $detalle; ?>['+counter+'][articulo_id]">\
+										'<input type="hidden" class="incluir_impuesto" value="<?= $ovd->incluir_impuesto ?>" name="<?= $detalle; ?>['+counter+'][incluir_impuesto]">\
+										<input type="hidden" class="tasa_impuesto" value="<?= $ovd->tasa_impuesto ?>" name="<?= $detalle; ?>['+counter+'][tasa_impuesto]">\
+										<input type="hidden" value="<?= $ovd->articulo->id ?>" name="<?= $detalle; ?>['+counter+'][articulo_id]">\
 										<input type="text" value="<?= $this->Number->precision($ovd->cantidad,2) ?>" class="cantidad" name="<?= $detalle; ?>['+counter+'][cantidad]">',
 										'<select class="precio" name="<?= $detalle; ?>['+counter+'][precio]">\
 											<option value="<?= $this->Number->precision($ovd->precio,2) ?>" selected><?= $this->Number->precision($ovd->precio,2) ?></option>\

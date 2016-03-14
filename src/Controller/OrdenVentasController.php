@@ -156,11 +156,11 @@ class OrdenVentasController extends AppController
     public function info($detalle=null)
     {
         if($detalle == 'ventas_detalle' ){
-            $ordenVentas = $this->OrdenVentas->find('list',['conditions' => ['estado'=>1,'status in'=>[0,1],'deposito_id'=>$this->Auth->user('visibility_roles')]]);
-    		$ov = $this->OrdenVentas->find('all',['contain'=>['Socios'],'conditions' => ['OrdenVentas.estado'=>1,'status in'=>[0,1],'OrdenVentas.deposito_id'=>$this->Auth->user('visibility_roles')]]);
+            $ordenVentas = $this->OrdenVentas->find('list',['conditions' => ['OrdenVentas.estado'=>1,'status_venta'=>0,'deposito_id'=>$this->Auth->user('visibility_roles')]]);
+    		$ov = $this->OrdenVentas->find('all',['contain'=>['Socios'],'conditions' => ['OrdenVentas.estado'=>1,'status_venta'=>0,'OrdenVentas.deposito_id'=>$this->Auth->user('visibility_roles')]]);
         } else {
-            $ordenVentas = $this->OrdenVentas->find('list',['conditions' => ['estado'=>1,'status'=>0,'deposito_id'=>$this->Auth->user('visibility_roles')]]);
-    		$ov = $this->OrdenVentas->find('all',['contain'=>['Socios'],'conditions' => ['OrdenVentas.estado'=>1,'status'=>0,'OrdenVentas.deposito_id'=>$this->Auth->user('visibility_roles')]]);
+            $ordenVentas = $this->OrdenVentas->find('list',['conditions' => ['OrdenVentas.estado'=>1,'status_guia'=>0,'deposito_id'=>$this->Auth->user('visibility_roles')]]);
+    		$ov = $this->OrdenVentas->find('all',['contain'=>['Socios'],'conditions' => ['OrdenVentas.estado'=>1,'status_guia'=>0,'OrdenVentas.deposito_id'=>$this->Auth->user('visibility_roles')]]);
         }
 		$id = '';
 		$socios = '';

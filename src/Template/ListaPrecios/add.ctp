@@ -7,7 +7,7 @@
 		<div class="form-group has-success">
 			<?php 
 				echo $this->Form->input('nombre',array('class'=>'form-control','for'=>'inputSuccess'));
-				echo $this->Form->input('socio_id',array('options' => $socios,'class'=>'form-control','for'=>'inputSuccess'));
+				echo $this->Form->input('socio_id',array('options' => $socios,'empty'=>true,'class'=>'form-control','for'=>'inputSuccess'));
 				echo $this->Form->input('moneda_id',array('options' => $monedas,'class'=>'form-control','for'=>'inputSuccess'));
 				echo $this->Form->input('tipo_lista',['options' =>array('0'=>'Compra','1'=>'Venta'),'class'=>'form-control','for'=>'inputSuccess']);
 				echo $this->Form->input('incluir_impuesto',['label'=>'Incluir impuesto en el precio','options' =>array('0'=>'No','1'=>'Si'),'class'=>'form-control','for'=>'inputSuccess']);

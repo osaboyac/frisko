@@ -2,7 +2,6 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
-
 /**
  * Venta Entity.
  *
@@ -11,6 +10,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\User $user
  * @property int $socio_id
  * @property \App\Model\Entity\Socio $socio
+ * @property int $orden_venta_id
  * @property int $documento_id
  * @property \App\Model\Entity\Documento $documento
  * @property int $deposito_id
@@ -22,9 +22,12 @@ use Cake\ORM\Entity;
  * @property int $numero
  * @property int $estado
  * @property int $docserie_id
- * @property int $orden_venta_id
  * @property \App\Model\Entity\Docseries $docseries
  * @property string $codigo_unico
+ * @property float $total
+ * @property float $impuesto
+ * @property float $grantotal
+ * @property \App\Model\Entity\OrdenVenta[] $orden_ventas
  * @property \App\Model\Entity\Guia[] $guias
  * @property \App\Model\Entity\VentasDetalle[] $ventas_detalle
  */

@@ -18,11 +18,12 @@ class ArticuloPreciosController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
+        /*$this->paginate = [
             'contain' => ['Depositos', 'ListaPrecios', 'Articulos', 'Impuestos']
         ];
-        $articuloPrecios = $this->paginate($this->ArticuloPrecios);
-
+        $articuloPrecios = $this->paginate($this->ArticuloPrecios);*/
+		
+		$articuloPrecios = $this->ArticuloPrecios->find('all',['contain'=>['Depositos','ListaPrecios','Articulos','Impuestos']]);
         $this->set(compact('articuloPrecios'));
         $this->set('_serialize', ['articuloPrecios']);
     }
@@ -53,7 +54,11 @@ class ArticuloPreciosController extends AppController
     {
         $articuloPrecio = $this->ArticuloPrecios->newEntity();
         if ($this->request->is('post')) {
-            $articuloPrecio = $this->ArticuloPrecios->patchEntity($articuloPrecio, $this->request->data);
+			$data = $this->request->data;
+			$listaPrecio = $this->ArticuloPrecios->ListaPrecios->get($data['lista_precio_id']);
+			$data['incluir_impuesto'] = $listaPrecio['incluir_impuesto'];
+			
+            $articuloPrecio = $this->ArticuloPrecios->patchEntity($articuloPrecio, $data);
             if ($this->ArticuloPrecios->save($articuloPrecio)) {
                 $this->Flash->success(__('The articulo precio has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -63,7 +68,7 @@ class ArticuloPreciosController extends AppController
         }
         $depositos = $this->ArticuloPrecios->Depositos->find('list', ['limit' => 200]);
         $listaPrecios = $this->ArticuloPrecios->ListaPrecios->find('list', ['limit' => 200]);
-        $articulos = $this->ArticuloPrecios->Articulos->find('list', ['limit' => 200]);
+        $articulos = $this->ArticuloPrecios->Articulos->find('list', ['order' => 'nombre']);
         $impuestos = $this->ArticuloPrecios->Impuestos->find('list', ['limit' => 200]);
         $this->set(compact('articuloPrecio', 'depositos', 'listaPrecios', 'articulos', 'impuestos'));
         $this->set('_serialize', ['articuloPrecio']);
@@ -82,7 +87,11 @@ class ArticuloPreciosController extends AppController
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $articuloPrecio = $this->ArticuloPrecios->patchEntity($articuloPrecio, $this->request->data);
+			$data = $this->request->data;
+			$listaPrecio = $this->ArticuloPrecios->ListaPrecios->get($data['lista_precio_id']);
+			$data['incluir_impuesto'] = $listaPrecio['incluir_impuesto'];
+
+            $articuloPrecio = $this->ArticuloPrecios->patchEntity($articuloPrecio, $data);
             if ($this->ArticuloPrecios->save($articuloPrecio)) {
                 $this->Flash->success(__('The articulo precio has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -92,7 +101,7 @@ class ArticuloPreciosController extends AppController
         }
         $depositos = $this->ArticuloPrecios->Depositos->find('list', ['limit' => 200]);
         $listaPrecios = $this->ArticuloPrecios->ListaPrecios->find('list', ['limit' => 200]);
-        $articulos = $this->ArticuloPrecios->Articulos->find('list', ['limit' => 200]);
+        $articulos = $this->ArticuloPrecios->Articulos->find('list', ['order' => 'nombre']);
         $impuestos = $this->ArticuloPrecios->Impuestos->find('list', ['limit' => 200]);
         $this->set(compact('articuloPrecio', 'depositos', 'listaPrecios', 'articulos', 'impuestos'));
         $this->set('_serialize', ['articuloPrecio']);

@@ -36,6 +36,11 @@ class AppController extends Controller
             'className' => 'Acl.Acl'
         ]
     ];
+	public $helpers = [
+        /*'DataTables' => [
+            'className' => 'DataTables.DataTables'
+        ]*/
+    ];
     /**
      * Initialization hook method.
      *

@@ -11,13 +11,14 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Socio $socio
  * @property int $orden_compra_id
  * @property \App\Model\Entity\OrdenCompra $orden_compra
- * @property int $ingreso_id
  * @property string $serie
  * @property string $numero
  * @property \Cake\I18n\Time $fecha
  * @property int $estado
+ * @property float $total
+ * @property float $impuesto
+ * @property float $grantotal
  * @property \App\Model\Entity\ListaPrecio $lista_precio
- * @property \App\Model\Entity\Ingreso[] $ingresos
  * @property \App\Model\Entity\ComprasDetalle[] $compras_detalle
  */
 class Compra extends Entity

@@ -14,21 +14,19 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-4">
+				<div class="col-lg-3">
 					<?php echo $this->Form->input('documento_id', ['type'=>'hidden','value'=>'','id'=>'documento-id']); ?>
 					<?php echo $this->Form->input('docserie_id', ['type'=>'hidden','value'=>'','id'=>'docserie-id']); ?>
 					<?php echo $this->Form->input('codigo_unico', ['type'=>'hidden','value'=>'','id'=>'codigo-unico']); ?>
 					<?php echo $this->Form->input('documento_serie_id', ['label'=>'Documento','options' => '', 'class'=>'form-control','required'=>true]); ?>
 				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-3">
 					<?php echo $this->Form->input('serie',array('type'=>'text','class'=>'form-control','for'=>'inputSuccess','readonly'=>true)); ?>
 				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-3">
 					<?php echo $this->Form->input('numero',array('type'=>'text','class'=>'form-control','for'=>'inputSuccess')); ?>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-4">
+				<div class="col-lg-3">
 					<label>Fecha</label>
 					<div class='input-group date'>
 					<?php echo $this->Form->input('fecha',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control','for'=>'inputSuccess')); ?>
@@ -37,11 +35,16 @@
 						</span>
 					</div>
 				</div>
+			</div>
+			<div class="row">
 				<div class="col-lg-4">
 					<?php echo $this->Form->input('forma_pago_id', ['options' => $formaPagos,'label'=>'Forma de Pago','class'=>'form-control','for'=>'inputSuccess']); ?>
 				</div>
 				<div class="col-lg-4">
 					<?php echo $this->Form->input('user_id', ['options' => $users,'label'=>'Usuario','class'=>'form-control','for'=>'inputSuccess']); ?>
+				</div>
+				<div class="col-lg-4">
+					<?php echo $this->Form->input('estado',array('label'=>'Estado','options'=>array('0'=>'Guardar','1'=>'Procesar'),'class'=>'form-control','for'=>'inputSuccess')); ?>
 				</div>
 			</div>
 			<div class="row">
@@ -76,14 +79,25 @@
 				</div>
 				<div class="col-lg-8">
 					<div class="row">
-						<div class="col-lg-6">
-							<?php echo $this->Form->input('estado',array('label'=>'Estado','options'=>array('0'=>'Guardar','1'=>'Procesar'),'class'=>'form-control','for'=>'inputSuccess')); ?>
-						</div>
-						<div class="col-lg-6">
-							<label>Total</label>
+						<div class="col-lg-4">
+							<label>Subtotal</label>
 							<div class="form-group input-group">
 								<span class="input-group-addon" id="moneda">S/.</span>
 								<?php echo $this->Form->input('total',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal','for'=>'inputSuccess','disabled'=>true)); ?>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<label>Impuesto</label>
+							<div class="form-group input-group">
+								<span class="input-group-addon" id="moneda">S/.</span>
+								<?php echo $this->Form->input('impuesto',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control impuesto_total','for'=>'inputSuccess','disabled'=>true)); ?>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<label>Total</label>
+							<div class="form-group input-group">
+								<span class="input-group-addon" id="moneda">S/.</span>
+								<?php echo $this->Form->input('grantotal',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal_total','for'=>'inputSuccess','disabled'=>true)); ?>
 							</div>
 						</div>
 					</div>

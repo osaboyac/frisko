@@ -12,11 +12,13 @@ use Cake\Validation\Validator;
  *
  * @property \Cake\ORM\Association\BelongsTo $Users
  * @property \Cake\ORM\Association\BelongsTo $Socios
+ * @property \Cake\ORM\Association\BelongsTo $OrdenVentas
  * @property \Cake\ORM\Association\BelongsTo $Documentos
  * @property \Cake\ORM\Association\BelongsTo $Depositos
  * @property \Cake\ORM\Association\BelongsTo $FormaPagos
  * @property \Cake\ORM\Association\BelongsTo $Docseries
  * @property \Cake\ORM\Association\HasMany $Guias
+ * @property \Cake\ORM\Association\HasMany $OrdenVentas
  * @property \Cake\ORM\Association\HasMany $VentasDetalle
  */
 class VentasTable extends Table
@@ -106,6 +108,21 @@ class VentasTable extends Table
         $validator
             ->allowEmpty('codigo_unico')
             ->add('codigo_unico', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+
+        $validator
+            ->decimal('total')
+            ->requirePresence('total', 'create')
+            ->notEmpty('total');
+
+        $validator
+            ->decimal('impuesto')
+            ->requirePresence('impuesto', 'create')
+            ->notEmpty('impuesto');
+
+        $validator
+            ->decimal('grantotal')
+            ->requirePresence('grantotal', 'create')
+            ->notEmpty('grantotal');
 
         return $validator;
     }

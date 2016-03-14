@@ -39,8 +39,8 @@
 									<td><?= $this->Number->precision($articuloPrecio->precio_estandar, 2) ?></td>
 									<td><?= $this->Number->precision($articuloPrecio->precio_maximo, 2) ?></td>
 									<td class="actions">
-									<?= $this->Html->link(__(''), ['action' => 'edit', $articuloPrecio->id],array('class'=>'fa fa-edit fa-fw')) ?>
-									<?= $this->Form->postLink(__(''),['action' => 'delete', $articuloPrecio->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $articuloPrecio->id),'class'=>'fa fa-times']) ?>
+										<?= $this->Html->link(__(''),['action'=>'edit', $articuloPrecio->id],['class'=>'fa fa-edit btn btn-warning btn-circle']) ?>
+										<?= $this->Form->postLink(__(''),['action' => 'delete', $articuloPrecio->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $articuloPrecio->id),'class'=>'fa fa-times btn btn-danger btn-circle']) ?>
 									</td>
 								</tr>
 								<?php endforeach; ?>

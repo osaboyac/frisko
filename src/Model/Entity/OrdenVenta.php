@@ -16,6 +16,9 @@ use Cake\ORM\Entity;
  * @property int $forma_pago_id
  * @property \App\Model\Entity\FormaPago $forma_pago
  * @property \Cake\I18n\Time $fecha
+ * @property float $total
+ * @property float $impuesto
+ * @property float $grantotal
  * @property int $estado
  * @property int $status
  * @property int $venta_id

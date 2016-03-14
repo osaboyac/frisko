@@ -13,6 +13,8 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Articulo $articulo
  * @property float $cantidad
  * @property float $precio
+ * @property int $incluir_impuesto
+ * @property float $tasa_impuesto
  */
 class OrdenComprasDetalle extends Entity
 {

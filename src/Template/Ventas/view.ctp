@@ -14,7 +14,19 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-4">
+				<div class="col-lg-3">
+					<?php echo $this->Form->input('documento_id', ['type'=>'hidden','id'=>'documento-id']); ?>
+					<?php echo $this->Form->input('docserie_id', ['type'=>'hidden','id'=>'docserie-id']); ?>
+					<?php echo $this->Form->input('codigo_unico', ['type'=>'hidden','id'=>'codigo-unico']); ?>
+					<?php echo $this->Form->input('documento_serie_id', ['label'=>'Documento','options' => $documentoSerie, 'class'=>'form-control','disabled'=>true]); ?>
+				</div>
+				<div class="col-lg-3">
+					<?php echo $this->Form->input('serie',array('type'=>'text','class'=>'form-control','for'=>'inputSuccess','readonly'=>true)); ?>
+				</div>
+				<div class="col-lg-3">
+					<?php echo $this->Form->input('numero',array('type'=>'text','class'=>'form-control','for'=>'inputSuccess','readonly'=>true)); ?>
+				</div>
+				<div class="col-lg-3">
 					<label>Fecha</label>
 					<div class='input-group date'>
 					<?php echo $this->Form->input('fecha',array('div'=>null,'label'=>false,'type'=>'text','value'=>$venta->fecha->format('Y-m-d'),'class'=>'form-control','for'=>'inputSuccess','readonly'=>true)); ?>
@@ -23,40 +35,43 @@
 						</span>
 					</div>
 				</div>
+			</div>
+			<div class="row">
 				<div class="col-lg-4">
 					<?php echo $this->Form->input('forma_pago_id', ['options' => $formaPagos,'label'=>'Forma de Pago','class'=>'form-control','for'=>'inputSuccess','disabled'=>true]); ?>
 				</div>
 				<div class="col-lg-4">
 					<?php echo $this->Form->input('user_id', ['options' => $users,'label'=>'Usuario','class'=>'form-control','for'=>'inputSuccess','disabled'=>true]); ?>
 				</div>
-			</div>
-			<div class="row">
 				<div class="col-lg-4">
-					<?php echo $this->Form->input('documento_id', ['type'=>'hidden','id'=>'documento-id']); ?>
-					<?php echo $this->Form->input('docserie_id', ['type'=>'hidden','id'=>'docserie-id']); ?>
-					<?php echo $this->Form->input('codigo_unico', ['type'=>'hidden','id'=>'codigo-unico']); ?>
-					<?php echo $this->Form->input('documento_serie_id', ['label'=>'Documento','options' => $documentoSerie, 'class'=>'form-control','disabled'=>true]); ?>
-				</div>
-				<div class="col-lg-4">
-					<?php echo $this->Form->input('serie',array('type'=>'text','class'=>'form-control','for'=>'inputSuccess','readonly'=>true)); ?>
-				</div>
-				<div class="col-lg-4">
-					<?php echo $this->Form->input('numero',array('type'=>'text','class'=>'form-control','for'=>'inputSuccess','readonly'=>true)); ?>
+					<?php echo $this->Form->input('estado',array('label'=>'Estado','options'=>array('0'=>'Guardar','1'=>'Procesado'),'class'=>'form-control','for'=>'inputSuccess','disabled'=>true)); ?>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-4">					
-				</div>
-				<div class="col-lg-8">
+				<div class="col-lg-12">
 					<div class="row">
-						<div class="col-lg-6">
-							<?php echo $this->Form->input('estado',array('label'=>'Estado','options'=>array('0'=>'Guardar','1'=>'Procesado'),'class'=>'form-control','for'=>'inputSuccess','disabled'=>true)); ?>
+						<div class="col-lg-3">
+							<?php echo $this->Form->input('id',array('label'=>'Registro No.','type'=>'text','class'=>'form-control','for'=>'inputSuccess','disabled'=>'true')); ?>
 						</div>
-						<div class="col-lg-6">
-							<label>Total</label>
+						<div class="col-lg-3">
+							<label>Subtotal</label>
 							<div class="form-group input-group">
 								<span class="input-group-addon" id="moneda">S/.</span>
 								<?php echo $this->Form->input('total',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal','for'=>'inputSuccess','disabled'=>true)); ?>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<label>Impuesto</label>
+							<div class="form-group input-group">
+								<span class="input-group-addon" id="moneda">S/.</span>
+								<?php echo $this->Form->input('impuesto',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control impuesto_total','for'=>'inputSuccess','disabled'=>true)); ?>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<label>Total</label>
+							<div class="form-group input-group">
+								<span class="input-group-addon" id="moneda">S/.</span>
+								<?php echo $this->Form->input('grantotal',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal_total','for'=>'inputSuccess','disabled'=>true)); ?>
 							</div>
 						</div>
 					</div>
@@ -83,11 +98,15 @@
 										<?php $counter=0; foreach($venta->ventas_detalle as $vd){ ?>
 										<tr>
 										 <td>
-											<?php echo $this->Form->input('ventas_detalle.'.$counter.'.id',array('type'=>'hidden','value'=>$this->Number->format($vd->id)));?>
-											<?php echo $this->Form->input('ventas_detalle.'.$counter.'.compra_id',array('type'=>'hidden','value'=>$this->Number->format($vd->orden_compra_id)));?>
 											<?php echo ($counter + 1);?>
 										 </td>
 										 <td>
+											<?php echo $this->Form->input('ventas_detalle.'.$counter.'.id',array('type'=>'hidden','value'=>$this->Number->format($vd->id)));?>
+											<?php echo $this->Form->input('ventas_detalle.'.$counter.'.compra_id',array('type'=>'hidden','value'=>$this->Number->format($vd->orden_compra_id)));?>
+											
+											 <?php echo $this->Form->input('ventas_detalle.'.$counter.'.incluir_impuesto',array('type'=>'hidden','class'=>'incluir_impuesto','value'=>$this->Number->format($vd->incluir_impuesto)));?>
+											 <?php echo $this->Form->input('ventas_detalle.'.$counter.'.tasa_impuesto',array('type'=>'hidden','class'=>'tasa_impuesto','value'=>$this->Number->format($vd->tasa_impuesto)));?>
+											 
 											 <?php echo $this->Form->input('ventas_detalle.'.$counter.'.articulo_id',array('type'=>'hidden','value'=>$this->Number->format($vd->articulo_id)));?>
 											 <?php echo $vd->articulo->nombre;?>
 										 </td>

@@ -109,7 +109,9 @@
 								tadd.row.add( [
 									counter + 1,
 									"<?= $ocd->articulo->nombre ?>",
-									'<input type="hidden" value="<?= $ocd->articulo->id ?>" name="<?= $detalle; ?>['+counter+'][articulo_id]">\
+									'<input type="hidden" class="incluir_impuesto" value="<?= $ocd->incluir_impuesto ?>" name="<?= $detalle; ?>['+counter+'][incluir_impuesto]">\
+									<input type="hidden" class="tasa_impuesto" value="<?= $ocd->tasa_impuesto ?>" name="<?= $detalle; ?>['+counter+'][tasa_impuesto]">\
+									<input type="hidden" value="<?= $ocd->articulo->id ?>" name="<?= $detalle; ?>['+counter+'][articulo_id]">\
 									<input type="text" value="<?= $ocd->cantidad ?>" class="cantidad" name="<?= $detalle; ?>['+counter+'][cantidad]">',
 									'<select class="precio" name="<?= $detalle; ?>['+counter+'][precio]">\
 										<option value="<?= $ocd->precio ?>"><?= $ocd->precio ?></option>\

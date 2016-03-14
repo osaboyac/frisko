@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+﻿<div class="panel panel-primary">
 	<div class="panel-heading">
 		Bancos
 	</div>
@@ -29,8 +29,8 @@
 									<td><?= h($banco->nombre) ?></td>
 									<td><?= h($banco->descripcion) ?></td>
 									<td class="actions">
-									<?= $this->Html->link(__(''), ['action' => 'edit', $banco->id],array('class'=>'fa fa-edit fa-fw')) ?>
-									<?= $this->Form->postLink(__(''),['action' => 'delete', $banco->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $banco->id),'class'=>'fa fa-times']) ?>
+										<?= $this->Html->link(__(''),['action'=>'edit', $banco->id],['class'=>'fa fa-edit btn btn-warning btn-circle']) ?>
+										<?= $this->Form->postLink(__(''),['action' => 'delete', $banco->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $banco->id),'class'=>'fa fa-times btn btn-danger btn-circle']) ?>
 									</td>
 								</tr>
 								<?php endforeach; ?>

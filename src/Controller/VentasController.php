@@ -20,7 +20,7 @@ class VentasController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users', 'Socios', 'Documentos', 'Depositos', 'FormaPagos','OrdenVentas'],
+            'contain' => ['Users', 'Socios', 'Documentos', 'Depositos', 'FormaPagos'],
             'conditions' => ['Ventas.deposito_id'=>$this->Auth->user('visibility_roles')]
         ];
         $ventas = $this->paginate($this->Ventas);

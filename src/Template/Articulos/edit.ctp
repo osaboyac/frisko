@@ -16,7 +16,7 @@
 					<?php echo $this->Form->input('descripcion',array('class'=>'form-control','for'=>'inputSuccess')); ?>
 				</div>
 				<div class="col-lg-6">
-					<?php echo $this->Form->input('artfamilia_id',array('label'=>'Familia','class'=>'form-control','for'=>'inputSuccess')); ?>
+					<?php echo $this->Form->input('artfamilia_id',array('label'=>'Familia','class'=>'form-control anyCombo','for'=>'inputSuccess')); ?>
 				</div>
 				<div class="col-lg-6">
 					<?php echo $this->Form->input('artmarca_id',array('label'=>'Marca','empty'=>true,'class'=>'form-control','for'=>'inputSuccess')); ?>

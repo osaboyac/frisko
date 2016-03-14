@@ -85,7 +85,7 @@ class OrdenComprasController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
 			$data = $this->request->data ; 
 			$data['fecha'] = new Time($data['fecha']);
-            $ordenCompra = $this->OrdenCompras->patchEntity($ordenCompra, $data, ['associated' => ['OrdenComprasDetalle']]);
+			$ordenCompra = $this->OrdenCompras->patchEntity($ordenCompra, $data, ['associated' => ['OrdenComprasDetalle']]);
 			if ($this->OrdenCompras->save($ordenCompra)) {
                 $this->Flash->success(__('The orden compra has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -135,8 +135,8 @@ class OrdenComprasController extends AppController
             $ordenCompras = $this->OrdenCompras->find('list',['conditions' => ['compra_id is null','estado'=>1]]);
     		$oc = $this->OrdenCompras->find('all',['contain'=>['Socios'],'conditions' => ['compra_id is null','OrdenCompras.estado'=>1]]);
         } else {
-            $ordenCompras = $this->OrdenCompras->find('list',['conditions' => ['ingreso_id is null','estado'=>1]]);
-    		$oc = $this->OrdenCompras->find('all',['contain'=>['Socios'],'conditions' => ['ingreso_id is null','OrdenCompras.estado'=>1]]);
+            $ordenCompras = $this->OrdenCompras->find('list',['conditions' => ['ingreso_id is null','OrdenCompras.status'=>0,'.OrdenCompras.estado in'=>[1,2]]]);
+    		$oc = $this->OrdenCompras->find('all',['contain'=>['Socios'],'conditions' => ['ingreso_id is null','OrdenCompras.status'=>0,'OrdenCompras.estado in'=>[1,2]]]);
         }
 		$id = '';
 		$socios = '';

@@ -1,5 +1,5 @@
 <?php
-namespace Cake\ORM\Behavior;
+namespace App\Model\Behavior;
 
 use Cake\Datasource\EntityInterface;
 use Cake\Event\Event;
@@ -34,7 +34,6 @@ class EncoderBehavior extends Behavior {
  *
  * Turn array into a JSON
  *
- * @param object $entity entity
  * @param array $data data
  * @param array $options (optional)
  * @return string
@@ -76,7 +75,6 @@ class EncoderBehavior extends Behavior {
 /**
  * Decode data
  *
- * @param Entity $entity
  * @param string $data
  * @return array
  */

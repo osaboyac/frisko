@@ -34,7 +34,7 @@
 							<td><?php if(h($ordenVenta->estado)==1){ echo 'Orden de Venta';} else { echo 'Proforma';} ?></td>
 							<td><?= h($ordenVenta->user->username) ?></td>
 							<td><?= h($ordenVenta->fecha->format('Y-m-d')) ?></td>
-							<td><?php if($ordenVenta->ventas){ echo $ordenVenta->ventas[0]->serie.'-'.$ordenVenta->ventas[0]->numero; } else { echo ''; } ?></td>
+							<td><?php if($ordenVenta->venta){ echo $ordenVenta->venta->serie.'-'.$ordenVenta->venta->numero; } else { echo ''; } ?></td>
 							<td><?php if(h($ordenVenta->estado)==1) { echo 'Orden Estándar';} else if(h($ordenVenta->estado)==2){echo 'Orden POS';} else { echo 'Proforma';} ?></td>
 							<td class="actions">
 							<?= $this->Html->link(__(''),['action'=>'edit', $ordenVenta->id],['class'=>'fa fa-edit btn btn-warning btn-circle']) ?>

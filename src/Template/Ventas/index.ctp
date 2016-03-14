@@ -29,14 +29,14 @@
 								<tbody>
 								<?php foreach ($ventas as $venta):?>
 								<tr>
-									<td><?= $this->Number->format($venta->id) ?></td>
+									<td><?= h($venta->id) ?></td>
 									<td><?= h($venta->socio->nombre) ?></td>
 									<td><?= h($venta->fecha->format('Y-m-d')) ?></td>
 									<td><?= h($venta->documento->nombre) ?></td>
 									<td><?= h($venta->serie) ?></td>
 									<td><?= h($venta->numero) ?></td>
 									<td>
-									<?= $this->Html->link(h($venta->orden_venta->id),['controller'=>'orden-ventas','action'=>'view', $venta->orden_venta->id]) ?>
+									<?= $this->Html->link(h($venta->orden_venta_id),['controller'=>'orden-ventas','action'=>'view', $venta->orden_venta_id]) ?>
 									</td>
 									<td class="actions">
 										<?= $this->Html->link(__(''),['action'=>'edit', $venta->id],['class'=>'fa fa-edit btn btn-warning btn-circle']) ?>

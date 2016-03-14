@@ -22,7 +22,7 @@
 								<table class="table table-striped table-bordered table-hover" id="dataTables-infoArticulos">
 									<thead>
 									<tr>
-										<th>ID</th>
+										<th>Código</th>
 										<th>Artículo</th>
 										<th>Disponible</th>
 										<th>Reservada</th>
@@ -52,7 +52,7 @@
 											<td><?= h($articulosInfo->lista_precio->id) ?></td>
 											<?php if($detalle) {?>
 											<td style="text-align:center">
-												<button type="button" class="btn btn-info btn-circle add-product"><i class="fa fa-check"></i></button>
+												<button type="button" class="btn btn-info btn-circle add-product" tasa_impuesto="<?= h($articulosInfo->articulo_precio->impuesto->tasa) ?>" incluir_impuesto="<?= h($articulosInfo->lista_precio->incluir_impuesto) ?>" onClick="AgregarProductos(this)"><i class="fa fa-check"></i></button>
 											</td>
 											<?php } ?>
 										</tr>
@@ -106,7 +106,7 @@
 			},
 			"columns": [
 				{"width": "5%"},
-				{"orderable": true, "width": "30%"},
+				{"orderable": true, "width": "40%"},
 				null,
 				null,
 				null,
@@ -128,43 +128,51 @@
 			).draw();
 		});		
 		
-		$('.add-product').on( 'click', function () {
-			var articulo_id =  $(this).parent().parent().children('td.articulo_id').text();
-			var articulo_nombre =  $(this).parent().parent().children('td.articulo_nombre').text();
-			var articulo_precio_minimo = $(this).parent().parent().children('td.articulo_precio_minimo').text();
-			var articulo_precio_estandar = $(this).parent().parent().children('td.articulo_precio_estandar').text();
-			var articulo_precio_maximo = $(this).parent().parent().children('td.articulo_precio_maximo').text();
-			
-			if('<?= $detalle; ?>'=='ingresos_detalle' || '<?= $detalle; ?>'=='guias_detalle'){
-				counter = taddIG.rows().count();
-				taddIG.row.add( [
-					counter + 1,
-					articulo_nombre,
-//					'<input type="text" value="'+articulo_nombre+'" class="descripcion" name="<?= $detalle; ?>['+counter+'][descripcion]">',
-					'<input type="hidden" value="'+articulo_id+'" name="<?= $detalle; ?>['+counter+'][articulo_id]">\
-					<input type="text" value="1" class="cantidad" name="<?= $detalle; ?>['+counter+'][cantidad]">',
-					'<a href="#" class="fa fa-times del-product"></a>'
-				] ).draw( false );
-				delLineProductIG();
-			} else {
-				counter = tadd.rows().count();
-				tadd.row.add( [
-					counter + 1,
-					articulo_nombre,
-					'<input type="hidden" value="'+articulo_id+'" name="<?= $detalle; ?>['+counter+'][articulo_id]">\
-					<input type="text" value="1" class="cantidad" name="<?= $detalle; ?>['+counter+'][cantidad]">',
-					'<select class="precio" name="<?= $detalle; ?>['+counter+'][precio]">\
-						<option value="'+articulo_precio_minimo+'">'+articulo_precio_minimo+'</option>\
-						<option value="'+articulo_precio_estandar+'" selected>'+articulo_precio_estandar+'</option>\
-						<option value="'+articulo_precio_maximo+'">'+articulo_precio_maximo+'</option>\
-					</select>',
-					'<input type="text" value="'+articulo_precio_estandar+'" class="importe" disabled="true">', //cantidad * precio
-					'<a href="#" class="fa fa-times del-product"></a>	'
-				] ).draw( false );
-				delLineProduct();
-				cambiarImporte();
-				calculaTotal();
-			}
-		});	
+		/*$('.add-product').on( 'click', function () {
+		});*/
 	});
+	
+	function AgregarProductos(e){
+		var articulo_id = $(e).parents('tr').find('td.articulo_id').text();
+		var articulo_nombre = $(e).parents('tr').find('td.articulo_nombre').text();
+		var articulo_precio_minimo = $(e).parents('tr').find('td.articulo_precio_minimo').text();
+		var articulo_precio_estandar = $(e).parents('tr').find('td.articulo_precio_estandar').text();
+		var articulo_precio_maximo =$(e).parents('tr').find('td.articulo_precio_maximo').text();
+		var incluir_impuesto = $(e).attr('incluir_impuesto');
+		var tasa_impuesto = $(e).attr('tasa_impuesto');
+		
+		if('<?= $detalle; ?>'=='ingresos_detalle' || '<?= $detalle; ?>'=='guias_detalle'){
+			counter = taddIG.rows().count();
+			taddIG.row.add( [
+				counter + 1,
+				articulo_nombre,
+//					'<input type="text" value="'+articulo_nombre+'" class="descripcion" name="<?= $detalle; ?>['+counter+'][descripcion]">',
+				'<input type="hidden" value="'+articulo_id+'" name="<?= $detalle; ?>['+counter+'][articulo_id]">\
+				<input type="text" value="1" class="cantidad" name="<?= $detalle; ?>['+counter+'][cantidad]">',
+				'<a href="#" class="fa fa-times del-product"></a>'
+			] ).draw( false );
+			delLineProductIG();
+		} else {
+			counter = tadd.rows().count();
+			tadd.row.add( [
+				counter + 1,
+				articulo_nombre,
+				'<input type="hidden" class="incluir_impuesto" value="'+incluir_impuesto+'" name="<?= $detalle; ?>['+counter+'][incluir_impuesto]">\
+				<input type="hidden" class="tasa_impuesto" value="'+tasa_impuesto+'" name="<?= $detalle; ?>['+counter+'][tasa_impuesto]">\
+				<input type="hidden" value="'+articulo_id+'" name="<?= $detalle; ?>['+counter+'][articulo_id]">\
+				<input type="text" value="1" class="cantidad" name="<?= $detalle; ?>['+counter+'][cantidad]">',
+				'<select class="precio" name="<?= $detalle; ?>['+counter+'][precio]">\
+					<option value="'+articulo_precio_minimo+'">'+articulo_precio_minimo+'</option>\
+					<option value="'+articulo_precio_estandar+'" selected>'+articulo_precio_estandar+'</option>\
+					<option value="'+articulo_precio_maximo+'">'+articulo_precio_maximo+'</option>\
+				</select>',
+				'<input type="text" value="'+articulo_precio_estandar+'" class="importe" disabled="true">', //cantidad * precio
+				'<a href="#" class="fa fa-times del-product"></a>	'
+			] ).draw( false );
+			delLineProduct();
+			cambiarImporte();
+			calculaTotal();
+		}
+	}
+	
 </script>

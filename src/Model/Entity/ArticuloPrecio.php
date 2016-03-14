@@ -17,6 +17,7 @@ use Cake\ORM\Entity;
  * @property float $precio_minimo
  * @property float $precio_estandar
  * @property float $precio_maximo
+ * @property int $impuesto_incluido
  */
 class ArticuloPrecio extends Entity
 {

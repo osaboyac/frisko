@@ -8,7 +8,7 @@
 			<?php 
 				echo $this->Form->input('deposito_id',array('label'=>'Sucursal','options' => $depositos,'class'=>'form-control','for'=>'inputSuccess'));
 				echo $this->Form->input('lista_precio_id',array('options' => $listaPrecios,'class'=>'form-control','for'=>'inputSuccess'));
-				echo $this->Form->input('articulo_id',array('options' => $articulos,'class'=>'form-control','for'=>'inputSuccess'));
+				echo $this->Form->input('articulo_id',array('options' => $articulos,'empty'=>true,'class'=>'form-control anyCombo','for'=>'inputSuccess'));
 				echo $this->Form->input('impuesto_id',array('options' => $impuestos,'class'=>'form-control','for'=>'inputSuccess'));
 				echo $this->Form->input('precio_minimo',['type'=>'decimal','class'=>'form-control','for'=>'inputSuccess']);
 				echo $this->Form->input('precio_estandar',['type'=>'decimal','class'=>'form-control','for'=>'inputSuccess']);

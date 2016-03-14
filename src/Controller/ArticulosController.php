@@ -61,8 +61,8 @@ class ArticulosController extends AppController
                 $this->Flash->error(__('The articulo could not be saved. Please, try again.'));
             }
         }
-        $artfamilias = $this->Articulos->Artfamilias->find('list', ['limit' => 200]);
-        $artmarcas = $this->Articulos->Artmarcas->find('list', ['limit' => 200]);
+        $artfamilias = $this->Articulos->Artfamilias->find('list', ['limit' => 200,'order'=>'nombre']);
+        $artmarcas = $this->Articulos->Artmarcas->find('list', ['limit' => 200,'order'=>'nombre']);
         $umedidas = $this->Articulos->Umedidas->find('list', ['limit' => 200]);
         $this->set(compact('articulo', 'artfamilias', 'artmarcas', 'umedidas'));
         $this->set('_serialize', ['articulo']);

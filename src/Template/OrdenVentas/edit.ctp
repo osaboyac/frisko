@@ -14,13 +14,22 @@
 				</div>
 			</div>				
 			<div class="row">
-				<div class="col-lg-4">
+				<div class="col-lg-3">
+					<label>Fecha</label>
+					<div class='input-group date'>
+					<?php echo $this->Form->input('fecha',array('div'=>null,'label'=>false,'type'=>'text', 'value' => $ordenVenta['fecha']->format('Y-m-d'),'class'=>'form-control','for'=>'inputSuccess')); ?>
+						<span class="input-group-addon">
+							<span class="glyphicon glyphicon-calendar"></span>
+						</span>
+					</div>
+				</div>
+				<div class="col-lg-3">
 					<?php echo $this->Form->input('forma_pago_id', ['options' => $formaPagos, 'class'=>'form-control']); ?>
 				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-3">
 					<?php echo $this->Form->input('estado',array('label'=>'Tipo','options'=>array('0'=>'Proforma','1'=>'Orden Estándar','2'=>'Orden POS'),'class'=>'form-control','for'=>'inputSuccess')); ?>
 				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-3">
 					<?php echo $this->Form->input('user_id', ['options' => $users,'label'=>'Usuario','class'=>'form-control','for'=>'inputSuccess']); ?>
 				</div>
 			</div>
@@ -44,23 +53,28 @@
 				</div>
 				<div class="col-lg-10">
 					<div class="row">
-						<div class="col-lg-4 panel-body">
+						<div class="col-lg-3 panel-body">
 							<?php echo $this->Form->input('id',array('label'=>'Orden No.','type'=>'text','class'=>'form-control','for'=>'inputSuccess','disabled'=>'true')); ?>
 						</div>
-						<div class="col-lg-4 panel-body">
-							<label>Fecha</label>
-							<div class='input-group date'>
-							<?php echo $this->Form->input('fecha',array('div'=>null,'label'=>false,'type'=>'text', 'value' => $ordenVenta['fecha']->format('Y-m-d'),'class'=>'form-control','for'=>'inputSuccess')); ?>
-								<span class="input-group-addon">
-									<span class="glyphicon glyphicon-calendar"></span>
-								</span>
-							</div>
-						</div>
-						<div class="col-lg-4 panel-body">
-							<label>Total</label>
+						<div class="col-lg-3 panel-body">
+							<label>Subtotal</label>
 							<div class="form-group input-group">
 								<span class="input-group-addon" id="moneda">S/.</span>								
 								<?php echo $this->Form->input('total',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal','for'=>'inputSuccess','disabled'=>true)); ?>
+							</div>
+						</div>
+						<div class="col-lg-3 panel-body">
+							<label>Impuesto</label>
+							<div class="form-group input-group">
+								<span class="input-group-addon" id="moneda">S/.</span>								
+								<?php echo $this->Form->input('impuesto',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control impuesto_total','for'=>'inputSuccess','disabled'=>true)); ?>
+							</div>
+						</div>
+						<div class="col-lg-3 panel-body">
+							<label>Total</label>
+							<div class="form-group input-group">
+								<span class="input-group-addon" id="moneda">S/.</span>								
+								<?php echo $this->Form->input('grantotal',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal_total','for'=>'inputSuccess','disabled'=>true)); ?>
 							</div>
 						</div>
 					</div>
@@ -91,7 +105,10 @@
 										 </td>
 										 <td>
 											<?php echo $this->Form->input('orden_ventas_detalle.'.$counter.'.id',array('type'=>'hidden','value'=>$this->Number->format($ovd->id)));?>
-											<?php echo $this->Form->input('orden_ventas_detalle.'.$counter.'.orden_venta_id',array('type'=>'hidden','value'=>$this->Number->format($ovd->orden_venta_id)));?>
+											<?php echo $this->Form->input('orden_ventas_detalle.'.$counter.'.orden_venta_id',array('type'=>'hidden','value'=>$this->Number->format($ordenVenta->id)));?>
+
+											 <?php echo $this->Form->input('orden_ventas_detalle.'.$counter.'.incluir_impuesto',array('type'=>'hidden','class'=>'incluir_impuesto','value'=>$this->Number->format($ovd->incluir_impuesto)));?>
+											 <?php echo $this->Form->input('orden_ventas_detalle.'.$counter.'.tasa_impuesto',array('type'=>'hidden','class'=>'tasa_impuesto','value'=>$this->Number->format($ovd->tasa_impuesto)));?>
 											
 											 <?php echo $this->Form->input('orden_ventas_detalle.'.$counter.'.articulo_id',array('type'=>'hidden','value'=>$this->Number->format($ovd->articulo_id)));?>
 											 <?php echo $ovd->articulo->nombre;?>

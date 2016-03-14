@@ -30,7 +30,6 @@ $(function () {
 	function delLineProductIG(){
 		$('.dataTables-addIG tbody').on('click', 'a.del-product', function () {
 			taddIG.row( $(this).parents('tr') ).remove().draw(false);
-
 				taddIG.on( 'order.dt', function () {
 					taddIG.column(0, {order:'applied'}).nodes().each( function (cell, i) {
 						cell.innerHTML = i+1;

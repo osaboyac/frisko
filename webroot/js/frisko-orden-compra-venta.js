@@ -38,38 +38,7 @@ $(function () {
 						cell.innerHTML = i+1;
 					});
 				}).draw();
-			
+			calculaTotal();
 		});
-
-	}
-	function cambiarImporte(){
-		$('input.cantidad').each(function(){
-			$(this).on('keyup',function(){
-				fila = $(this).parents('tr');
-				cantidad = $(this).val();
-				precio = fila.find('select.precio').val();
-				importe = cantidad * precio;
-				fila.find('input.importe').val(importe.toFixed(2));
-				calculaTotal();
-			});
-		});
-		$('select.precio').each(function(){
-			$(this).on('change',function(){
-				fila = $(this).parents('tr');
-				cantidad = fila.find('input.cantidad').val();
-				precio = $(this).val();
-				importe = cantidad * precio;
-				fila.find('input.importe').val(importe.toFixed(2));
-				calculaTotal();
-			});
-		});
-	}
-	
-	function calculaTotal(){
-		total = 0;
-		$('input.importe').each(function(){
-			total += parseFloat($(this).val());
-		})
-		$('input.grantotal').val(total.toFixed(2));
 
 	}
