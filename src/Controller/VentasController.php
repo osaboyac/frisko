@@ -135,4 +135,13 @@ class VentasController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+	
+	public function ctacobrar(){
+        $ventas = $this->Ventas->find('all',[
+            'contain' => ['Users', 'Socios', 'Documentos', 'Depositos', 'FormaPagos'],
+            'conditions' => ['Ventas.cobrado'=>0]
+		]);
+        $this->set(compact('ventas'));
+        $this->set('_serialize', ['ventas']);
+	}
 }

@@ -291,7 +291,7 @@
                             <?= $this->Html->link(__('<i class="fa fa-group fa-fw"></i> Socios'), ['controller'=>'socios','action' => 'index'],['escape' => false]) ?>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-gift fa-fw"></i> Compras<span class="fa arrow"></span></a>
+                            <a href="javascript:;"><i class="fa fa-gift fa-fw"></i> Compras<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <?= $this->Html->link(__('Orden de Compra'), ['controller'=>'orden-compras','action' => 'index']) ?>
@@ -303,7 +303,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-shopping-cart fa-fw"></i> Ventas<span class="fa arrow"></span></a>
+                            <a href="javascript:;"><i class="fa fa-shopping-cart fa-fw"></i> Ventas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <?= $this->Html->link(__('Orden de Ventas'), ['controller'=>'orden-ventas','action' => 'index']) ?>
@@ -314,9 +314,9 @@
                             </ul>
 						</li>
                         <li>
-                            <a href="#"><i class="fa fa-truck fa-fw"></i> Logística<span class="fa arrow"></span></a>
+                            <a href="javascript:;"><i class="fa fa-truck fa-fw"></i> Logística<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-								<li><a href="#"><i class="fa fa-database fa-fw"></i> Almacén<span class="fa arrow"></span></a>
+								<li><a href="javascript:;"><i class="fa fa-database fa-fw"></i> Almacén<span class="fa arrow"></span></a>
 									<ul class="nav nav-third-level">
                                         <li>
                                             <?= $this->Html->link(__('Depositos'), ['controller'=>'depositos','action' => 'index']) ?>
@@ -329,7 +329,7 @@
 										</li>
 									</ul>
 								</li>
-								<li><a href="#"><i class="fa fa-dropbox fa-fw"></i> Productos<span class="fa arrow"></span></a>
+								<li><a href="javascript:;"><i class="fa fa-dropbox fa-fw"></i> Productos<span class="fa arrow"></span></a>
 									<ul class="nav nav-third-level">
 										<li>
 											<?= $this->Html->link(__('Articulos'), ['controller'=>'articulos','action' => 'index']) ?>
@@ -348,7 +348,7 @@
 										</li>
 									</ul>
 								</li>
-								<li><a href="#"><i class="fa fa-list-alt fa-fw"></i> Precios<span class="fa arrow"></span></a>
+								<li><a href="javascript:;"><i class="fa fa-list-alt fa-fw"></i> Precios<span class="fa arrow"></span></a>
 									<ul class="nav nav-third-level">
 										<li>
 											<?= $this->Html->link(__('Lista de Precios'), ['controller'=>'lista-precios','action' => 'index']) ?>
@@ -362,8 +362,31 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-money fa-fw"></i> Finanzas<span class="fa arrow"></span></a>
+                            <a href="javascript:;"><i class="fa fa-money fa-fw"></i> Finanzas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
+								<li>
+								<a href="javascript:;"><i class="fa fa-briefcase fa-fw"></i> Caja<span class="fa arrow"></span></a>
+									<ul class="nav nav-third-level">
+                                        <li>
+                                            <?= $this->Html->link(__('Libro de Caja'), ['controller'=>'libro-cajas','action' => 'index']) ?>
+                                        </li>
+                                        <li>
+                                            <?= $this->Html->link(__('Caja Menor'), ['controller'=>'cajas','action' => 'index']) ?>
+                                        </li>
+                                        <li>
+                                            <?= $this->Html->link(__('Cargos'), ['controller'=>'cargos','action' => 'index']) ?>
+                                        </li>
+                                        <li>
+                                            <?= $this->Html->link(__('Recibos de Caja'), ['controller'=>'cajas-movimientos','action' => 'add']) ?>
+                                        </li>
+                                        <li>
+                                            <?= $this->Html->link(__('Cuentas por Cobrar'), ['controller'=>'ventas','action' => 'ctacobrar']) ?>
+                                        </li>
+                                        <li>
+                                            <?= $this->Html->link(__('Cuentas por Pagar'), ['controller'=>'compras','action' => 'ctapagar']) ?>
+                                        </li>
+									</ul>
+								</li>
                                 <li>
                                     <?= $this->Html->link(__('Bancos'), ['controller'=>'bancos','action' => 'index']) ?>
                                 </li>
@@ -385,9 +408,9 @@
                             </ul>
 						</li>
                         <li>
-                            <a href="#"><i class="fa fa-gear fa-fw"></i> Configuración<span class="fa arrow"></span></a>
+                            <a href="javascript:;"><i class="fa fa-gear fa-fw"></i> Configuración<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-								<li><a href="#"><i class="fa fa-list-alt fa-fw"></i> Localidades<span class="fa arrow"></span></a>
+								<li><a href="javascript:;"><i class="fa fa-list-alt fa-fw"></i> Localidades<span class="fa arrow"></span></a>
 									<ul class="nav nav-third-level">
                                         <li>
                                             <?= $this->Html->link(__('Departamentos'), ['controller'=>'departamentos','action' => 'index']) ?>

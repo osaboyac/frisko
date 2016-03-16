@@ -30,8 +30,8 @@
 							<td><?= h($provincia->nombre) ?></td>
 							<td><?= h($provincia->departamento->nombre) ?></td>
 							<td class="actions">
-								<?= $this->Html->link(__(''), ['action' => 'edit', $provincia->id],array('class'=>'fa fa-edit fa-fw')) ?>
-								<?= $this->Form->postLink(__(''),['action' => 'delete', $provincia->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $provincia->id),'class'=>'fa fa-times']) ?>								
+								<?= $this->Html->link(__(''),['action'=>'edit', $provincia->id],['class'=>'fa fa-edit btn btn-warning btn-circle']) ?>
+								<?= $this->Form->postLink(__(''),['action' => 'delete', $provincia->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $provincia->id),'class'=>'fa fa-times btn btn-danger btn-circle']) ?>
 							</td>
 						</tr>
 						<?php endforeach; ?>

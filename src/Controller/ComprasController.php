@@ -121,4 +121,17 @@ class ComprasController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    /**
+     * Ctacobrar method
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+	public function ctapagar(){
+        $compras = $this->Compras->find('all',[
+            'contain' => ['Socios', 'OrdenCompras'],
+            'conditions' => ['Compras.pagado'=>0]
+		]);
+        $this->set(compact('compras'));
+        $this->set('_serialize', ['compras']);		
+	}
 }

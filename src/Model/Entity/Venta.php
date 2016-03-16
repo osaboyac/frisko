@@ -47,4 +47,9 @@ class Venta extends Entity
         '*' => true,
         'id' => false,
     ];
+	/*protected function _getFullName()
+    {
+//        return $this->serie . '-' . $this->numero . ' S/.' . $this->grantotal;
+        return $this->_properties['Ventas.serie'] . '-' .$this->_properties['Ventas.numero']. ' S/. ' .$this->_properties['Ventas.grantotal'];
+    }*/
 }
