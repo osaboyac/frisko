@@ -10,7 +10,7 @@
 					<div style="display:none">
 					<?php echo $this->Form->input('user_id', ['options' => $users,'class'=>'form-control','readonly'=>true]); ?>
 					</div>
-					<?php echo $this->Form->input('caja_id', ['options' => $cajas,'class'=>'form-control','readonly'=>true]); ?>
+					<?php echo $this->Form->input('caja_id', ['options' => $cajas,'class'=>'form-control','readonly'=>true,'required'=>true]); ?>
 				</div>
 				<div class="col-lg-6">
 					<?php echo $this->Form->input('numero', ['label'=>'Nro. Recibo','readonly'=>true,'type' => 'text','class'=>'form-control']); ?>
@@ -82,7 +82,12 @@
 					<?php echo $this->Form->input('moneda_id',array('options'=>$monedas,'class'=>'form-control','for'=>'inputSuccess')); ?>
 				</div>
 				<div class="col-lg-4">
-					<?php echo $this->Form->input('total',array('type'=>'text','class'=>'form-control','for'=>'inputSuccess')); ?>
+					<?php echo $this->Form->input('total',array('type'=>'text','class'=>'form-control','for'=>'inputSuccess', 'required'=>true)); ?>
+				</div>
+			</div>
+			<div class="row descripcion" style="display:none">
+				<div class="col-lg-12">
+					<?php echo $this->Form->input('descripcion',array('type'=>'text','class'=>'form-control','for'=>'inputSuccess')); ?>
 				</div>
 			</div>
 		</div>
@@ -127,6 +132,13 @@ $('document').ready(function(){
 			$('input#compra_id').val('');
 			$('input#compra-text').val('');
 			$('input#concepto').val('');
+		}
+	});
+	$('select#metodo-pago-id').on('change',function(){
+		if($(this).val()==0){
+			$('div.descripcion').css('display','none');
+		} else{
+			$('div.descripcion').css('display','block');
 		}
 	});
 });

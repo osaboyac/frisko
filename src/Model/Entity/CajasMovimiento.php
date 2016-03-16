@@ -28,6 +28,7 @@ use Cake\ORM\Entity;
  * @property int $socio_id
  * @property string $venta_text
  * @property string $compra_text
+ * @property string $descripcion
  */
 class CajasMovimiento extends Entity
 {

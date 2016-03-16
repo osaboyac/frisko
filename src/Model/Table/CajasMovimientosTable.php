@@ -71,6 +71,11 @@ class CajasMovimientosTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->decimal('caja_id')
+            ->requirePresence('caja_id', 'create')
+            ->notEmpty('caja_id');
+			
+        $validator
             ->allowEmpty('concepto');
 
         $validator
@@ -84,7 +89,8 @@ class CajasMovimientosTable extends Table
 
         $validator
             ->decimal('salida')
-            ->allowEmpty('salida');
+            ->requirePresence('salida', 'create')
+            ->notEmpty('salida');
 
         $validator
             ->integer('tipo_movimiento')
