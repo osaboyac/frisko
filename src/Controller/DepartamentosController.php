@@ -18,7 +18,7 @@ class DepartamentosController extends AppController
      */
     public function index()
     {
-        $departamentos = $this->paginate($this->Departamentos);
+        $departamentos = $this->Departamentos->find('all');
 
         $this->set(compact('departamentos'));
         $this->set('_serialize', ['departamentos']);

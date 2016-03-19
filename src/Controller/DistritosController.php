@@ -18,10 +18,9 @@ class DistritosController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
+        $distritos = $this->Distritos->find('all',array(
             'contain' => ['Provincias','Provincias.Departamentos']
-        ];
-        $distritos = $this->paginate($this->Distritos);
+		));
 
         $this->set(compact('distritos'));
         $this->set('_serialize', ['distritos']);

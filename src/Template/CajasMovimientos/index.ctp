@@ -21,6 +21,7 @@
 									<th>Fecha</th>
 									<th>Concepto</th>
 									<th>Moneda</th>
+									<th>M. Pago</th>
 									<th>Entrada</th>
 									<th>Salida</th>
 									<!--th>Opciones</th-->
@@ -34,6 +35,12 @@
 									<td><?= $cm->created->format('Y-m-d h:i A') ?></td>
 									<td><?= h($cm->concepto) ?></td>
 									<td><?= h($cm->moneda->nombre) ?></td>
+									<td>
+									<?php 
+										$metodo_pago = ['0'=>'Efectivo','1'=>'Tarjeta Crédito/Débito','2'=>'Deposito/Transferencia','3'=>'Cheque'];
+										echo $metodo_pago[$cm->metodo_pago_id];
+									?>
+									</td>
 									<td><?= $this->Number->precision($cm->entrada,2) ?></td>
 									<?php $color = ''; if($cm->salida) {$color = 'color:red';}?>
 									<td style="<?= $color?>"><?= $this->Number->precision($cm->salida,2) ?></td>

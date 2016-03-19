@@ -39,8 +39,8 @@
 									<?= $this->Html->link(h($venta->orden_venta_id),['controller'=>'orden-ventas','action'=>'view', $venta->orden_venta_id]) ?>
 									</td>
 									<td class="actions">
-										<?= $this->Html->link(__(''),['action'=>'edit', $venta->id],['class'=>'fa fa-edit btn btn-warning btn-circle']) ?>
-										<?= $this->Form->postLink(__(''),['action' => 'delete', $venta->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $venta->id),'class'=>'fa fa-times btn btn-danger btn-circle']) ?>
+										<?= $this->Html->link(__(''),['action'=>'edit', $venta->id],['class'=>'fa fa-edit btn btn-warning btn-default btn-xs']) ?>
+										<?= $this->Form->postLink(__(''),['action' => 'delete', $venta->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $venta->id),'class'=>'fa fa-times btn btn-danger btn-default btn-xs']) ?>
 										</td>
 								</tr>
 								<?php endforeach; ?>

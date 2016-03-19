@@ -18,6 +18,9 @@ use Cake\ORM\Entity;
  * @property float $total
  * @property float $impuesto
  * @property float $grantotal
+ * @property float $saldo
+ * @property \Cake\I18n\Time $created
+ * @property \Cake\I18n\Time $updated
  * @property \App\Model\Entity\ListaPrecio $lista_precio
  * @property \App\Model\Entity\ComprasDetalle[] $compras_detalle
  */

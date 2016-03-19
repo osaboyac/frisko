@@ -29,8 +29,8 @@
 							<td><?= h($documento->nombre) ?></td>
 							<td><?= h($documento->abreviatura) ?></td>
 							<td class="actions">
-							<?= $this->Html->link(__(''), ['action' => 'edit', $documento->id],array('class'=>'fa fa-edit fa-fw')) ?>
-							<?= $this->Form->postLink(__(''),['action' => 'delete', $documento->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $documento->id),'class'=>'fa fa-times']) ?>
+								<?= $this->Html->link(__(''),['action'=>'edit', $documento->id],['class'=>'fa fa-edit btn btn-warning btn-default btn-xs']) ?>
+								<?= $this->Form->postLink(__(''),['action' => 'delete', $documento->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $documento->id),'class'=>'fa fa-times btn btn-danger btn-default btn-xs']) ?>
 							</td>
 						</tr>
 						<?php endforeach; ?>

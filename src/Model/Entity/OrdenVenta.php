@@ -21,6 +21,9 @@ use Cake\ORM\Entity;
  * @property float $grantotal
  * @property int $estado
  * @property int $status
+ * @property float $total
+ * @property float $impuesto
+ * @property float $grantotal
  * @property int $venta_id
  * @property \App\Model\Entity\Venta $venta
  * @property int $guia_id

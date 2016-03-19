@@ -35,8 +35,8 @@
 							<td><?= h($compra->numero) ?></td>
 							<td><?php if(h($compra->estado)): echo 'Procesado'; else: echo'Grabado'; endif; ?></td>
 							<td class="actions">
-								<?= $this->Html->link(__(''),['action'=>'edit', $compra->id],['class'=>'fa fa-edit btn btn-warning btn-circle']) ?>
-								<?= $this->Form->postLink(__(''),['action' => 'delete', $compra->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $compra->id),'class'=>'fa fa-times btn btn-danger btn-circle']) ?>														
+								<?= $this->Html->link(__(''),['action'=>'edit', $compra->id],['class'=>'fa fa-edit btn btn-warning btn-default btn-xs']) ?>
+								<?= $this->Form->postLink(__(''),['action' => 'delete', $compra->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $compra->id),'class'=>'fa fa-times btn btn-danger btn-default btn-xs']) ?>														
 							</td>
 						</tr>
 						<?php endforeach; ?>

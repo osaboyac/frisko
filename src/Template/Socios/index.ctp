@@ -37,8 +37,8 @@
 							<td><?= h($socio->email) ?></td>
 							<td><?php if(h($socio->estado)==1): echo 'Activo'; else: echo 'Inactivo'; endif; ?></td>
 							<td class="actions">
-								<?= $this->Html->link(__(''),['action'=>'edit', $socio->id],['class'=>'fa fa-edit btn btn-warning btn-circle']) ?>
-								<?= $this->Form->postLink(__(''),['action' => 'delete', $socio->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $socio->id),'class'=>'fa fa-times btn btn-danger btn-circle']) ?>
+								<?= $this->Html->link(__(''),['action'=>'edit', $socio->id],['class'=>'fa fa-edit btn btn-warning btn-default btn-xs']) ?>
+								<?= $this->Form->postLink(__(''),['action' => 'delete', $socio->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $socio->id),'class'=>'fa fa-times btn btn-danger btn-default btn-xs']) ?>
 							</td>
 						</tr>
 						<?php endforeach; ?>

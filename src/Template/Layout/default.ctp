@@ -55,7 +55,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">FRISKO market</a>
+				<?= $this->Html->link(__('FRISKO market'),['controller'=>'pages','action' => 'display','home'],array('class'=>'navbar-brand')) ?>
             </div>
             <!-- /.navbar-header -->
 
@@ -306,6 +306,12 @@
                             <a href="javascript:;"><i class="fa fa-shopping-cart fa-fw"></i> Ventas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
+                                    <?= $this->Html->link(__('Punto de Venta'), ['controller'=>'orden-ventas','action' => 'pos']) ?>
+                                </li>
+                                <li>
+                                    <?= $this->Html->link(__('Configurar punto de venta'), ['controller'=>'pos-settings','action' => 'index']) ?>
+                                </li>
+                                <li>
                                     <?= $this->Html->link(__('Orden de Ventas'), ['controller'=>'orden-ventas','action' => 'index']) ?>
                                 </li>
                                 <li>
@@ -365,8 +371,14 @@
                             <a href="javascript:;"><i class="fa fa-money fa-fw"></i> Finanzas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
 								<li>
-								<a href="javascript:;"><i class="fa fa-briefcase fa-fw"></i> Caja<span class="fa arrow"></span></a>
+								<a href="javascript:;"><i class="fa fa-briefcase fa-fw"></i> Caja y Bancos<span class="fa arrow"></span></a>
 									<ul class="nav nav-third-level">
+										<li>
+											<?= $this->Html->link(__('Bancos'), ['controller'=>'bancos','action' => 'index']) ?>
+										</li>
+										<li>
+											<?= $this->Html->link(__('Cuentas Corrientes'), ['controller'=>'ctacorrientes','action' => 'index']) ?>
+										</li>
                                         <li>
                                             <?= $this->Html->link(__('Libro de Caja'), ['controller'=>'libro-cajas','action' => 'index']) ?>
                                         </li>
@@ -388,13 +400,10 @@
 									</ul>
 								</li>
                                 <li>
-                                    <?= $this->Html->link(__('Bancos'), ['controller'=>'bancos','action' => 'index']) ?>
+                                    <?= $this->Html->link(__('Monedas'), ['controller'=>'monedas','action' => 'index']) ?>
                                 </li>
                                 <li>
-                                    <?= $this->Html->link(__('Monedas'), ['controller'=>'bancos','action' => 'index']) ?>
-                                </li>
-                                <li>
-                                    <?= $this->Html->link(__('Impuestos'), ['controller'=>'bancos','action' => 'index']) ?>
+                                    <?= $this->Html->link(__('Impuestos'), ['controller'=>'impuestos','action' => 'index']) ?>
                                 </li>
                                 <li>
                                     <?= $this->Html->link(__('Documentos'), ['controller'=>'documentos','action' => 'index']) ?>
@@ -441,19 +450,21 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-        <div id="page-wrapper">
+        <!--div id="page-wrapper">
             <div class="container-fluid">
-				<?= $this->Flash->render() ?>
+				<?php // $this->Flash->render() ?>
                 <div class="row">
                     <div class="col-lg-12">
 						<div class="panel-body"></div>
-						<?= $this->fetch('content') ?>
+						<?php // $this->fetch('content') ?>
                     </div>
-                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.row -->
             </div>
-            <!-- /.container-fluid -->
+        </div-->
+        <div id="page-wrapper">
+				<div class="panel-heading"></div>
+				<?= $this->Flash->render() ?>
+				<?= $this->fetch('content') ?>
         </div>
         <!-- /#page-wrapper -->
 

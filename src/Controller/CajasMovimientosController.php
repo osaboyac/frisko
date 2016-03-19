@@ -57,6 +57,7 @@ class CajasMovimientosController extends AppController
 			$data['entrada'] = $data['total'];
 			if($data['tipo_movimiento']==1){
 				$data['salida'] = $data['total'];
+				$data['entrada'] = 0;
 			}
             $cajasMovimiento = $this->CajasMovimientos->patchEntity($cajasMovimiento, $data);
             if ($this->CajasMovimientos->save($cajasMovimiento)) {
@@ -67,11 +68,15 @@ class CajasMovimientosController extends AppController
             }
         }
         $cajas = $this->CajasMovimientos->Cajas->find('list', ['conditions' => ['fecha'=>date('Y-m-d'),'deposito_id'=>$this->Auth->user('visibility_roles')]]);
+        $ctacorrientes = $this->CajasMovimientos->Ctacorrientes->find('all',[
+			'fields' => ['id','nro_cuenta','nombre'=>'Depositos.nombre','deposito_id','socio_id','descripcion','socio'=>'Socios.nombre'],
+			'contain' => ['Depositos','Socios']
+		]);
         $socios = $this->CajasMovimientos->Ventas->Socios->find('list');
         $cargos = $this->CajasMovimientos->Cargos->find('list', ['limit' => 200]);
         $monedas = $this->CajasMovimientos->Monedas->find('list', ['limit' => 200]);
         $users = $this->CajasMovimientos->Users->find('list', ['conditions' => ['id'=>$this->Auth->user('id')]]);
-        $this->set(compact('cajasMovimiento', 'cajas', 'socios', 'cargos', 'monedas', 'users'));
+        $this->set(compact('cajasMovimiento', 'cajas', 'socios', 'cargos', 'monedas', 'users','ctacorrientes'));
         $this->set('_serialize', ['cajasMovimiento']);
     }
 

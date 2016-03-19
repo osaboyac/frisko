@@ -42,9 +42,6 @@ class GuiasTable extends Table
         $this->belongsTo('OrdenVentas', [
             'foreignKey' => 'orden_venta_id'
         ]);
-        $this->belongsTo('Ventas', [
-            'foreignKey' => 'venta_id'
-        ]);
         $this->belongsTo('Socios', [
             'foreignKey' => 'socio_id',
             'joinType' => 'INNER'
@@ -116,7 +113,6 @@ class GuiasTable extends Table
         $rules->add($rules->isUnique(['codigo_unico']));
         $rules->add($rules->existsIn(['deposito_id'], 'Depositos'));
         $rules->add($rules->existsIn(['orden_venta_id'], 'OrdenVentas'));
-        $rules->add($rules->existsIn(['venta_id'], 'Ventas'));
         $rules->add($rules->existsIn(['socio_id'], 'Socios'));
         $rules->add($rules->existsIn(['documento_id'], 'Documentos'));
         $rules->add($rules->existsIn(['docserie_id'], 'Docseries'));

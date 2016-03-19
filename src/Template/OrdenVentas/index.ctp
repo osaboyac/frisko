@@ -37,8 +37,8 @@
 							<td><?php if($ordenVenta->venta){ echo $ordenVenta->venta->serie.'-'.$ordenVenta->venta->numero; } else { echo ''; } ?></td>
 							<td><?php if(h($ordenVenta->estado)==1) { echo 'Orden Estándar';} else if(h($ordenVenta->estado)==2){echo 'Orden POS';} else { echo 'Proforma';} ?></td>
 							<td class="actions">
-							<?= $this->Html->link(__(''),['action'=>'edit', $ordenVenta->id],['class'=>'fa fa-edit btn btn-warning btn-circle']) ?>
-							<?= $this->Form->postLink(__(''),['action' => 'delete', $ordenVenta->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $ordenVenta->id),'class'=>'fa fa-times btn btn-danger btn-circle']) ?>
+							<?= $this->Html->link(__(''),['action'=>'edit', $ordenVenta->id],['class'=>'fa fa-edit btn btn-warning btn-default btn-xs']) ?>
+							<?= $this->Form->postLink(__(''),['action' => 'delete', $ordenVenta->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $ordenVenta->id),'class'=>'fa fa-times btn btn-danger btn-default btn-xs']) ?>
 							</td>
 						</tr>
 						<?php endforeach; ?>

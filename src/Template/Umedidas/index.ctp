@@ -29,8 +29,8 @@
 							<td><?= h($umedida->nombre) ?></td>
 							<td><?= h($umedida->simbolo) ?></td>
 							<td class="actions">
-							<?= $this->Html->link(__(''), ['action' => 'edit', $umedida->id],array('class'=>'fa fa-edit fa-fw')) ?>
-							<?= $this->Form->postLink(__(''),['action' => 'delete', $umedida->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $umedida->id),'class'=>'fa fa-times']) ?>
+								<?= $this->Html->link(__(''),['action'=>'edit', $umedida->id],['class'=>'fa fa-edit btn btn-warning btn-default btn-xs']) ?>
+								<?= $this->Form->postLink(__(''),['action' => 'delete', $umedida->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $umedida->id),'class'=>'fa fa-times btn btn-danger btn-default btn-xs']) ?>
 							</td>
 						</tr>
 						<?php endforeach; ?>

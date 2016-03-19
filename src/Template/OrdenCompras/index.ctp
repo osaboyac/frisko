@@ -33,8 +33,8 @@
 							<td><?php if(h($ordenCompra->estado)==1){ echo 'Procesado'; } else if(h($ordenCompra->estado)==2) { echo 'Facturado'; } else if(h($ordenCompra->estado)==3){ echo 'Anulado';} else { echo 'Grabado'; }; ?></td>
 							<td><?php if($ordenCompra->compra_id){ echo h($ordenCompra->compra->serie).'-'.h($ordenCompra->compra->numero);} else { echo '';} ?></td>
 							<td class="actions">
-								<?= $this->Html->link(__(''),['action'=>'edit', $ordenCompra->id],['class'=>'fa fa-edit btn btn-warning btn-circle']) ?>
-								<?= $this->Form->postLink(__(''),['action' => 'delete', $ordenCompra->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $ordenCompra->id),'class'=>'fa fa-times btn btn-danger btn-circle']) ?>
+								<?= $this->Html->link(__(''),['action'=>'edit', $ordenCompra->id],['class'=>'fa fa-edit btn btn-warning btn-default btn-xs']) ?>
+								<?= $this->Form->postLink(__(''),['action' => 'delete', $ordenCompra->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $ordenCompra->id),'class'=>'fa fa-times btn btn-danger btn-default btn-xs']) ?>
 							</td>
 						</tr>
 						<?php endforeach; ?>

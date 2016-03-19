@@ -21,7 +21,7 @@
 						<thead>
 						<tr>
 							<th>ID</th>
-							<th>Nombre</th>
+							<th>Distrito</th>
 							<th>Provincia</th>
 							<th>Departamento</th>
 							<th>Opciones</th>
@@ -35,8 +35,8 @@
 							<td><?= h($distrito->provincia->nombre) ?></td>
 							<td><?= h($distrito->provincia->departamento->nombre) ?></td>
 							<td class="actions">
-								<?= $this->Html->link(__(''),['action'=>'edit', $distrito->id],['class'=>'fa fa-edit btn btn-warning btn-circle']) ?>
-								<?= $this->Form->postLink(__(''),['action' => 'delete', $distrito->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $distrito->id),'class'=>'fa fa-times btn btn-danger btn-circle']) ?>
+								<?= $this->Html->link(__(''),['action'=>'edit', $distrito->id],['class'=>'fa fa-edit btn btn-warning btn-default btn-xs']) ?>
+								<?= $this->Form->postLink(__(''),['action' => 'delete', $distrito->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $distrito->id),'class'=>'fa fa-times btn btn-danger btn-default btn-xs']) ?>
 							</td>
 						</tr>
 						<?php endforeach; ?>

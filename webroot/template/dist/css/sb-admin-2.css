@@ -26,7 +26,23 @@ body {
         border-left: 1px solid #e7e7e7;
     }
 }
+.page-wrapper {
+    padding: 0;
+    min-height: 568px;
+    background-color: #fff;
+}
 
+@media(min-width:768px) {
+    .page-wrapper {
+        position: inherit;
+        margin: 0 0 0 45px;
+        padding: 0 10px;
+        border-left: 1px solid #e7e7e7;
+    }
+}
+.page-pos {
+	padding:5px;
+}
 .navbar-top-links {
     margin-right: 0;
 }

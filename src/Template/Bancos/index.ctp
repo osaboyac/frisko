@@ -29,8 +29,8 @@
 									<td><?= h($banco->nombre) ?></td>
 									<td><?= h($banco->descripcion) ?></td>
 									<td class="actions">
-										<?= $this->Html->link(__(''),['action'=>'edit', $banco->id],['class'=>'fa fa-edit btn btn-warning btn-circle']) ?>
-										<?= $this->Form->postLink(__(''),['action' => 'delete', $banco->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $banco->id),'class'=>'fa fa-times btn btn-danger btn-circle']) ?>
+										<?= $this->Html->link(__(''),['action'=>'edit', $banco->id],['class'=>'fa fa-edit btn btn-warning btn-default btn-xs']) ?>
+										<?= $this->Form->postLink(__(''),['action' => 'delete', $banco->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $banco->id),'class'=>'fa fa-times btn btn-danger btn-default btn-xs']) ?>
 									</td>
 								</tr>
 								<?php endforeach; ?>

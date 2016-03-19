@@ -66,21 +66,21 @@
 							<label>Subtotal</label>
 							<div class="form-group input-group">
 								<span class="input-group-addon" id="moneda">S/.</span>
-								<?php echo $this->Form->input('total',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal','for'=>'inputSuccess','disabled'=>true)); ?>
+								<?php echo $this->Form->input('total',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal','for'=>'inputSuccess','readonly'=>true)); ?>
 							</div>
 						</div>
 						<div class="col-lg-4">
 							<label>Impuesto</label>
 							<div class="form-group input-group">
 								<span class="input-group-addon" id="moneda">S/.</span>
-								<?php echo $this->Form->input('impuesto',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control impuesto_total','for'=>'inputSuccess','disabled'=>true)); ?>
+								<?php echo $this->Form->input('impuesto',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control impuesto_total','for'=>'inputSuccess','readonly'=>true)); ?>
 							</div>
 						</div>
 						<div class="col-lg-4">
 							<label>Total</label>
 							<div class="form-group input-group">
 								<span class="input-group-addon" id="moneda">S/.</span>
-								<?php echo $this->Form->input('grantotal',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal_total','for'=>'inputSuccess','disabled'=>true)); ?>
+								<?php echo $this->Form->input('grantotal',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal_total','for'=>'inputSuccess','readonly'=>true)); ?>
 							</div>
 						</div>
 					</div>

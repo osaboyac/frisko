@@ -10,7 +10,7 @@
 					<?php echo $this->Form->input('deposito_id', ['label'=>'Sucursal','options' => $depositos,'class'=>'form-control','for'=>'inputSuccess']); ?>
 				</div>
 				<div class="col-lg-6">
-					<?php echo $this->Form->input('socio_id',array('label'=>'Socio de Negocio','options' => $socios,'empty'=>true,'class'=>'form-control','for'=>'inputSuccess'));?>
+					<?php echo $this->Form->input('socio_id',array('label'=>'Socio de Negocio','options' => $socios,'empty'=>true,'class'=>'form-control','for'=>'inputSuccess','required'=>true));?>
 				</div>
 			</div>				
 			<div class="row">
@@ -27,7 +27,7 @@
 					<?php echo $this->Form->input('forma_pago_id', ['options' => $formaPagos, 'class'=>'form-control']); ?>
 				</div>
 				<div class="col-lg-3">
-					<?php echo $this->Form->input('estado',array('label'=>'Tipo','options'=>array('0'=>'Proforma','1'=>'Orden Estándar','2'=>'Orden POS'),'class'=>'form-control','for'=>'inputSuccess')); ?>
+					<?php echo $this->Form->input('estado',array('label'=>'Tipo','options'=>array('0'=>'Proforma','1'=>'Orden Estándar'),'class'=>'form-control','for'=>'inputSuccess')); ?>
 				</div>
 				<div class="col-lg-3">
 					<?php echo $this->Form->input('user_id', ['options' => $users,'label'=>'Usuario','class'=>'form-control','for'=>'inputSuccess']); ?>
@@ -57,21 +57,21 @@
 							<label>Subtotal</label>
 							<div class="form-group input-group">
 								<span class="input-group-addon" id="moneda">S/.</span>								
-								<?php echo $this->Form->input('total',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal','for'=>'inputSuccess','disabled'=>true)); ?>
+								<?php echo $this->Form->input('total',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal','for'=>'inputSuccess','readonly'=>true)); ?>
 							</div>
 						</div>
 						<div class="col-lg-4 panel-body">
 							<label>Impuesto</label>
 							<div class="form-group input-group">
 								<span class="input-group-addon" id="moneda">S/.</span>								
-								<?php echo $this->Form->input('impuesto',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control impuesto_total','for'=>'inputSuccess','disabled'=>true)); ?>
+								<?php echo $this->Form->input('impuesto',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control impuesto_total','for'=>'inputSuccess','readonly'=>true)); ?>
 							</div>
 						</div>
 						<div class="col-lg-4 panel-body">
 							<label>Total</label>
 							<div class="form-group input-group">
 								<span class="input-group-addon" id="moneda">S/.</span>								
-								<?php echo $this->Form->input('grantotal',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal_total','for'=>'inputSuccess','disabled'=>true)); ?>
+								<?php echo $this->Form->input('grantotal',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal_total','for'=>'inputSuccess','readonly'=>true)); ?>
 							</div>
 						</div>
 					</div>

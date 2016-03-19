@@ -27,8 +27,8 @@
 									<td><?= $this->Number->format($artfamilia->id) ?></td>
 									<td><?= h($artfamilia->nombre) ?></td>
 									<td class="actions">
-										<?= $this->Html->link(__(''),['action'=>'edit', $artfamilia->id],['class'=>'fa fa-edit btn btn-warning btn-circle']) ?>
-										<?= $this->Form->postLink(__(''),['action' => 'delete', $artfamilia->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $artfamilia->id),'class'=>'fa fa-times btn btn-danger btn-circle']) ?>
+										<?= $this->Html->link(__(''),['action'=>'edit', $artfamilia->id],['class'=>'fa fa-edit btn btn-warning btn-default btn-xs']) ?>
+										<?= $this->Form->postLink(__(''),['action' => 'delete', $artfamilia->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $artfamilia->id),'class'=>'fa fa-times btn btn-danger btn-default btn-xs']) ?>
 									</td>
 								</tr>
 								<?php endforeach; ?>

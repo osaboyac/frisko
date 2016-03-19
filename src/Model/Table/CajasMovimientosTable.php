@@ -40,6 +40,10 @@ class CajasMovimientosTable extends Table
             'foreignKey' => 'caja_id',
             'joinType' => 'INNER'
         ]);
+        $this->belongsTo('Ctacorrientes', [
+            'foreignKey' => 'ctacorriente_id',
+            'joinType' => 'INNER'
+        ]);
         $this->belongsTo('Compras', [
             'foreignKey' => 'compra_id'
         ]);
@@ -83,16 +87,6 @@ class CajasMovimientosTable extends Table
             ->allowEmpty('tipo_cambio');
 
         $validator
-            ->decimal('entrada')
-            ->requirePresence('entrada', 'create')
-            ->notEmpty('entrada');
-
-        $validator
-            ->decimal('salida')
-            ->requirePresence('salida', 'create')
-            ->notEmpty('salida');
-
-        $validator
             ->integer('tipo_movimiento')
             ->requirePresence('tipo_movimiento', 'create')
             ->notEmpty('tipo_movimiento');
@@ -109,7 +103,6 @@ class CajasMovimientosTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['caja_id'], 'Cajas'));
         $rules->add($rules->existsIn(['moneda_id'], 'Monedas'));
         return $rules;
     }

@@ -10,7 +10,7 @@
 					<?php echo $this->Form->input('deposito_id', ['label'=>'Sucursal','options' => $depositos,'class'=>'form-control','for'=>'inputSuccess']); ?>
 				</div>
 				<div class="col-lg-6">
-					<?php echo $this->Form->input('socio_id',array('label'=>'Socio de Negocio','options' => $socios,'class'=>'form-control','for'=>'inputSuccess'));?>
+					<?php echo $this->Form->input('socio_id',array('label'=>'Socio de Negocio','options' => $socios,'class'=>'form-control','for'=>'inputSuccess','required'=>true));?>
 				</div>
 			</div>				
 			<div class="row">
@@ -27,7 +27,7 @@
 					<?php echo $this->Form->input('forma_pago_id', ['options' => $formaPagos, 'class'=>'form-control']); ?>
 				</div>
 				<div class="col-lg-3">
-					<?php echo $this->Form->input('estado',array('label'=>'Tipo','options'=>array('0'=>'Proforma','1'=>'Orden Estándar','2'=>'Orden POS'),'class'=>'form-control','for'=>'inputSuccess')); ?>
+					<?php echo $this->Form->input('estado',array('label'=>'Tipo','options'=>array('0'=>'Proforma','1'=>'Orden Estándar'),'class'=>'form-control','for'=>'inputSuccess')); ?>
 				</div>
 				<div class="col-lg-3">
 					<?php echo $this->Form->input('user_id', ['options' => $users,'label'=>'Usuario','class'=>'form-control','for'=>'inputSuccess']); ?>
@@ -54,27 +54,27 @@
 				<div class="col-lg-10">
 					<div class="row">
 						<div class="col-lg-3 panel-body">
-							<?php echo $this->Form->input('id',array('label'=>'Orden No.','type'=>'text','class'=>'form-control','for'=>'inputSuccess','disabled'=>'true')); ?>
+							<?php echo $this->Form->input('id',array('label'=>'Orden No.','type'=>'text','class'=>'form-control','for'=>'inputSuccess','readonly'=>'true')); ?>
 						</div>
 						<div class="col-lg-3 panel-body">
 							<label>Subtotal</label>
 							<div class="form-group input-group">
 								<span class="input-group-addon" id="moneda">S/.</span>								
-								<?php echo $this->Form->input('total',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal','for'=>'inputSuccess','disabled'=>true)); ?>
+								<?php echo $this->Form->input('total',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal','for'=>'inputSuccess','readonly'=>true)); ?>
 							</div>
 						</div>
 						<div class="col-lg-3 panel-body">
 							<label>Impuesto</label>
 							<div class="form-group input-group">
 								<span class="input-group-addon" id="moneda">S/.</span>								
-								<?php echo $this->Form->input('impuesto',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control impuesto_total','for'=>'inputSuccess','disabled'=>true)); ?>
+								<?php echo $this->Form->input('impuesto',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control impuesto_total','for'=>'inputSuccess','readonly'=>true)); ?>
 							</div>
 						</div>
 						<div class="col-lg-3 panel-body">
 							<label>Total</label>
 							<div class="form-group input-group">
 								<span class="input-group-addon" id="moneda">S/.</span>								
-								<?php echo $this->Form->input('grantotal',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal_total','for'=>'inputSuccess','disabled'=>true)); ?>
+								<?php echo $this->Form->input('grantotal',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal_total','for'=>'inputSuccess','readonly'=>true)); ?>
 							</div>
 						</div>
 					</div>
@@ -122,7 +122,7 @@
 										 
 										 <td>
 										 <?php $importe =  $this->Number->format($ovd->cantidad) * $this->Number->format($ovd->precio);?>										 
-										 <?php echo $this->Form->input('orden_ventas_detalle.'.$counter.'.importe',array('label'=>false,'div'=>false,'value'=>$this->Number->precision($importe,2),'class'=>'importe','disabled'=>'true'));?>
+										 <?php echo $this->Form->input('orden_ventas_detalle.'.$counter.'.importe',array('label'=>false,'div'=>false,'value'=>$this->Number->precision($importe,2),'class'=>'importe','readonly'=>'true'));?>
 										 </td>									 
 										 <td class="actions">
 										 <?php echo $this->Html->link('<i class="fa fa-times"></i>', ['controller'=>'ordenVentasDetalle','action' => 'delete', $ovd->id,$ovd->orden_venta_id], ['escape'=>false, 'confirm' => __('Esta seguro de eliminar el registro # {0}?', $ovd->id)]);?>

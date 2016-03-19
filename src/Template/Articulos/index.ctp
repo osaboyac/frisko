@@ -45,8 +45,8 @@
 									<td><?= h($tipo) ?></td>
 									<td><?php if(h($articulo->estado)){ echo 'Activo';} else { echo 'Inactivo';} ?></td>
 									<td class="actions">
-										<?= $this->Html->link(__(''),['action'=>'edit', $articulo->id],['class'=>'fa fa-edit btn btn-warning btn-circle']) ?>
-										<?= $this->Form->postLink(__(''),['action' => 'delete', $articulo->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $articulo->id),'class'=>'fa fa-times btn btn-danger btn-circle']) ?>
+										<?= $this->Html->link(__(''),['action'=>'edit', $articulo->id],['class'=>'fa fa-edit btn btn-warning btn-default btn-xs']) ?>
+										<?= $this->Form->postLink(__(''),['action' => 'delete', $articulo->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $articulo->id),'class'=>'fa fa-times btn btn-danger btn-default btn-xs']) ?>
 									</td>
 								</tr>
 								<?php endforeach; ?>

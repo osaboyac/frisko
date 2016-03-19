@@ -35,7 +35,7 @@
 									<td>S/. <?= $this->Number->precision($compra->grantotal,2) ?></td>
 									<td><?php if($compra->pagado==0){ echo 'Por pagar'; } ?></td>
 									<td class="actions">
-										<button type="button" class="btn btn-info btn-circle" onClick="AgregarFactura('<?= $compra->socio->id ?>','<?= $compra->socio->nombre ?>','<?= $compra->id ?>','<?= $compra->serie.'-'.$compra->numero ?>','<?= $compra->grantotal ?>','<?= $compra->fecha->format('Y-m-d') ?>');"><i class="fa fa-check"></i></button>
+										<button type="button" class="btn btn-success btn-default btn-xs" onClick="AgregarFactura('<?= $compra->socio->id ?>','<?= $compra->socio->nombre ?>','<?= $compra->id ?>','<?= $compra->serie.'-'.$compra->numero ?>','<?= $compra->grantotal ?>','<?= $compra->fecha->format('Y-m-d') ?>');"><i class="fa fa-check"></i></button>
 									</td>
 								</tr>
 								<?php endforeach; ?>

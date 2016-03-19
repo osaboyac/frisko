@@ -31,8 +31,8 @@
 							<td><?= h($ingreso->fecha->format('Y-m-d')) ?></td>
 							<td><?php if(h($ingreso->estado)){ echo 'Procesado';} else{ echo 'Grabado'; } ?></td>
 							<td class="actions">
-								<?= $this->Html->link(__(''),['action'=>'edit', $ingreso->id],['class'=>'fa fa-edit btn btn-warning btn-circle']) ?>
-								<?= $this->Form->postLink(__(''),['action' => 'delete', $ingreso->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $ingreso->id),'class'=>'fa fa-times btn btn-danger btn-circle']) ?>								
+								<?= $this->Html->link(__(''),['action'=>'edit', $ingreso->id],['class'=>'fa fa-edit btn btn-warning btn-default btn-xs']) ?>
+								<?= $this->Form->postLink(__(''),['action' => 'delete', $ingreso->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $ingreso->id),'class'=>'fa fa-times btn btn-danger btn-default btn-xs']) ?>								
 							</td>
 						</tr>
 						<?php endforeach; ?>

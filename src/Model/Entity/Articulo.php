@@ -19,6 +19,7 @@ use Cake\ORM\Entity;
  * @property string|resource $imagen
  * @property int $tipo
  * @property int $estado
+ * @property int $pdv
  * @property \App\Model\Entity\Impuesto $impuesto
  */
 class Articulo extends Entity

@@ -18,10 +18,9 @@ class ProvinciasController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
+        $provincias = $this->Provincias->find('all',array(
             'contain' => ['Departamentos']
-        ];
-        $provincias = $this->paginate($this->Provincias);
+		));
 
         $this->set(compact('provincias'));
         $this->set('_serialize', ['provincias']);

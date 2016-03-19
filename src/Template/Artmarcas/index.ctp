@@ -27,8 +27,8 @@
 									<td><?= $this->Number->format($artmarca->id) ?></td>
 									<td><?= h($artmarca->nombre) ?></td>
 									<td class="actions">
-									<?= $this->Html->link(__(''), ['action' => 'edit', $artmarca->id],array('class'=>'fa fa-edit fa-fw')) ?>
-									<?= $this->Form->postLink(__(''),['action' => 'delete', $artmarca->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $artmarca->id),'class'=>'fa fa-times']) ?>
+										<?= $this->Html->link(__(''),['action'=>'edit', $artmarca->id],['class'=>'fa fa-edit btn btn-warning btn-default btn-xs']) ?>
+										<?= $this->Form->postLink(__(''),['action' => 'delete', $artmarca->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $artmarca->id),'class'=>'fa fa-times btn btn-danger btn-default btn-xs']) ?>
 									</td>
 								</tr>
 								<?php endforeach; ?>

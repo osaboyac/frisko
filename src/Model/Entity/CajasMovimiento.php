@@ -9,6 +9,9 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property int $caja_id
  * @property \App\Model\Entity\Caja $caja
+ * @property int $ctacorriente_destino_id
+ * @property int $ctacorriente_id
+ * @property \App\Model\Entity\Ctacorriente $ctacorriente
  * @property int $compra_id
  * @property \App\Model\Entity\Compra $compra
  * @property int $venta_id
@@ -24,6 +27,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  * @property int $tipo_movimiento
+ * @property int $metodo_pago_id
  * @property int $user_id
  * @property int $socio_id
  * @property string $venta_text

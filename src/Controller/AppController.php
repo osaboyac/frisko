@@ -95,6 +95,7 @@ class AppController extends Controller
     {
         parent::beforeFilter($event);
         $this->Auth->allow(['logout','login']);
+		$this->set('current_user',$this->Auth->user());
     }
     
 	public function isAuthorized($user)

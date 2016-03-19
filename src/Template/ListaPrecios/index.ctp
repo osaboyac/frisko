@@ -43,8 +43,8 @@
 							<td><?php if(h($listaPrecio->incluir_impuesto)==1){echo 'Si';} else { echo 'No';} ?></td>
 							<td><?php if(h($listaPrecio->estado)==1){echo 'Activo';} else { echo 'Inactivo';} ?></td>
 							<td class="actions">
-							<?= $this->Html->link(__(''), ['action' => 'edit', $listaPrecio->id],array('class'=>'fa fa-edit fa-fw')) ?>
-							<?= $this->Form->postLink(__(''),['action' => 'delete', $listaPrecio->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $listaPrecio->id),'class'=>'fa fa-times']) ?>
+								<?= $this->Html->link(__(''),['action'=>'edit', $listaPrecio->id],['class'=>'fa fa-edit btn btn-warning btn-default btn-xs']) ?>
+								<?= $this->Form->postLink(__(''),['action' => 'delete', $listaPrecio->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $listaPrecio->id),'class'=>'fa fa-times btn btn-danger btn-default btn-xs']) ?>
 							</td>
 						</tr>
 						<?php endforeach; ?>

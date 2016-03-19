@@ -20,7 +20,7 @@ class GuiasController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Depositos', 'OrdenVentas', 'Ventas', 'Socios', 'Documentos'],
+            'contain' => ['Depositos', 'OrdenVentas', 'Socios', 'Documentos'],
             'conditions' => ['Guias.deposito_id'=>$this->Auth->user('visibility_roles')]
         ];
         $guias = $this->paginate($this->Guias);
@@ -81,10 +81,9 @@ class GuiasController extends AppController
         }
         $depositos = $this->Guias->Depositos->find('list', ['conditions' => ['id'=>$this->Auth->user('visibility_roles')]]);
         $ordenVentas = $this->Guias->OrdenVentas->find('list', ['limit' => 200]);
-        $ventas = $this->Guias->Ventas->find('list', ['limit' => 200]);
         $socios = $this->Guias->Socios->find('list', ['conditions' => ['cliente'=>1]]);
         $documentos = $this->Guias->Depositos->Docseriev->find('all',['fields'=>['id','nombre','documento_id','deposito_id','serie','numero'],'conditions'=>['tipo'=>2]]);
-        $this->set(compact('guia', 'depositos', 'ordenVentas', 'ventas', 'socios', 'documentos'));
+        $this->set(compact('guia', 'depositos', 'ordenVentas', 'socios', 'documentos'));
         $this->set('_serialize', ['guia']);
     }
 
@@ -121,11 +120,10 @@ class GuiasController extends AppController
         }
         $depositos = $this->Guias->Depositos->find('list', ['conditions' => ['id'=>$this->Auth->user('visibility_roles')]]);
         $ordenVentas = $this->Guias->OrdenVentas->find('list', ['limit' => 200]);
-        $ventas = $this->Guias->Ventas->find('list', ['limit' => 200]);
         $socios = $this->Guias->Socios->find('list', ['limit' => 200]);
         $documentos = $this->Guias->Depositos->Docseriev->find('all',['fields'=>['id','nombre','documento_id','deposito_id','serie','numero'],'conditions'=>['tipo'=>2]]);
         $documentoSerie = $this->Guias->Depositos->Docseriev->find('list', ['fields'=>['id','nombre'],'conditions' => ['id'=>$guia->docserie_id,'deposito_id'=>$guia->deposito_id,'tipo'=>2]]);
-        $this->set(compact('guia', 'depositos', 'ordenVentas', 'ventas', 'socios', 'documentos','documentoSerie'));
+        $this->set(compact('guia', 'depositos', 'ordenVentas', 'socios', 'documentos','documentoSerie'));
         $this->set('_serialize', ['guia']);
 		if($guia->estado){
                 return $this->redirect(['action' => 'view', $id]);			

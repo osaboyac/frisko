@@ -38,6 +38,15 @@ class ArticulosTable extends Table
         $this->table('articulos');
         $this->displayField('nombre');
         $this->primaryKey('id');
+		
+		 $this->addBehavior('Josegonzalez/Upload.Upload', [
+            'imagen' => [
+				'path' => 'webroot{DS}files{DS}{model}{DS}{field}{DS}{primaryKey}',
+				'fields' => [
+                    'dir' => 'imagen_dir', // defaults to `dir`
+                ]
+			]
+        ]);
 
         $this->belongsTo('Artfamilias', [
             'foreignKey' => 'artfamilia_id',
@@ -109,7 +118,7 @@ class ArticulosTable extends Table
             ->integer('estado')
             ->requirePresence('estado', 'create')
             ->notEmpty('estado');
-
+			
         return $validator;
     }
 

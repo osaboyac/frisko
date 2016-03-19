@@ -61,7 +61,7 @@ class OrdenVentasController extends AppController
         if ($this->request->is('post')) {
 			$data = $this->request->data ; 
 			$data['fecha'] = new Time($data['fecha']);
-            if($data['estado']){
+            if($data['estado']==1){
 	            $c=0;
     	        foreach($data['orden_ventas_detalle'] as $ovd){
     	            $data['orden_ventas_detalle'][$c]['estado']=$data['estado'];
@@ -100,7 +100,7 @@ class OrdenVentasController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
 			$data = $this->request->data ; 
 			$data['fecha'] = new Time($data['fecha']);
-            if($data['estado']){
+            if($data['estado']==1){
 	            $c=0;
     	        foreach($data['orden_ventas_detalle'] as $ovd){
     	            $data['orden_ventas_detalle'][$c]['estado']=$data['estado'];
@@ -174,4 +174,51 @@ class OrdenVentasController extends AppController
         $this->set(compact('ordenVentas','ordenVentasDetalle','socios','detalle'));
         $this->set('_serialize', ['ordenVentas']);
     }
+    public function pos()
+    {
+		$this->viewBuilder()->layout('pos');
+		$this->loadModel('PosSettings');
+		$posSetting = $this->PosSettings->find('all',[
+			'contain' => ['Socios'],
+			'conditions' => ['user_id'=>$this->Auth->user('id'), 'deposito_id'=>$this->Auth->user('visibility_roles')],
+			'limit' => 1
+		])->first();
+        $ordenVenta = $this->OrdenVentas->newEntity();
+        if ($this->request->is('post')) {
+			$data = $this->request->data ; 
+			$data['fecha'] = date('Y-m-d');
+			$data['user_id'] = $this->Auth->user('id');
+			$data['deposito_id'] = $this->Auth->user('visibility_roles');
+			$data['estado'] = 2;
+			$data['status_venta'] = 1;
+			$data['status_guia'] = 1;
+			$c=0;
+			foreach($data['orden_ventas_detalle'] as $ovd){
+				$data['orden_ventas_detalle'][$c]['estado']=2;
+				$data['orden_ventas_detalle'][$c]['deposito_id']=$this->Auth->user('visibility_roles');
+				$c++;
+			}
+            $ordenVenta = $this->OrdenVentas->patchEntity($ordenVenta, $data, ['associated' => ['OrdenVentasDetalle']]);
+            if ($this->OrdenVentas->save($ordenVenta)) {
+                $this->Flash->success(__('The orden venta has been saved.'));
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('The orden venta could not be saved. Please, try again.'));
+            }
+        }
+		$this->loadModel('ArticulosInfo');
+		$productos = $this->ArticulosInfo->find('all', [
+			'contain' => ['Articulos', 'Depositos', 'ListaPrecios','ArticuloPrecios','ArticuloPrecios.Impuestos'],
+			'conditions' => ['ListaPrecios.tipo_lista'=>1,'ArticulosInfo.deposito_id'=>$this->Auth->user('visibility_roles')],
+			'order' => ['Articulos.nombre']
+		]);
+        $socios = $this->OrdenVentas->Socios->find('list', ['conditions' => array('cliente'=>1)]);
+		$doc_venta = $this->OrdenVentas->Users->decodeData($posSetting['documento_venta']);
+        $documentos = $this->OrdenVentas->Depositos->Docseriev->find('all',[
+			'fields' => ['id','nombre'],
+			'conditions' => ['id in' => $doc_venta, 'deposito_id' =>$this->Auth->user('visibility_roles')]
+		]);
+        $this->set(compact('ordenVenta','socios','productos','documentos','posSetting'));
+        $this->set('_serialize', ['ordenVenta']);
+	}
 }

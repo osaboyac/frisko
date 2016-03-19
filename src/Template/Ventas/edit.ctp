@@ -73,7 +73,7 @@
 							<label>Total</label>
 							<div class="form-group input-group">
 								<span class="input-group-addon" id="moneda">S/.</span>
-								<?php echo $this->Form->input('total',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal','for'=>'inputSuccess','disabled'=>true)); ?>
+								<?php echo $this->Form->input('total',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal','for'=>'inputSuccess','readonly'=>true)); ?>
 							</div>
 						</div>
 					</div>
@@ -119,7 +119,7 @@
 										 
 										 <td>
 										 <?php $importe =  $this->Number->format($vd->cantidad) * $this->Number->format($vd->precio);?>										 
-										 <?php echo $this->Form->input('ventas_detalle.'.$counter.'.importe',array('label'=>false,'div'=>false,'value'=>$this->Number->precision($importe,2),'class'=>'importe','disabled'=>'true'));?>
+										 <?php echo $this->Form->input('ventas_detalle.'.$counter.'.importe',array('label'=>false,'div'=>false,'value'=>$this->Number->precision($importe,2),'class'=>'importe','readonly'=>'true'));?>
 										 </td>									 
 										 <td class="actions">
 										 <?php echo $this->Html->link('<i class="fa fa-times"></i>', ['controller'=>'ventasDetalle','action' => 'delete', $vd->id,$vd->venta_id], ['escape'=>false, 'confirm' => __('Esta seguro de eliminar el registro # {0}?', $vd->id)]);?>

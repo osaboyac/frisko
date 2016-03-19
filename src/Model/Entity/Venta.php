@@ -27,6 +27,7 @@ use Cake\ORM\Entity;
  * @property float $total
  * @property float $impuesto
  * @property float $grantotal
+ * @property float $saldo
  * @property \App\Model\Entity\OrdenVenta[] $orden_ventas
  * @property \App\Model\Entity\Guia[] $guias
  * @property \App\Model\Entity\VentasDetalle[] $ventas_detalle

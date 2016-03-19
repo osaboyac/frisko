@@ -18,7 +18,7 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-6">
-					<?php echo $this->Form->input('tipo_movimiento', ['label'=>'Tipo Documento','options' => [0=>'Cobrar',1=>'Pagar'],'class'=>'form-control tipo_documento_pago','for'=>'inputSuccess']); ?>
+					<?php echo $this->Form->input('tipo_movimiento', ['label'=>'Tipo Documento','options' => ['0'=>'Cobrar','1'=>'Pagar'],'class'=>'form-control','for'=>'inputSuccess']); ?>
 				</div>
 				<div class="col-lg-6">
 					<?php echo $this->Form->input('socio_id',array('label'=>'Socio de Negocio','options'=>$socios,'empty'=>true,'class'=>'form-control addText','for'=>'inputSuccess')); ?>
@@ -76,7 +76,7 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-4">
-					<?php echo $this->Form->input('metodo_pago_id',array('options'=>['0'=>'Efectivo','1'=>'Tarjeta Crédito/Débito','2'=>'Deposito','3'=>'Cheque'],'class'=>'form-control','for'=>'inputSuccess')); ?>
+					<?php echo $this->Form->input('metodo_pago_id',array('label'=>'Medio de Pago','options'=>['0'=>'Efectivo','1'=>'Tarjeta Crédito/Débito','2'=>'Deposito/Transferencia','3'=>'Cheque'],'class'=>'form-control','for'=>'inputSuccess')); ?>
 				</div>
 				<div class="col-lg-4">
 					<?php echo $this->Form->input('moneda_id',array('options'=>$monedas,'class'=>'form-control','for'=>'inputSuccess')); ?>
@@ -86,6 +86,12 @@
 				</div>
 			</div>
 			<div class="row descripcion" style="display:none">
+				<div class="col-lg-6">
+					<?php echo $this->Form->input('ctacorriente_id',array('label'=>'Cuenta Corriente Origen','options'=>'','class'=>'form-control','for'=>'inputSuccess')); ?>
+				</div>
+				<div class="col-lg-6 cc_destino">
+					<?php echo $this->Form->input('ctacorriente_destino_id',array('label'=>'Cuenta Corriente Destino','options'=>'','class'=>'form-control','for'=>'inputSuccess')); ?>
+				</div>
 				<div class="col-lg-12">
 					<?php echo $this->Form->input('descripcion',array('type'=>'text','class'=>'form-control','for'=>'inputSuccess')); ?>
 				</div>
@@ -98,33 +104,17 @@
 </div>
 <script>
 $('document').ready(function(){
-	$('select.tipo_documento_pago').on('change',function(){
-		if($(this).val()==1){
-			$('div.factura_pagar').css('display','block');
-			$('div.factura_cobrar').css('display','none');
-		} else{
-			$('div.factura_cobrar').css('display','block');
-			$('div.factura_pagar').css('display','none');
-		}
-		$("input.addText").attr('readonly',false);
-		$("select#cargo-id").attr('disabled',false);
-		$('input#venta-text').attr('readonly',false);
-		$('input#compra-text').attr('readonly',false);
-		$("input.addText").val('');
-		$('input#venta_id').val('');
-		$('input#venta-text').val('');
-		$('input#compra_id').val('');
-		$('input#compra-text').val('');
-	});
+	combo = document.getElementById('ctacorriente-destino-id');
+	combo_origen = document.getElementById('ctacorriente-id');
 	$('select#cargo-id').on('change',function(){
 		if($(this).val()!=''){
 			$('input#venta-text').attr('readonly','true');
 			$('input#compra-text').attr('readonly','true');
-			$('input.addText').attr('readonly','true');
+//			$('input.addText').attr('readonly','true');
 			$('input#concepto').val($(this).text()+' <?= date('d-m-Y') ?>');
 		} else{
 			$('input#venta-text').attr('readonly',false);
-			$('input#compra-text').attr('readonly',false);			
+			$('input#compra-text').attr('readonly',false);
 			$("input.addText").attr('readonly',false);
 			$("input.addText").val('');
 			$('input#venta_id').val('');
@@ -134,11 +124,70 @@ $('document').ready(function(){
 			$('input#concepto').val('');
 		}
 	});
+	$('select#tipo-movimiento').on('change',function(){
+		if($(this).val()==1){
+			$('div.factura_pagar').css('display','block');
+			$('div.factura_cobrar').css('display','none');
+		} else{
+			$('div.factura_cobrar').css('display','block');
+			$('div.factura_pagar').css('display','none');
+			if($('select#metodo-pago-id').val()>=1){
+				$('select#ctacorriente-destino-id').empty();
+				$('input#descripcion').val('');
+			}
+			if(socioID && $('select#metodo-pago-id').val()>=0){
+				<?php foreach($ctacorrientes as $cc){ ?>
+					if(socioID == '<?= $cc->socio_id;?>'){
+						combo.options[combo.length] = new Option("<?= $cc->nro_cuenta.' - '.$cc->socio ?>", "<?= $cc->id; ?>");
+					}
+				 <?php } ?>
+			}
+		}
+		
+		$("input.addText").attr('readonly',false);
+		$("select#cargo-id").attr('disabled',false);
+		$('input#venta-text').attr('readonly',false);
+		$('input#compra-text').attr('readonly',false);
+		//$("input.addText").val('');
+		$('input#venta_id').val('');
+		$('input#venta-text').val('');
+		$('input#compra_id').val('');
+		$('input#compra-text').val('');
+	});	
 	$('select#metodo-pago-id').on('change',function(){
+		$('select#ctacorriente-destino-id').empty();
+		$('select#ctacorriente-id').empty();
+		$('input#descripcion').val('');
 		if($(this).val()==0){
 			$('div.descripcion').css('display','none');
 		} else{
 			$('div.descripcion').css('display','block');
+			if($('select#tipo-movimiento').val()==0){
+				combo_origen.options[combo_origen.length] = new Option("", "");
+				<?php foreach($ctacorrientes as $cc){ ?>
+					if("<?= $current_user['visibility_roles'];?>" == '<?= $cc->deposito_id;?>'){
+						combo_origen.options[combo_origen.length] = new Option("<?php echo $cc->nro_cuenta.' - '.$cc->nombre.'  '.$cc->descripcion; ?>", "<?= $cc->id; ?>");
+					}
+				 <?php } ?>
+			} else{
+				var socioID = $("input[name='socio_id']").val();
+				if(socioID){
+					<?php foreach($ctacorrientes as $cc){ ?>
+						if(socioID == '<?= $cc->socio_id;?>'){
+							combo.options[combo.length] = new Option("<?= $cc->nro_cuenta.' - '.$cc->socio ?>", "<?= $cc->id; ?>");
+						}
+					 <?php } ?>
+					 //cuenta corriente origen de donde saldra el dinero para pagar
+					combo_origen.options[combo_origen.length] = new Option("", "");
+					<?php foreach($ctacorrientes as $cc){ ?>
+						if("<?= $current_user['visibility_roles'];?>" == '<?= $cc->deposito_id;?>'){
+							combo_origen.options[combo_origen.length] = new Option("<?php echo $cc->nro_cuenta.' - '.$cc->nombre.'  '.$cc->descripcion; ?>", "<?= $cc->id; ?>");
+						}
+					 <?php } ?>
+				} else{
+					alert("Seleccione un socio de negocio");
+				}
+			}
 		}
 	});
 });

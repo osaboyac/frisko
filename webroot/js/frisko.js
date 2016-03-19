@@ -69,7 +69,7 @@ function calculaTotal(){
 			impuesto_producto = (parseFloat($(this).val()) * parseFloat(tasa_impuesto));
 			grantotal += parseFloat(impuesto_producto);
 			total += parseFloat($(this).val());
-			impuesto += grantotal - total;
+			impuesto = grantotal - total;
 		}
 	})
 	$('input.impuesto_total').val(impuesto.toFixed(2));
