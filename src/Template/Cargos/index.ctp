@@ -2,16 +2,16 @@
 	<div class="panel-heading">
 		Cargos
 	</div>
-	<div class="panel-body">
-        <?= $this->Html->link(__('Nuevo'), ['action' => 'add'],array('class'=>'btn btn-info')) ?>
+	<div class="box-body">
+        <?= $this->Html->link(__('Nuevo'), ['action' => 'add'],array('class'=>'btn btn-success')) ?>
 	</div>
-	<div class="panel-body">
+	<div class="box-body">
 <!-- /.row -->
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<!-- /.panel-heading -->
-					<div class="panel-body">
+					<div class="box-body">
 						<div class="dataTable_wrapper">
 							<table class="table table-striped table-bordered table-hover" id="dataTables-example">
 								<thead>
@@ -37,8 +37,8 @@
 									<td><?php if($cargo->incluir_impuesto==1) {echo 'No';} else if($cargo->incluir_impuesto==2){echo 'Si';}else{ echo '';} ?></td>
 									<td><?php if($cargo->estado==1) {echo 'Activo';} else{ echo 'Inactivo';} ?></td>
 									<td class="actions">
-										<?= $this->Html->link(__(''),['action'=>'edit', $cargo->id],['class'=>'fa fa-edit btn btn-warning btn-default btn-xs']) ?>
-										<?= $this->Form->postLink(__(''),['action' => 'delete', $cargo->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $cargo->id),'class'=>'fa fa-times btn btn-danger btn-default btn-xs']) ?>
+										<?= $this->Html->link(__(''),['action'=>'edit', $cargo->id],['class'=>'fa fa-edit btn btn-warning btn-xs']) ?>
+										<?= $this->Form->postLink(__(''),['action' => 'delete', $cargo->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $cargo->id),'class'=>'fa fa-times btn btn-danger btn-xs']) ?>
 									</td>
 								</tr>
 								<?php endforeach; ?>
@@ -47,7 +47,7 @@
 						</div>
 						<!-- /.table-responsive -->
 					</div>
-					<!-- /.panel-body -->
+					<!-- /.box-body -->
 				</div>
 				<!-- /.panel -->
 			</div>

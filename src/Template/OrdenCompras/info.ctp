@@ -2,8 +2,8 @@
 	<div class="panel-heading">
 		Orden de Compra
 	</div>
-	<div class="panel-body">
-		<div class="form-group has-success">
+	<div class="box-body">
+		<div class="form-group">
 			<div class="row">
 				<div class="col-lg-6">
 				<?php if($detalle=='compras_detalle') {?>
@@ -17,7 +17,7 @@
 				</div>
 			</div><!-- /.row -->
 			<div class="row">
-				<div class="panel-body">
+				<div class="box-body">
 					<div class="dataTable_wrapper">
 						<table class="table table-striped table-bordered table-hover" id="dataTables-infoOrdenCompra">
 							<thead>
@@ -50,7 +50,7 @@
 					</div><!-- /.table-responsive -->
 				</div>
 			</div><!-- /.row -->
-		</div><!-- form-group has-success -->
+		</div><!-- form-group has-box-body -->
 	</div>
 </div>
 <script>

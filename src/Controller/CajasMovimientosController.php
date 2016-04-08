@@ -76,7 +76,9 @@ class CajasMovimientosController extends AppController
         $cargos = $this->CajasMovimientos->Cargos->find('list', ['limit' => 200]);
         $monedas = $this->CajasMovimientos->Monedas->find('list', ['limit' => 200]);
         $users = $this->CajasMovimientos->Users->find('list', ['conditions' => ['id'=>$this->Auth->user('id')]]);
-        $this->set(compact('cajasMovimiento', 'cajas', 'socios', 'cargos', 'monedas', 'users','ctacorrientes'));
+		$this->loadModel('FormaPagos');
+        $formaPagos = $this->FormaPagos->find('list', ['conditions' => ['sistema'=>0]]);
+        $this->set(compact('cajasMovimiento', 'cajas', 'socios', 'cargos', 'monedas', 'users','ctacorrientes','formaPagos'));
         $this->set('_serialize', ['cajasMovimiento']);
     }
 

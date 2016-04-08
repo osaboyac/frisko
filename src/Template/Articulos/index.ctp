@@ -2,16 +2,16 @@
 	<div class="panel-heading">
 		Articulos, Servicios y Tipo de Gasto
 	</div>
-	<div class="panel-body">
+	<div class="box-body">
         <?= $this->Html->link(__('Nuevo'), ['action' => 'add'],array('class'=>'btn btn-info')) ?>
 	</div>
-	<div class="panel-body">
+	<div class="box-body">
 <!-- /.row -->
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<!-- /.panel-heading -->
-					<div class="panel-body">
+					<div class="box-body">
 						<div class="dataTable_wrapper">
 							<table class="table table-striped table-bordered table-hover" id="dataTables-example">
 								<thead>
@@ -45,8 +45,8 @@
 									<td><?= h($tipo) ?></td>
 									<td><?php if(h($articulo->estado)){ echo 'Activo';} else { echo 'Inactivo';} ?></td>
 									<td class="actions">
-										<?= $this->Html->link(__(''),['action'=>'edit', $articulo->id],['class'=>'fa fa-edit btn btn-warning btn-default btn-xs']) ?>
-										<?= $this->Form->postLink(__(''),['action' => 'delete', $articulo->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $articulo->id),'class'=>'fa fa-times btn btn-danger btn-default btn-xs']) ?>
+										<?= $this->Html->link(__(''),['action'=>'edit', $articulo->id],['class'=>'fa fa-edit btn btn-warning btn-xs']) ?>
+										<?= $this->Form->postLink(__(''),['action' => 'delete', $articulo->id], ['confirm' => __('Está seguro de eliminar el registro # {0}?', $articulo->id),'class'=>'fa fa-times btn btn-danger btn-xs']) ?>
 									</td>
 								</tr>
 								<?php endforeach; ?>

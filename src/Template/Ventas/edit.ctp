@@ -2,15 +2,15 @@
 	<div class="panel-heading">
 		Ventas
 	</div>
-	<div class="panel-body">
+	<div class="box-body">
 		<?= $this->Form->create($venta) ?>
-		<div class="form-group has-success">
+		<div class="form-group">
 			<div class="row">
 				<div class="col-lg-6">
 					<?php echo $this->Form->input('deposito_id', ['label'=>'Sucursal','options' => $depositos,'empty'=>true,'class'=>'form-control','for'=>'inputSuccess','required'=>true]); ?>
 				</div>
 				<div class="col-lg-6">
-					<?php echo $this->Form->input('socio_id',array('label'=>'Socio de Negocio','options' => $socios,'class'=>'form-control','for'=>'inputSuccess','required'=>true));?>
+					<?php echo $this->Form->input('socio_id',array('label'=>'Socio de Negocio','options' => $socios,'class'=>'form-control select2','for'=>'inputSuccess','required'=>true));?>
 				</div>
 			</div>
 			<div class="row">
@@ -31,10 +31,10 @@
 				<div class="col-lg-4">
 					<label>Fecha</label>
 					<div class='input-group date'>
-					<?php echo $this->Form->input('fecha',array('div'=>null,'label'=>false,'type'=>'text','value'=>$venta->fecha->format('Y-m-d'),'class'=>'form-control','for'=>'inputSuccess')); ?>
 						<span class="input-group-addon">
 							<span class="glyphicon glyphicon-calendar"></span>
 						</span>
+					<?php echo $this->Form->input('fecha',array('div'=>null,'label'=>false,'type'=>'text','value'=>$venta->fecha->format('Y-m-d'),'class'=>'form-control','for'=>'inputSuccess')); ?>
 					</div>
 				</div>
 				<div class="col-lg-4">
@@ -45,7 +45,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-4 panel-body">
+				<div class="col-lg-4 box-body">
 					<div class="row">
 						<div class="col-lg-6 panel-heading">
 							<?= $this->Html->link(__('Buscar Artículos'), ['controller'=>'articulos-info','action' => 'index','ventas_detalle'],['class'=>'btn btn-info','data-toggle'=>'modal','data-target'=>'#articulosInfo']) ?>
@@ -83,10 +83,10 @@
 				<div class="col-lg-12">
 					<div class="panel panel-primary">
 						<!-- /.panel-heading -->
-						<div class="panel-body">
+						<div class="box-body">
 							<div class="dataTable_wrapper">
 								<table class="table table-striped table-bordered table-hover dataTables-add">
-									<thead style="background:#f2f2f2">
+									<thead class="label-default">
 									<tr>
 										<th>Item</th>
 										<th>Articulo</th>
@@ -131,15 +131,17 @@
 							</div>
 							<!-- /.table-responsive -->
 						</div>
-						<!-- /.panel-body -->
+						<!-- /.box-body -->
 					</div>
 					<!-- /.panel -->
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
 		</div>
-		<?= $this->Form->button(__('Guardar'),array('class'=>'btn btn-primary')) ?>
-		<?= $this->Html->link(__('Cancelar'),['action' => 'index'],array('class'=>'btn btn-danger','action'=>'index')) ?>
+		<div class="box-footer">
+			<?= $this->Html->link(__('Cancelar'),['action' => 'index'],array('class'=>'btn btn-default','action'=>'index')) ?>
+			<?= $this->Form->button(__('Guardar'),array('class'=>'btn btn-success')) ?>
+		</div>
 		<?= $this->Form->end() ?>
 	</div>
 </div>

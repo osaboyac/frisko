@@ -54,7 +54,7 @@ class CajasController extends AppController
     {
         $caja = $this->Cajas->newEntity();
         if ($this->request->is('post')) {
-			$data = $this->request->data ; 
+			$data = $this->request->data;
 			$data['fecha'] = new Time($data['fecha']);
             $caja = $this->Cajas->patchEntity($caja, $data);
             if ($this->Cajas->save($caja)) {

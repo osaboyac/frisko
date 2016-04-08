@@ -2,10 +2,10 @@
 	<div class="panel-heading">
 		Articulos, Servicios y Tipo de Gasto
 	</div>
-	<div class="panel-body">
+	<div class="box-body">
 		<!-- form add optional, for not validade navigator 'novalidate'=>'novalidate' -->
 		<?= $this->Form->create($articulo,array('tyle'=>'file')) ?>
-		<div class="form-group has-success">
+		<div class="form-group">
 			<div class="row">
 				<div class="col-lg-4">
 					<?php echo $this->Form->input('codigo',array('class'=>'form-control','for'=>'inputSuccess')); ?>
@@ -17,7 +17,7 @@
 					<?php echo $this->Form->input('descripcion',array('class'=>'form-control','for'=>'inputSuccess')); ?>
 				</div>
 				<div class="col-lg-6">
-					<?php echo $this->Form->input('artfamilia_id',array('label'=>'Familia','class'=>'form-control anyCombo','for'=>'inputSuccess')); ?>
+					<?php echo $this->Form->input('artfamilia_id',array('label'=>'Familia','class'=>'form-control select2','for'=>'inputSuccess')); ?>
 				</div>
 				<div class="col-lg-6">
 					<?php echo $this->Form->input('artmarca_id',array('label'=>'Marca','empty'=>true,'class'=>'form-control','for'=>'inputSuccess')); ?>
@@ -42,8 +42,10 @@
 			
 				
 		</div>
-		<?= $this->Form->button(__('Guardar'),array('class'=>'btn btn-primary')) ?>
-		<?= $this->Html->link(__('Cancelar'),['action' => 'index'],array('class'=>'btn btn-danger','action'=>'index')) ?>
+		<div class="box-footer">
+			<?= $this->Html->link(__('Cancelar'),['action' => 'index'],array('class'=>'btn btn-default','action'=>'index')) ?>
+			<?= $this->Form->button(__('Guardar'),array('class'=>'btn btn-success')) ?>
+		</div>
 		<?= $this->Form->end() ?>
 	</div>
 </div>

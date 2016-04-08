@@ -51,7 +51,8 @@ class DepartamentosTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('nombre');
+            ->requirePresence('nombre', 'create')
+            ->notEmpty('nombre');
 
         return $validator;
     }

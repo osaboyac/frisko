@@ -2,9 +2,9 @@
 	<div class="panel-heading">
 		Caja Diario
 	</div>
-	<div class="panel-body">
+	<div class="box-body">
 		<?= $this->Form->create($caja) ?>
-		<div class="form-group has-success">
+		<div class="form-group">
 			<div class="row">
 				<div class="col-lg-6">
 					<?php echo $this->Form->input('libro_caja_id', ['options' => $libroCajas,'class'=>'form-control']); ?>
@@ -33,8 +33,10 @@
 				</div>
 			</div>
 		</div>
-		<?= $this->Form->button(__('Guardar'),array('class'=>'btn btn-primary')) ?>
-		<?= $this->Html->link(__('Cancelar'),['action' => 'index'],array('class'=>'btn btn-danger','action'=>'index')) ?>
+		<div class="box-footer">
+			<?= $this->Html->link(__('Cancelar'),['action' => 'index'],array('class'=>'btn btn-default','action'=>'index')) ?>
+			<?= $this->Form->button(__('Guardar'),array('class'=>'btn btn-success')) ?>
+		</div>
 		<?= $this->Form->end() ?>
 	</div>
 </div>

@@ -127,6 +127,7 @@ class ComprasController extends AppController
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
 	public function ctapagar(){
+		$this->viewBuilder()->layout('ajax');
         $compras = $this->Compras->find('all',[
             'contain' => ['Socios', 'OrdenCompras'],
             'conditions' => ['Compras.pagado'=>0]

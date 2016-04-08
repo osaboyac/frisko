@@ -137,6 +137,7 @@ class VentasController extends AppController
     }
 	
 	public function ctacobrar(){
+		$this->viewBuilder()->layout('ajax');
         $ventas = $this->Ventas->find('all',[
             'contain' => ['Users', 'Socios', 'Documentos', 'Depositos', 'FormaPagos'],
             'conditions' => ['Ventas.cobrado'=>0]

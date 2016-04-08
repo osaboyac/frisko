@@ -2,15 +2,15 @@
 	<div class="panel-heading">
 		Orden de Venta
 	</div>
-	<div class="panel-body">
+	<div class="box-body">
 		<?= $this->Form->create($ordenVenta) ?>
-		<div class="form-group has-success">
+		<div class="form-group">
 			<div class="row">
 				<div class="col-lg-6">
 					<?php echo $this->Form->input('deposito_id', ['label'=>'Sucursal','options' => $depositos,'class'=>'form-control','for'=>'inputSuccess']); ?>
 				</div>
 				<div class="col-lg-6">
-					<?php echo $this->Form->input('socio_id',array('label'=>'Socio de Negocio','options' => $socios,'class'=>'form-control','for'=>'inputSuccess','required'=>true));?>
+					<?php echo $this->Form->input('socio_id',array('label'=>'Socio de Negocio','options' => $socios,'class'=>'form-control select2','for'=>'inputSuccess','required'=>true));?>
 				</div>
 			</div>				
 			<div class="row">
@@ -34,43 +34,40 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-2 panel-body">
-					<div class="row">
-						<div class="col-lg-4 panel-body">
-							<?= $this->Html->link(__('Buscar Artículos'), ['controller'=>'articulos-info','action' => 'index', 'orden_ventas_detalle'],['class'=>'btn btn-info','data-toggle'=>'modal','data-target'=>'#articulosInfo']) ?>
-						</div>							
-						<div class="modal fade" id="articulosInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-							<div class="modal-dialog modal-lg">
-									<div class="modal-content"></div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-									</div>
-							</div>
-							<!-- /.modal-dialog -->
+				<div class="col-lg-2 box-body">
+					<div class="col-lg-4 panel-body">
+						<?= $this->Html->link(__('Buscar Artículos'), ['controller'=>'articulos-info','action' => 'index', 'orden_ventas_detalle'],['class'=>'btn btn-info','data-toggle'=>'modal','data-target'=>'#articulosInfo']) ?>
+					</div>							
+					<div class="modal fade" id="articulosInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-lg">
+								<div class="modal-content"></div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+								</div>
 						</div>
-						
+						<!-- /.modal-dialog -->
 					</div>
 				</div>
 				<div class="col-lg-10">
 					<div class="row">
-						<div class="col-lg-3 panel-body">
+						<div class="col-lg-3 box-body">
 							<?php echo $this->Form->input('id',array('label'=>'Orden No.','type'=>'text','class'=>'form-control','for'=>'inputSuccess','readonly'=>'true')); ?>
 						</div>
-						<div class="col-lg-3 panel-body">
+						<div class="col-lg-3 box-body">
 							<label>Subtotal</label>
 							<div class="form-group input-group">
 								<span class="input-group-addon" id="moneda">S/.</span>								
 								<?php echo $this->Form->input('total',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control grantotal','for'=>'inputSuccess','readonly'=>true)); ?>
 							</div>
 						</div>
-						<div class="col-lg-3 panel-body">
+						<div class="col-lg-3 box-body">
 							<label>Impuesto</label>
 							<div class="form-group input-group">
 								<span class="input-group-addon" id="moneda">S/.</span>								
 								<?php echo $this->Form->input('impuesto',array('div'=>null,'label'=>false,'type'=>'text','class'=>'form-control impuesto_total','for'=>'inputSuccess','readonly'=>true)); ?>
 							</div>
 						</div>
-						<div class="col-lg-3 panel-body">
+						<div class="col-lg-3 box-body">
 							<label>Total</label>
 							<div class="form-group input-group">
 								<span class="input-group-addon" id="moneda">S/.</span>								
@@ -84,10 +81,10 @@
 				<div class="col-lg-12">
 					<div class="panel panel-primary">
 						<!-- /.panel-heading -->
-						<div class="panel-body">
+						<div class="box-body">
 							<div class="dataTable_wrapper">
 								<table class="table table-striped table-bordered table-hover dataTables-add">
-									<thead style="background:#f2f2f2">
+									<thead class="label-default">
 									<tr>
 										<th>Item</th>
 										<th>Articulo</th>
@@ -133,15 +130,17 @@
 							</div>
 							<!-- /.table-responsive -->
 						</div>
-						<!-- /.panel-body -->
+						<!-- /.box-body -->
 					</div>
 					<!-- /.panel -->
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
 		</div>
-		<?= $this->Form->button(__('Guardar'),array('class'=>'btn btn-primary')) ?>
-		<?= $this->Html->link(__('Cancelar'),['action' => 'index'],array('class'=>'btn btn-danger','action'=>'index')) ?>
+		<div class="box-footer">
+			<?= $this->Html->link(__('Cancelar'),['action' => 'index'],array('class'=>'btn btn-default','action'=>'index')) ?>
+			<?= $this->Form->button(__('Guardar'),array('class'=>'btn btn-success')) ?>
+		</div>
 		<?= $this->Form->end() ?>
 	</div>
 </div>

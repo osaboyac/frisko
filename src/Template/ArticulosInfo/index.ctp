@@ -2,8 +2,8 @@
 	<div class="panel-heading">
 		Información de Articulos
 	</div>
-	<div class="panel-body">
-		<div class="form-group has-success">
+	<div class="box-body">
+		<div class="form-group">
 			<div class="row">
 				<div class="col-lg-6">
 					<?php echo $this->Form->input('d_id', ['label'=>'Sucursal','options' => $depositos,'class'=>'form-control infoArticuloParametro','data-column'=>'8','for'=>'inputSuccess']); ?>
@@ -12,12 +12,11 @@
 					<?php echo $this->Form->input('l_p_id',array('label'=>'Lista de Precio','options' => $listaPrecios,'empty'=>true,'class'=>'form-control infoArticuloParametro','data-column'=>'9','for'=>'inputSuccess'));?>
 				</div>
 			</div>
-			<div class="panel-body"></div>
+			<div class="box-body"></div>
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="panel panel-primary">
 						<!-- /.panel-heading -->
-						<div class="panel-body">
+						<div class="box-body panel panel-default">
 							<div class="dataTable_wrapper">
 								<table class="table table-striped table-bordered table-hover" id="dataTables-infoArticulos">
 									<thead>
@@ -52,7 +51,7 @@
 											<td><?= h($articulosInfo->lista_precio->id) ?></td>
 											<?php if($detalle) {?>
 											<td style="text-align:center">
-												<button type="button" class="btn btn-success btn-default btn-xs add-product" tasa_impuesto="<?= h($articulosInfo->articulo_precio->impuesto->tasa) ?>" incluir_impuesto="<?= h($articulosInfo->lista_precio->incluir_impuesto) ?>" onClick="AgregarProductos(this)"><i class="fa fa-check"></i></button>
+												<button type="button" class="btn btn-success btn-xs add-product" tasa_impuesto="<?= h($articulosInfo->articulo_precio->impuesto->tasa) ?>" incluir_impuesto="<?= h($articulosInfo->lista_precio->incluir_impuesto) ?>" onClick="AgregarProductos(this)"><i class="fa fa-check"></i></button>
 											</td>
 											<?php } ?>
 										</tr>
@@ -62,8 +61,7 @@
 							</div>
 							<!-- /.table-responsive -->
 						</div>
-						<!-- /.panel-body -->
-					</div>
+						<!-- /.box-body -->
 					<!-- /.panel -->
 				</div>
 				<!-- /.col-lg-12 -->

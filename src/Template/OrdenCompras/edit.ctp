@@ -2,22 +2,22 @@
 	<div class="panel-heading">
 		Orden de Compra
 	</div>
-	<div class="panel-body">
+	<div class="box-body">
 		<?= $this->Form->create($ordenCompra) ?>
-		<div class="form-group has-success">
+		<div class="form-group">
 			<div class="row">
 				<div class="col-lg-12">
-					<?php echo $this->Form->input('socio_id',array('options' => $socios,'class'=>'form-control','for'=>'inputSuccess'));?>
+					<?php echo $this->Form->input('socio_id',array('options' => $socios,'class'=>'form-control select2','for'=>'inputSuccess'));?>
 				</div>
 			<div>
 			</div class="row">
 				<div class="col-lg-6">
 					<label>Fecha</label>
 					<div class='input-group date'>
+					<span class="input-group-addon">
+						<span class="glyphicon glyphicon-calendar"></span>
+					</span>
 					<?php echo $this->Form->input('fecha',array('div'=>null,'label'=>false,'type'=>'text', 'value' => $ordenCompra['fecha']->format('Y-m-d'),'class'=>'form-control','for'=>'inputSuccess')); ?>
-						<span class="input-group-addon">
-							<span class="glyphicon glyphicon-calendar"></span>
-						</span>
 					</div>
 				</div>
 				<div class="col-lg-6">
@@ -74,10 +74,10 @@
 				<div class="col-lg-12">
 					<div class="panel panel-primary">
 						<!-- /.panel-heading -->
-						<div class="panel-body">
+						<div class="box-body">
 							<div class="dataTable_wrapper">
 								<table class="table table-striped table-bordered table-hover dataTables-add">
-									<thead style="background:#f2f2f2">
+									<thead class="label-default">
 									<tr>
 										<th>Item</th>
 										<!--th>Código</th-->
@@ -127,15 +127,17 @@
 							</div>
 							<!-- /.table-responsive -->
 						</div>
-						<!-- /.panel-body -->
+						<!-- /.box-body -->
 					</div>
 					<!-- /.panel -->
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
 		</div>
-		<?= $this->Form->button(__('Guardar'),array('class'=>'btn btn-primary')) ?>
-		<?= $this->Html->link(__('Cancelar'),['action' => 'index'],array('class'=>'btn btn-danger','action'=>'index')) ?>
+		<div class="box-footer">
+			<?= $this->Html->link(__('Cancelar'),['action' => 'index'],array('class'=>'btn btn-default','action'=>'index')) ?>
+			<?= $this->Form->button(__('Guardar'),array('class'=>'btn btn-success')) ?>
+		</div>
 		<?= $this->Form->end() ?>
 	</div>
 </div>

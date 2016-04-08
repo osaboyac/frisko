@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-03-2016 a las 18:43:44
+-- Tiempo de generación: 08-04-2016 a las 15:56:45
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -57,14 +57,14 @@ CREATE TABLE IF NOT EXISTS `acos` (
   PRIMARY KEY (`id`),
   KEY `lft` (`lft`,`rght`),
   KEY `alias` (`alias`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=283 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=284 ;
 
 --
 -- Volcado de datos para la tabla `acos`
 --
 
 INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES
-(1, NULL, NULL, NULL, 'controllers', 1, 550),
+(1, NULL, NULL, NULL, 'controllers', 1, 552),
 (2, 1, NULL, NULL, 'Articulos', 2, 15),
 (3, 2, NULL, NULL, 'index', 3, 4),
 (4, 2, NULL, NULL, 'view', 5, 6),
@@ -154,7 +154,7 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 (88, 1, NULL, NULL, 'VentasDetalle', 180, 185),
 (89, 88, NULL, NULL, 'delete', 181, 182),
 (90, 88, NULL, NULL, 'isAuthorized', 183, 184),
-(91, 1, NULL, NULL, 'OrdenCompras', 186, 201),
+(91, 1, NULL, NULL, 'OrdenCompras', 186, 203),
 (92, 91, NULL, NULL, 'index', 187, 188),
 (93, 91, NULL, NULL, 'view', 189, 190),
 (94, 91, NULL, NULL, 'add', 191, 192),
@@ -162,182 +162,183 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 (96, 91, NULL, NULL, 'delete', 195, 196),
 (97, 91, NULL, NULL, 'info', 197, 198),
 (98, 91, NULL, NULL, 'isAuthorized', 199, 200),
-(99, 1, NULL, NULL, 'Impuestos', 202, 215),
-(100, 99, NULL, NULL, 'index', 203, 204),
-(101, 99, NULL, NULL, 'view', 205, 206),
-(102, 99, NULL, NULL, 'add', 207, 208),
-(103, 99, NULL, NULL, 'edit', 209, 210),
-(104, 99, NULL, NULL, 'delete', 211, 212),
-(105, 99, NULL, NULL, 'isAuthorized', 213, 214),
-(106, 1, NULL, NULL, 'OrdenComprasDetalle', 216, 221),
-(107, 106, NULL, NULL, 'delete', 217, 218),
-(108, 106, NULL, NULL, 'isAuthorized', 219, 220),
-(109, 1, NULL, NULL, 'Ingresos', 222, 235),
-(110, 109, NULL, NULL, 'index', 223, 224),
-(111, 109, NULL, NULL, 'view', 225, 226),
-(112, 109, NULL, NULL, 'add', 227, 228),
-(113, 109, NULL, NULL, 'edit', 229, 230),
-(114, 109, NULL, NULL, 'delete', 231, 232),
-(115, 109, NULL, NULL, 'isAuthorized', 233, 234),
-(116, 1, NULL, NULL, 'ArticuloPrecios', 236, 249),
-(117, 116, NULL, NULL, 'index', 237, 238),
-(118, 116, NULL, NULL, 'view', 239, 240),
-(119, 116, NULL, NULL, 'add', 241, 242),
-(120, 116, NULL, NULL, 'edit', 243, 244),
-(121, 116, NULL, NULL, 'delete', 245, 246),
-(122, 116, NULL, NULL, 'isAuthorized', 247, 248),
-(123, 1, NULL, NULL, 'Monedas', 250, 263),
-(124, 123, NULL, NULL, 'index', 251, 252),
-(125, 123, NULL, NULL, 'view', 253, 254),
-(126, 123, NULL, NULL, 'add', 255, 256),
-(127, 123, NULL, NULL, 'edit', 257, 258),
-(128, 123, NULL, NULL, 'delete', 259, 260),
-(129, 123, NULL, NULL, 'isAuthorized', 261, 262),
-(130, 1, NULL, NULL, 'Pages', 264, 269),
-(131, 130, NULL, NULL, 'display', 265, 266),
-(132, 130, NULL, NULL, 'isAuthorized', 267, 268),
-(133, 1, NULL, NULL, 'Guias', 270, 283),
-(134, 133, NULL, NULL, 'index', 271, 272),
-(135, 133, NULL, NULL, 'view', 273, 274),
-(136, 133, NULL, NULL, 'add', 275, 276),
-(137, 133, NULL, NULL, 'edit', 277, 278),
-(138, 133, NULL, NULL, 'delete', 279, 280),
-(139, 133, NULL, NULL, 'isAuthorized', 281, 282),
-(140, 1, NULL, NULL, 'IngresosDetalle', 284, 289),
-(141, 140, NULL, NULL, 'delete', 285, 286),
-(142, 140, NULL, NULL, 'isAuthorized', 287, 288),
-(143, 1, NULL, NULL, 'Docseries', 290, 303),
-(144, 143, NULL, NULL, 'index', 291, 292),
-(145, 143, NULL, NULL, 'view', 293, 294),
-(146, 143, NULL, NULL, 'add', 295, 296),
-(147, 143, NULL, NULL, 'edit', 297, 298),
-(148, 143, NULL, NULL, 'delete', 299, 300),
-(149, 143, NULL, NULL, 'isAuthorized', 301, 302),
-(150, 1, NULL, NULL, 'ArticulosInfo', 304, 309),
-(151, 150, NULL, NULL, 'index', 305, 306),
-(152, 150, NULL, NULL, 'isAuthorized', 307, 308),
-(153, 1, NULL, NULL, 'Distritos', 310, 323),
-(154, 153, NULL, NULL, 'index', 311, 312),
-(155, 153, NULL, NULL, 'view', 313, 314),
-(156, 153, NULL, NULL, 'add', 315, 316),
-(157, 153, NULL, NULL, 'edit', 317, 318),
-(158, 153, NULL, NULL, 'delete', 319, 320),
-(159, 153, NULL, NULL, 'isAuthorized', 321, 322),
-(160, 1, NULL, NULL, 'OrdenVentas', 324, 341),
-(161, 160, NULL, NULL, 'index', 325, 326),
-(162, 160, NULL, NULL, 'view', 327, 328),
-(163, 160, NULL, NULL, 'add', 329, 330),
-(164, 160, NULL, NULL, 'edit', 331, 332),
-(165, 160, NULL, NULL, 'delete', 333, 334),
-(166, 160, NULL, NULL, 'isAuthorized', 335, 336),
-(167, 1, NULL, NULL, 'ListaPrecios', 342, 355),
-(168, 167, NULL, NULL, 'index', 343, 344),
-(169, 167, NULL, NULL, 'view', 345, 346),
-(170, 167, NULL, NULL, 'add', 347, 348),
-(171, 167, NULL, NULL, 'edit', 349, 350),
-(172, 167, NULL, NULL, 'delete', 351, 352),
-(173, 167, NULL, NULL, 'isAuthorized', 353, 354),
-(174, 1, NULL, NULL, 'Users', 356, 373),
-(175, 174, NULL, NULL, 'index', 357, 358),
-(176, 174, NULL, NULL, 'view', 359, 360),
-(177, 174, NULL, NULL, 'add', 361, 362),
-(178, 174, NULL, NULL, 'edit', 363, 364),
-(179, 174, NULL, NULL, 'delete', 365, 366),
-(180, 174, NULL, NULL, 'login', 367, 368),
-(181, 174, NULL, NULL, 'logout', 369, 370),
-(182, 174, NULL, NULL, 'isAuthorized', 371, 372),
-(183, 1, NULL, NULL, 'Roles', 374, 387),
-(184, 183, NULL, NULL, 'index', 375, 376),
-(185, 183, NULL, NULL, 'view', 377, 378),
-(186, 183, NULL, NULL, 'add', 379, 380),
-(187, 183, NULL, NULL, 'edit', 381, 382),
-(188, 183, NULL, NULL, 'delete', 383, 384),
-(189, 183, NULL, NULL, 'isAuthorized', 385, 386),
-(190, 1, NULL, NULL, 'Documentos', 388, 401),
-(191, 190, NULL, NULL, 'index', 389, 390),
-(192, 190, NULL, NULL, 'view', 391, 392),
-(193, 190, NULL, NULL, 'add', 393, 394),
-(194, 190, NULL, NULL, 'edit', 395, 396),
-(195, 190, NULL, NULL, 'delete', 397, 398),
-(196, 190, NULL, NULL, 'isAuthorized', 399, 400),
-(197, 1, NULL, NULL, 'Bancos', 402, 415),
-(198, 197, NULL, NULL, 'index', 403, 404),
-(199, 197, NULL, NULL, 'view', 405, 406),
-(200, 197, NULL, NULL, 'add', 407, 408),
-(201, 197, NULL, NULL, 'edit', 409, 410),
-(202, 197, NULL, NULL, 'delete', 411, 412),
-(203, 197, NULL, NULL, 'isAuthorized', 413, 414),
-(204, 1, NULL, NULL, 'Acl', 416, 417),
-(205, 1, NULL, NULL, 'Bake', 418, 419),
-(206, 1, NULL, NULL, 'DebugKit', 420, 435),
-(207, 206, NULL, NULL, 'Panels', 421, 426),
-(208, 207, NULL, NULL, 'index', 422, 423),
-(209, 207, NULL, NULL, 'view', 424, 425),
-(210, 206, NULL, NULL, 'Toolbar', 427, 430),
-(211, 210, NULL, NULL, 'clearCache', 428, 429),
-(212, 206, NULL, NULL, 'Requests', 431, 434),
-(213, 212, NULL, NULL, 'view', 432, 433),
-(214, 1, NULL, NULL, 'Migrations', 436, 437),
-(215, 1, NULL, NULL, 'Menus', 438, 451),
-(216, 215, NULL, NULL, 'index', 439, 440),
-(217, 215, NULL, NULL, 'view', 441, 442),
-(218, 215, NULL, NULL, 'add', 443, 444),
-(219, 215, NULL, NULL, 'edit', 445, 446),
-(220, 215, NULL, NULL, 'delete', 447, 448),
-(221, 215, NULL, NULL, 'isAuthorized', 449, 450),
-(222, 1, NULL, NULL, 'Links', 452, 465),
-(223, 222, NULL, NULL, 'index', 453, 454),
-(224, 222, NULL, NULL, 'view', 455, 456),
-(225, 222, NULL, NULL, 'add', 457, 458),
-(226, 222, NULL, NULL, 'edit', 459, 460),
-(227, 222, NULL, NULL, 'delete', 461, 462),
-(228, 222, NULL, NULL, 'isAuthorized', 463, 464),
-(229, 160, NULL, NULL, 'info', 337, 338),
-(230, 1, NULL, NULL, 'Cajas', 466, 479),
-(231, 230, NULL, NULL, 'index', 467, 468),
-(232, 230, NULL, NULL, 'view', 469, 470),
-(233, 230, NULL, NULL, 'add', 471, 472),
-(234, 230, NULL, NULL, 'edit', 473, 474),
-(235, 230, NULL, NULL, 'delete', 475, 476),
-(236, 230, NULL, NULL, 'isAuthorized', 477, 478),
-(237, 1, NULL, NULL, 'Cargos', 480, 493),
-(238, 237, NULL, NULL, 'index', 481, 482),
-(239, 237, NULL, NULL, 'view', 483, 484),
-(240, 237, NULL, NULL, 'add', 485, 486),
-(241, 237, NULL, NULL, 'edit', 487, 488),
-(242, 237, NULL, NULL, 'delete', 489, 490),
-(243, 237, NULL, NULL, 'isAuthorized', 491, 492),
-(244, 1, NULL, NULL, 'LibroCajas', 494, 507),
-(245, 244, NULL, NULL, 'index', 495, 496),
-(246, 244, NULL, NULL, 'view', 497, 498),
-(247, 244, NULL, NULL, 'add', 499, 500),
-(248, 244, NULL, NULL, 'edit', 501, 502),
-(249, 244, NULL, NULL, 'delete', 503, 504),
-(250, 244, NULL, NULL, 'isAuthorized', 505, 506),
-(258, 1, NULL, NULL, 'CajasMovimientos', 508, 521),
-(259, 258, NULL, NULL, 'index', 509, 510),
-(260, 258, NULL, NULL, 'view', 511, 512),
-(261, 258, NULL, NULL, 'add', 513, 514),
-(262, 258, NULL, NULL, 'edit', 515, 516),
-(263, 258, NULL, NULL, 'delete', 517, 518),
-(264, 258, NULL, NULL, 'isAuthorized', 519, 520),
+(99, 1, NULL, NULL, 'Impuestos', 204, 217),
+(100, 99, NULL, NULL, 'index', 205, 206),
+(101, 99, NULL, NULL, 'view', 207, 208),
+(102, 99, NULL, NULL, 'add', 209, 210),
+(103, 99, NULL, NULL, 'edit', 211, 212),
+(104, 99, NULL, NULL, 'delete', 213, 214),
+(105, 99, NULL, NULL, 'isAuthorized', 215, 216),
+(106, 1, NULL, NULL, 'OrdenComprasDetalle', 218, 223),
+(107, 106, NULL, NULL, 'delete', 219, 220),
+(108, 106, NULL, NULL, 'isAuthorized', 221, 222),
+(109, 1, NULL, NULL, 'Ingresos', 224, 237),
+(110, 109, NULL, NULL, 'index', 225, 226),
+(111, 109, NULL, NULL, 'view', 227, 228),
+(112, 109, NULL, NULL, 'add', 229, 230),
+(113, 109, NULL, NULL, 'edit', 231, 232),
+(114, 109, NULL, NULL, 'delete', 233, 234),
+(115, 109, NULL, NULL, 'isAuthorized', 235, 236),
+(116, 1, NULL, NULL, 'ArticuloPrecios', 238, 251),
+(117, 116, NULL, NULL, 'index', 239, 240),
+(118, 116, NULL, NULL, 'view', 241, 242),
+(119, 116, NULL, NULL, 'add', 243, 244),
+(120, 116, NULL, NULL, 'edit', 245, 246),
+(121, 116, NULL, NULL, 'delete', 247, 248),
+(122, 116, NULL, NULL, 'isAuthorized', 249, 250),
+(123, 1, NULL, NULL, 'Monedas', 252, 265),
+(124, 123, NULL, NULL, 'index', 253, 254),
+(125, 123, NULL, NULL, 'view', 255, 256),
+(126, 123, NULL, NULL, 'add', 257, 258),
+(127, 123, NULL, NULL, 'edit', 259, 260),
+(128, 123, NULL, NULL, 'delete', 261, 262),
+(129, 123, NULL, NULL, 'isAuthorized', 263, 264),
+(130, 1, NULL, NULL, 'Pages', 266, 271),
+(131, 130, NULL, NULL, 'display', 267, 268),
+(132, 130, NULL, NULL, 'isAuthorized', 269, 270),
+(133, 1, NULL, NULL, 'Guias', 272, 285),
+(134, 133, NULL, NULL, 'index', 273, 274),
+(135, 133, NULL, NULL, 'view', 275, 276),
+(136, 133, NULL, NULL, 'add', 277, 278),
+(137, 133, NULL, NULL, 'edit', 279, 280),
+(138, 133, NULL, NULL, 'delete', 281, 282),
+(139, 133, NULL, NULL, 'isAuthorized', 283, 284),
+(140, 1, NULL, NULL, 'IngresosDetalle', 286, 291),
+(141, 140, NULL, NULL, 'delete', 287, 288),
+(142, 140, NULL, NULL, 'isAuthorized', 289, 290),
+(143, 1, NULL, NULL, 'Docseries', 292, 305),
+(144, 143, NULL, NULL, 'index', 293, 294),
+(145, 143, NULL, NULL, 'view', 295, 296),
+(146, 143, NULL, NULL, 'add', 297, 298),
+(147, 143, NULL, NULL, 'edit', 299, 300),
+(148, 143, NULL, NULL, 'delete', 301, 302),
+(149, 143, NULL, NULL, 'isAuthorized', 303, 304),
+(150, 1, NULL, NULL, 'ArticulosInfo', 306, 311),
+(151, 150, NULL, NULL, 'index', 307, 308),
+(152, 150, NULL, NULL, 'isAuthorized', 309, 310),
+(153, 1, NULL, NULL, 'Distritos', 312, 325),
+(154, 153, NULL, NULL, 'index', 313, 314),
+(155, 153, NULL, NULL, 'view', 315, 316),
+(156, 153, NULL, NULL, 'add', 317, 318),
+(157, 153, NULL, NULL, 'edit', 319, 320),
+(158, 153, NULL, NULL, 'delete', 321, 322),
+(159, 153, NULL, NULL, 'isAuthorized', 323, 324),
+(160, 1, NULL, NULL, 'OrdenVentas', 326, 343),
+(161, 160, NULL, NULL, 'index', 327, 328),
+(162, 160, NULL, NULL, 'view', 329, 330),
+(163, 160, NULL, NULL, 'add', 331, 332),
+(164, 160, NULL, NULL, 'edit', 333, 334),
+(165, 160, NULL, NULL, 'delete', 335, 336),
+(166, 160, NULL, NULL, 'isAuthorized', 337, 338),
+(167, 1, NULL, NULL, 'ListaPrecios', 344, 357),
+(168, 167, NULL, NULL, 'index', 345, 346),
+(169, 167, NULL, NULL, 'view', 347, 348),
+(170, 167, NULL, NULL, 'add', 349, 350),
+(171, 167, NULL, NULL, 'edit', 351, 352),
+(172, 167, NULL, NULL, 'delete', 353, 354),
+(173, 167, NULL, NULL, 'isAuthorized', 355, 356),
+(174, 1, NULL, NULL, 'Users', 358, 375),
+(175, 174, NULL, NULL, 'index', 359, 360),
+(176, 174, NULL, NULL, 'view', 361, 362),
+(177, 174, NULL, NULL, 'add', 363, 364),
+(178, 174, NULL, NULL, 'edit', 365, 366),
+(179, 174, NULL, NULL, 'delete', 367, 368),
+(180, 174, NULL, NULL, 'login', 369, 370),
+(181, 174, NULL, NULL, 'logout', 371, 372),
+(182, 174, NULL, NULL, 'isAuthorized', 373, 374),
+(183, 1, NULL, NULL, 'Roles', 376, 389),
+(184, 183, NULL, NULL, 'index', 377, 378),
+(185, 183, NULL, NULL, 'view', 379, 380),
+(186, 183, NULL, NULL, 'add', 381, 382),
+(187, 183, NULL, NULL, 'edit', 383, 384),
+(188, 183, NULL, NULL, 'delete', 385, 386),
+(189, 183, NULL, NULL, 'isAuthorized', 387, 388),
+(190, 1, NULL, NULL, 'Documentos', 390, 403),
+(191, 190, NULL, NULL, 'index', 391, 392),
+(192, 190, NULL, NULL, 'view', 393, 394),
+(193, 190, NULL, NULL, 'add', 395, 396),
+(194, 190, NULL, NULL, 'edit', 397, 398),
+(195, 190, NULL, NULL, 'delete', 399, 400),
+(196, 190, NULL, NULL, 'isAuthorized', 401, 402),
+(197, 1, NULL, NULL, 'Bancos', 404, 417),
+(198, 197, NULL, NULL, 'index', 405, 406),
+(199, 197, NULL, NULL, 'view', 407, 408),
+(200, 197, NULL, NULL, 'add', 409, 410),
+(201, 197, NULL, NULL, 'edit', 411, 412),
+(202, 197, NULL, NULL, 'delete', 413, 414),
+(203, 197, NULL, NULL, 'isAuthorized', 415, 416),
+(204, 1, NULL, NULL, 'Acl', 418, 419),
+(205, 1, NULL, NULL, 'Bake', 420, 421),
+(206, 1, NULL, NULL, 'DebugKit', 422, 437),
+(207, 206, NULL, NULL, 'Panels', 423, 428),
+(208, 207, NULL, NULL, 'index', 424, 425),
+(209, 207, NULL, NULL, 'view', 426, 427),
+(210, 206, NULL, NULL, 'Toolbar', 429, 432),
+(211, 210, NULL, NULL, 'clearCache', 430, 431),
+(212, 206, NULL, NULL, 'Requests', 433, 436),
+(213, 212, NULL, NULL, 'view', 434, 435),
+(214, 1, NULL, NULL, 'Migrations', 438, 439),
+(215, 1, NULL, NULL, 'Menus', 440, 453),
+(216, 215, NULL, NULL, 'index', 441, 442),
+(217, 215, NULL, NULL, 'view', 443, 444),
+(218, 215, NULL, NULL, 'add', 445, 446),
+(219, 215, NULL, NULL, 'edit', 447, 448),
+(220, 215, NULL, NULL, 'delete', 449, 450),
+(221, 215, NULL, NULL, 'isAuthorized', 451, 452),
+(222, 1, NULL, NULL, 'Links', 454, 467),
+(223, 222, NULL, NULL, 'index', 455, 456),
+(224, 222, NULL, NULL, 'view', 457, 458),
+(225, 222, NULL, NULL, 'add', 459, 460),
+(226, 222, NULL, NULL, 'edit', 461, 462),
+(227, 222, NULL, NULL, 'delete', 463, 464),
+(228, 222, NULL, NULL, 'isAuthorized', 465, 466),
+(229, 160, NULL, NULL, 'info', 339, 340),
+(230, 1, NULL, NULL, 'Cajas', 468, 481),
+(231, 230, NULL, NULL, 'index', 469, 470),
+(232, 230, NULL, NULL, 'view', 471, 472),
+(233, 230, NULL, NULL, 'add', 473, 474),
+(234, 230, NULL, NULL, 'edit', 475, 476),
+(235, 230, NULL, NULL, 'delete', 477, 478),
+(236, 230, NULL, NULL, 'isAuthorized', 479, 480),
+(237, 1, NULL, NULL, 'Cargos', 482, 495),
+(238, 237, NULL, NULL, 'index', 483, 484),
+(239, 237, NULL, NULL, 'view', 485, 486),
+(240, 237, NULL, NULL, 'add', 487, 488),
+(241, 237, NULL, NULL, 'edit', 489, 490),
+(242, 237, NULL, NULL, 'delete', 491, 492),
+(243, 237, NULL, NULL, 'isAuthorized', 493, 494),
+(244, 1, NULL, NULL, 'LibroCajas', 496, 509),
+(245, 244, NULL, NULL, 'index', 497, 498),
+(246, 244, NULL, NULL, 'view', 499, 500),
+(247, 244, NULL, NULL, 'add', 501, 502),
+(248, 244, NULL, NULL, 'edit', 503, 504),
+(249, 244, NULL, NULL, 'delete', 505, 506),
+(250, 244, NULL, NULL, 'isAuthorized', 507, 508),
+(258, 1, NULL, NULL, 'CajasMovimientos', 510, 523),
+(259, 258, NULL, NULL, 'index', 511, 512),
+(260, 258, NULL, NULL, 'view', 513, 514),
+(261, 258, NULL, NULL, 'add', 515, 516),
+(262, 258, NULL, NULL, 'edit', 517, 518),
+(263, 258, NULL, NULL, 'delete', 519, 520),
+(264, 258, NULL, NULL, 'isAuthorized', 521, 522),
 (266, 9, NULL, NULL, 'ctacobrar', 29, 30),
 (267, 47, NULL, NULL, 'ctapagar', 109, 110),
-(268, 1, NULL, NULL, 'Ctacorrientes', 522, 535),
-(269, 268, NULL, NULL, 'index', 523, 524),
-(270, 268, NULL, NULL, 'view', 525, 526),
-(271, 268, NULL, NULL, 'add', 527, 528),
-(272, 268, NULL, NULL, 'edit', 529, 530),
-(273, 268, NULL, NULL, 'delete', 531, 532),
-(274, 268, NULL, NULL, 'isAuthorized', 533, 534),
-(275, 160, NULL, NULL, 'pos', 339, 340),
-(276, 1, NULL, NULL, 'PosSettings', 536, 549),
-(277, 276, NULL, NULL, 'index', 537, 538),
-(278, 276, NULL, NULL, 'view', 539, 540),
-(279, 276, NULL, NULL, 'add', 541, 542),
-(280, 276, NULL, NULL, 'edit', 543, 544),
-(281, 276, NULL, NULL, 'delete', 545, 546),
-(282, 276, NULL, NULL, 'isAuthorized', 547, 548);
+(268, 1, NULL, NULL, 'Ctacorrientes', 524, 537),
+(269, 268, NULL, NULL, 'index', 525, 526),
+(270, 268, NULL, NULL, 'view', 527, 528),
+(271, 268, NULL, NULL, 'add', 529, 530),
+(272, 268, NULL, NULL, 'edit', 531, 532),
+(273, 268, NULL, NULL, 'delete', 533, 534),
+(274, 268, NULL, NULL, 'isAuthorized', 535, 536),
+(275, 160, NULL, NULL, 'pos', 341, 342),
+(276, 1, NULL, NULL, 'PosSettings', 538, 551),
+(277, 276, NULL, NULL, 'index', 539, 540),
+(278, 276, NULL, NULL, 'view', 541, 542),
+(279, 276, NULL, NULL, 'add', 543, 544),
+(280, 276, NULL, NULL, 'edit', 545, 546),
+(281, 276, NULL, NULL, 'delete', 547, 548),
+(282, 276, NULL, NULL, 'isAuthorized', 549, 550),
+(283, 91, NULL, NULL, 'printer', 201, 202);
 
 -- --------------------------------------------------------
 
@@ -356,7 +357,7 @@ CREATE TABLE IF NOT EXISTS `addresses` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `socio_id_fk_idx` (`socio_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `addresses`
@@ -365,7 +366,8 @@ CREATE TABLE IF NOT EXISTS `addresses` (
 INSERT INTO `addresses` (`id`, `departamento_id`, `provincia_id`, `distrito_id`, `zona`, `direccion`, `socio_id`) VALUES
 (1, 1, 1, 4, 'BELLAVISTA NANAY', 'AV LA MARINA 685', 5),
 (2, 1, 1, 4, '', 'CALLE MISTI 485', 6),
-(3, 16, 142, 1, '', '', 8);
+(3, 16, 142, 1, '', '', 8),
+(4, 4, 35, 0, 'CERCADO', 'CALLE TOMAS VALLE 265', 9);
 
 -- --------------------------------------------------------
 
@@ -531,15 +533,15 @@ CREATE TABLE IF NOT EXISTS `articulos_info` (
 
 INSERT INTO `articulos_info` (`id`, `articulo_id`, `deposito_id`, `lista_precio_id`, `articulo_precio_id`, `existencia`, `reservada`, `disponible`) VALUES
 (1, 1, 1, 1, 2, '0.00', '0.00', '0.00'),
-(2, 2, 1, 1, 3, '0.00', '0.00', '0.00'),
+(2, 2, 1, 1, 3, '-2.00', '0.00', '-2.00'),
 (3, 1, 1, 2, 4, '0.00', '0.00', '0.00'),
-(4, 2, 1, 2, 5, '0.00', '0.00', '0.00'),
+(4, 2, 1, 2, 5, '-2.00', '0.00', '-2.00'),
 (5, 1, 2, 1, 6, '0.00', '0.00', '0.00'),
 (6, 2, 2, 1, 7, '0.00', '0.00', '0.00'),
 (7, 1, 2, 2, 8, '0.00', '0.00', '0.00'),
 (8, 2, 2, 2, 9, '0.00', '0.00', '0.00'),
-(10, 3, 1, 1, 12, '0.00', '0.00', '0.00'),
-(11, 3, 1, 2, 13, '0.00', '0.00', '0.00'),
+(10, 3, 1, 1, 12, '-3.00', '0.00', '-3.00'),
+(11, 3, 1, 2, 13, '-3.00', '0.00', '-3.00'),
 (12, 4, 1, 1, 14, '1.00', '0.00', '1.00'),
 (13, 4, 1, 2, 15, '1.00', '0.00', '1.00'),
 (14, 5, 1, 1, 16, '0.00', '0.00', '0.00'),
@@ -548,12 +550,12 @@ INSERT INTO `articulos_info` (`id`, `articulo_id`, `deposito_id`, `lista_precio_
 (17, 6, 1, 2, 19, '0.00', '0.00', '0.00'),
 (18, 7, 1, 1, 20, '0.00', '0.00', '0.00'),
 (19, 7, 1, 2, 21, '0.00', '0.00', '0.00'),
-(20, 8, 1, 1, 22, '15.00', '0.00', '15.00'),
-(21, 8, 1, 2, 23, '15.00', '0.00', '15.00'),
-(22, 9, 1, 1, 24, '10.00', '0.00', '10.00'),
-(23, 9, 1, 2, 25, '10.00', '0.00', '10.00'),
-(24, 10, 1, 1, 26, '100.00', '0.00', '100.00'),
-(25, 10, 1, 2, 27, '100.00', '0.00', '100.00'),
+(20, 8, 1, 1, 22, '10.00', '0.00', '10.00'),
+(21, 8, 1, 2, 23, '10.00', '0.00', '10.00'),
+(22, 9, 1, 1, 24, '15.00', '0.00', '15.00'),
+(23, 9, 1, 2, 25, '15.00', '0.00', '15.00'),
+(24, 10, 1, 1, 26, '200.00', '0.00', '200.00'),
+(25, 10, 1, 2, 27, '200.00', '0.00', '200.00'),
 (26, 11, 1, 1, 28, '25.00', '0.00', '25.00'),
 (27, 11, 1, 2, 29, '25.00', '0.00', '25.00'),
 (28, 12, 1, 1, 30, '0.00', '0.00', '0.00'),
@@ -688,18 +690,21 @@ CREATE TABLE IF NOT EXISTS `cajas` (
   `estado` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1=Activo\n2=Procesado',
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL,
+  `user_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `libro_caja_id_fk_caja_idx` (`libro_caja_id`),
   KEY `deposito_id_idx` (`deposito_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `cajas`
 --
 
-INSERT INTO `cajas` (`id`, `libro_caja_id`, `deposito_id`, `nombre`, `descripcion`, `fecha`, `fecha_cierre`, `estado`, `created`, `updated`) VALUES
-(1, 1, 1, 'Caja Menor 15-03-2016 10:46', '', '2016-03-15', NULL, 1, '2016-03-15 10:44:42', '0000-00-00 00:00:00'),
-(2, 1, 1, 'Caja Menor 16-03-2016 10:42', '', '2016-03-16', NULL, 1, '2016-03-16 10:42:31', '0000-00-00 00:00:00');
+INSERT INTO `cajas` (`id`, `libro_caja_id`, `deposito_id`, `nombre`, `descripcion`, `fecha`, `fecha_cierre`, `estado`, `created`, `updated`, `user_id`) VALUES
+(1, 1, 1, 'Caja Menor 15-03-2016 10:46', '', '2016-03-15', NULL, 1, '2016-03-15 10:44:42', '0000-00-00 00:00:00', 0),
+(2, 1, 1, 'Caja Menor 16-03-2016 10:42', '', '2016-03-16', NULL, 1, '2016-03-16 10:42:31', '0000-00-00 00:00:00', 0),
+(3, 1, 1, 'Caja PDV admin 2016-04-07 15:56', NULL, '2016-04-07', NULL, 1, '2016-04-07 15:56:56', '0000-00-00 00:00:00', 5),
+(4, 1, 1, 'Caja PDV admin 2016-04-08 07:59', NULL, '2016-04-08', NULL, 1, '2016-04-08 07:59:23', '0000-00-00 00:00:00', 5);
 
 -- --------------------------------------------------------
 
@@ -729,23 +734,28 @@ CREATE TABLE IF NOT EXISTS `cajas_movimientos` (
   `descripcion` varchar(150) DEFAULT NULL,
   `metodo_pago_id` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '''0''=>''Efectivo'',''1''=>''Tarjeta Crédito/Débito'',''2''=>''Deposito'',''3''=>''Cheque''',
   `ctacorriente_destino_id` bigint(20) unsigned DEFAULT NULL,
+  `paga_con` decimal(10,2) DEFAULT NULL,
+  `cambio` decimal(10,2) DEFAULT NULL,
+  `tipo_tarjeta` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `caja_id_fk_cm_idx` (`caja_id`),
   KEY `cargo_id_fk_cm_idx` (`cargo_id`),
   KEY `compra_id_fk_cm_idx` (`compra_id`),
   KEY `venta_id_fk_cm_idx` (`venta_id`),
   KEY `ctacorriente_id_fk_cm_idx` (`ctacorriente_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Volcado de datos para la tabla `cajas_movimientos`
 --
 
-INSERT INTO `cajas_movimientos` (`id`, `caja_id`, `ctacorriente_id`, `compra_id`, `venta_id`, `cargo_id`, `moneda_id`, `concepto`, `tipo_cambio`, `entrada`, `salida`, `created`, `modified`, `tipo_movimiento`, `user_id`, `socio_id`, `compra_text`, `venta_text`, `descripcion`, `metodo_pago_id`, `ctacorriente_destino_id`) VALUES
-(1, 2, 1, NULL, 6, NULL, 1, 'Cobro de Factura: 1-5', '1.00', '40.12', NULL, '2016-03-16 17:50:56', '2016-03-16 17:50:56', 0, 5, 5, '', '6_2016-03-16_40.12', '4140-6881-7105-3379', 1, NULL),
-(2, 2, NULL, NULL, 7, NULL, 1, 'Cobro de Factura: 1-6', '1.00', '8.02', NULL, '2016-03-16 17:53:24', '2016-03-16 17:53:24', 0, 5, 5, '', '7_2016-03-16_8.02', '', 0, NULL),
-(3, 2, NULL, 4, NULL, NULL, 1, 'Pago de Factura: 002-03601', '1.00', '0.00', '27.73', '2016-03-16 17:53:37', '2016-03-16 17:53:37', 1, 5, 2, '4_2016-03-16_27.73', '', '', 0, NULL),
-(4, 2, 1, 3, NULL, NULL, 1, 'Pago de Factura: 001-014901', '1.00', '0.00', '133.34', '2016-03-16 23:15:30', '2016-03-16 23:15:30', 1, 5, 2, '3_2016-03-16_133.34', '', 'Nro. Operación 3540', 2, 2);
+INSERT INTO `cajas_movimientos` (`id`, `caja_id`, `ctacorriente_id`, `compra_id`, `venta_id`, `cargo_id`, `moneda_id`, `concepto`, `tipo_cambio`, `entrada`, `salida`, `created`, `modified`, `tipo_movimiento`, `user_id`, `socio_id`, `compra_text`, `venta_text`, `descripcion`, `metodo_pago_id`, `ctacorriente_destino_id`, `paga_con`, `cambio`, `tipo_tarjeta`) VALUES
+(1, 2, 1, NULL, 6, NULL, 1, 'Cobro de Factura: 1-5', '1.00', '40.12', NULL, '2016-03-16 17:50:56', '2016-03-16 17:50:56', 0, 5, 5, '', '6_2016-03-16_40.12', '4140-6881-7105-3379', 1, NULL, NULL, NULL, NULL),
+(2, 2, NULL, NULL, 7, NULL, 1, 'Cobro de Factura: 1-6', '1.00', '8.02', NULL, '2016-03-16 17:53:24', '2016-03-16 17:53:24', 0, 5, 5, '', '7_2016-03-16_8.02', '', 0, NULL, NULL, NULL, NULL),
+(3, 2, NULL, 4, NULL, NULL, 1, 'Pago de Factura: 002-03601', '1.00', '0.00', '27.73', '2016-03-16 17:53:37', '2016-03-16 17:53:37', 1, 5, 2, '4_2016-03-16_27.73', '', '', 0, NULL, NULL, NULL, NULL),
+(4, 2, 1, 3, NULL, NULL, 1, 'Pago de Factura: 001-014901', '1.00', '0.00', '133.34', '2016-03-16 23:15:30', '2016-03-16 23:15:30', 1, 5, 2, '3_2016-03-16_133.34', '', 'Nro. Operación 3540', 2, 2, NULL, NULL, NULL),
+(5, 3, NULL, NULL, 12, NULL, 1, 'Cobro de TICKET BOLETA 1-4', '1.00', '13.69', NULL, '2016-04-07 16:08:23', '2016-04-07 16:08:23', 0, 5, 8, NULL, '12_2016-04-07_13.69', NULL, 0, NULL, '20.00', '6.31', NULL),
+(6, 3, 1, NULL, 14, NULL, 1, 'Cobro de TICKET FACTURA 1-1', '1.00', '20.53', NULL, '2016-04-07 18:10:47', '2016-04-07 18:10:47', 0, 5, 1, NULL, '14_2016-04-07_20.53', '', 2, NULL, NULL, NULL, 0);
 
 --
 -- Disparadores `cajas_movimientos`
@@ -839,7 +849,7 @@ CREATE TABLE IF NOT EXISTS `compras` (
   KEY `socio_id_fk_com_idx` (`socio_id`),
   KEY `orden_compra_id_fk_com_idx` (`orden_compra_id`),
   KEY `ingreso_id_fk_com_idx` (`ingreso_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Volcado de datos para la tabla `compras`
@@ -848,7 +858,8 @@ CREATE TABLE IF NOT EXISTS `compras` (
 INSERT INTO `compras` (`id`, `socio_id`, `orden_compra_id`, `ingreso_id`, `serie`, `numero`, `fecha`, `estado`, `total`, `impuesto`, `grantotal`, `pagado`, `created`, `modified`, `saldo`) VALUES
 (3, 2, 15, NULL, '001', '014901', '2016-03-16', 1, '113.00', '20.34', '133.34', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
 (4, 2, 16, NULL, '002', '03601', '2016-03-16', 1, '23.50', '4.23', '27.73', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
-(5, 2, 17, NULL, '002', '001546', '2016-03-16', 1, '252.70', '45.49', '298.19', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL);
+(5, 2, 17, NULL, '002', '001546', '2016-03-16', 1, '252.70', '45.49', '298.19', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
+(6, 2, 18, NULL, '002', '1545', '2016-04-07', 1, '75.50', '13.59', '89.09', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL);
 
 --
 -- Disparadores `compras`
@@ -881,7 +892,7 @@ CREATE TABLE IF NOT EXISTS `compras_detalle` (
   PRIMARY KEY (`id`),
   KEY `compra_id_fk_comdet_idx` (`compra_id`),
   KEY `articulo_id_fk_comdet_idx` (`articulo_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Volcado de datos para la tabla `compras_detalle`
@@ -896,7 +907,9 @@ INSERT INTO `compras_detalle` (`id`, `compra_id`, `articulo_id`, `cantidad`, `pr
 (13, 5, 10, '1.00', '0.50', 0, '18.00'),
 (14, 5, 9, '10.00', '5.10', 0, '18.00'),
 (15, 5, 4, '1.00', '112.00', 0, '18.00'),
-(16, 5, 11, '25.00', '3.40', 0, '18.00');
+(16, 5, 11, '25.00', '3.40', 0, '18.00'),
+(17, 6, 10, '100.00', '0.50', 0, '18.00'),
+(18, 6, 9, '5.00', '5.10', 0, '18.00');
 
 -- --------------------------------------------------------
 
@@ -1011,7 +1024,7 @@ CREATE TABLE IF NOT EXISTS `distritos` (
   PRIMARY KEY (`id`),
   KEY `provincia_id_fk_idx` (`provincia_id`),
   KEY `departamento_id_fk_dist_idx` (`departamento_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Volcado de datos para la tabla `distritos`
@@ -1021,7 +1034,9 @@ INSERT INTO `distritos` (`id`, `nombre`, `provincia_id`, `departamento_id`) VALU
 (1, 'IQUITOS', 142, 16),
 (2, 'PUNCHANA', 142, 16),
 (3, 'SAN JUAN BAUTISTA', 142, 16),
-(4, 'BELEN', 142, 16);
+(4, 'BELEN', 142, 16),
+(5, 'AREQUIPA', 35, 4),
+(6, 'CAYMA', 35, 4);
 
 --
 -- Disparadores `distritos`
@@ -1059,13 +1074,13 @@ CREATE TABLE IF NOT EXISTS `docseries` (
 
 INSERT INTO `docseries` (`id`, `documento_id`, `deposito_id`, `serie`, `numero`, `tipo`) VALUES
 (1, 1, 1, 001, 0000004, 0),
-(2, 2, 1, 001, 0000007, 0),
-(3, 3, 1, 001, 0000012, 2),
+(2, 2, 1, 001, 0000008, 0),
+(3, 3, 1, 001, 0000013, 2),
 (4, 1, 2, 002, 0001001, 0),
 (5, 2, 2, 002, 0010001, 0),
-(6, 4, 1, 001, 0000001, 2),
-(7, 5, 1, 001, 0000001, 0),
-(8, 6, 1, 001, 0000001, 0);
+(6, 4, 1, 001, 0000014, 2),
+(7, 5, 1, 001, 0000005, 0),
+(8, 6, 1, 001, 0000002, 0);
 
 -- --------------------------------------------------------
 
@@ -1116,18 +1131,19 @@ CREATE TABLE IF NOT EXISTS `forma_pagos` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
   `cantidad` int(11) NOT NULL DEFAULT '0' COMMENT 'cantidad de dias',
+  `sistema` tinyint(3) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `forma_pagos`
 --
 
-INSERT INTO `forma_pagos` (`id`, `nombre`, `cantidad`) VALUES
-(1, 'EFECTIVO', 0),
-(2, 'CRÉDITO 30 DIAS', 30),
-(3, 'TARJETA DE CRÉDITO', 0),
-(4, 'CHEQUE', 0);
+INSERT INTO `forma_pagos` (`id`, `nombre`, `cantidad`, `sistema`) VALUES
+(1, 'EFECTIVO', 0, 0),
+(2, 'TARJETA DE CREDITO/DEBITO', 0, 0),
+(3, 'CHEQUE/DEPOSITO', 0, 0),
+(5, 'CRÉDITO 30 DIAS', 30, 1);
 
 -- --------------------------------------------------------
 
@@ -1154,7 +1170,7 @@ CREATE TABLE IF NOT EXISTS `guias` (
   KEY `orden_venta_id_fk_gr_idx` (`orden_venta_id`),
   KEY `documento_id_fk_gr_idx` (`documento_id`),
   KEY `deposito_id_fk_gr_idx` (`deposito_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Volcado de datos para la tabla `guias`
@@ -1162,7 +1178,10 @@ CREATE TABLE IF NOT EXISTS `guias` (
 
 INSERT INTO `guias` (`id`, `deposito_id`, `orden_venta_id`, `socio_id`, `documento_id`, `direccion`, `fecha`, `serie`, `numero`, `docserie_id`, `codigo_unico`, `estado`) VALUES
 (3, 1, 3, 5, 3, 'AV. 28 DE JULIO 572', '2016-03-16', 001, 0000010, 3, '1.10.3.1', 1),
-(4, 1, 5, 5, 3, 'CALLE 11 DE MAYO LAS MALVINAS PUNCHA', '2016-03-16', 001, 0000011, 3, '1.11.3.1', 1);
+(4, 1, 5, 5, 3, 'CALLE 11 DE MAYO LAS MALVINAS PUNCHA', '2016-03-16', 001, 0000011, 3, '1.11.3.1', 1),
+(16, 1, 28, 8, 4, ' ', '2016-04-07', 001, 0000012, 6, '1.12.6.1', 1),
+(17, 1, 29, 1, 3, ' ', '2016-04-07', 001, 0000012, 3, '1.12.3.1', 1),
+(18, 1, 30, 1, 4, ' ', '2016-04-07', 001, 0000013, 6, '1.13.6.1', 1);
 
 --
 -- Disparadores `guias`
@@ -1203,7 +1222,7 @@ CREATE TABLE IF NOT EXISTS `guias_detalle` (
   PRIMARY KEY (`id`),
   KEY `guia_id_fk_gd_idx` (`guia_id`),
   KEY `articulo_id_fk_gd_idx` (`articulo_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Volcado de datos para la tabla `guias_detalle`
@@ -1213,7 +1232,11 @@ INSERT INTO `guias_detalle` (`id`, `guia_id`, `articulo_id`, `cantidad`, `descri
 (8, 3, 8, '5.00', NULL, 1, 1),
 (9, 3, 10, '5.00', NULL, 1, 1),
 (10, 4, 8, '1.00', NULL, 1, 1),
-(11, 4, 10, '1.00', NULL, 1, 1);
+(11, 4, 10, '1.00', NULL, 1, 1),
+(21, 16, 8, '2.00', NULL, 1, 1),
+(22, 17, 3, '3.00', NULL, 1, 1),
+(23, 17, 2, '2.00', NULL, 1, 1),
+(24, 18, 8, '3.00', NULL, 1, 1);
 
 --
 -- Disparadores `guias_detalle`
@@ -1299,7 +1322,7 @@ CREATE TABLE IF NOT EXISTS `ingresos` (
   KEY `socio_id_fk_ing_idx` (`socio_id`),
   KEY `orden_compra_id_fk_ing_idx` (`orden_compra_id`),
   KEY `deposito_id_fk_ing_idx` (`deposito_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `ingresos`
@@ -1308,7 +1331,8 @@ CREATE TABLE IF NOT EXISTS `ingresos` (
 INSERT INTO `ingresos` (`id`, `deposito_id`, `socio_id`, `orden_compra_id`, `fecha`, `estado`) VALUES
 (4, 1, 2, 15, '2016-03-16', 1),
 (5, 1, 2, 16, '2016-03-16', 1),
-(6, 1, 2, 17, '2016-03-16', 1);
+(6, 1, 2, 17, '2016-03-16', 1),
+(7, 1, 2, 18, '2016-04-07', 1);
 
 --
 -- Disparadores `ingresos`
@@ -1345,7 +1369,7 @@ CREATE TABLE IF NOT EXISTS `ingresos_detalle` (
   PRIMARY KEY (`id`),
   KEY `ingreso_id_fk_idet_idx` (`ingreso_id`),
   KEY `articulo_id_fk_idet_idx` (`articulo_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Volcado de datos para la tabla `ingresos_detalle`
@@ -1360,7 +1384,9 @@ INSERT INTO `ingresos_detalle` (`id`, `ingreso_id`, `articulo_id`, `cantidad`, `
 (19, 6, 10, '1.00', 1, 1),
 (20, 6, 9, '10.00', 1, 1),
 (21, 6, 4, '1.00', 1, 1),
-(22, 6, 11, '25.00', 1, 1);
+(22, 6, 11, '25.00', 1, 1),
+(23, 7, 10, '100.00', 1, 1),
+(24, 7, 9, '5.00', 1, 1);
 
 --
 -- Disparadores `ingresos_detalle`
@@ -1516,6 +1542,7 @@ CREATE TABLE IF NOT EXISTS `monedas` (
   `nombre` varchar(100) NOT NULL,
   `simbolo` varchar(10) NOT NULL,
   `iso` varchar(10) DEFAULT NULL COMMENT 'NUEVO SOL',
+  `sistema` tinyint(3) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
@@ -1523,8 +1550,8 @@ CREATE TABLE IF NOT EXISTS `monedas` (
 -- Volcado de datos para la tabla `monedas`
 --
 
-INSERT INTO `monedas` (`id`, `nombre`, `simbolo`, `iso`) VALUES
-(1, 'NUEVO SOL', 'S/.', 'PEN');
+INSERT INTO `monedas` (`id`, `nombre`, `simbolo`, `iso`, `sistema`) VALUES
+(1, 'NUEVO SOL', 'S/.', 'PEN', 0);
 
 -- --------------------------------------------------------
 
@@ -1543,18 +1570,22 @@ CREATE TABLE IF NOT EXISTS `orden_compras` (
   `impuesto` decimal(10,2) NOT NULL DEFAULT '0.00',
   `grantotal` decimal(10,2) NOT NULL DEFAULT '0.00',
   `status` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `user_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `socio_id_fk_oc_idx` (`socio_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Volcado de datos para la tabla `orden_compras`
 --
 
-INSERT INTO `orden_compras` (`id`, `socio_id`, `compra_id`, `ingreso_id`, `fecha`, `estado`, `total`, `impuesto`, `grantotal`, `status`) VALUES
-(15, 2, 3, 4, '2016-03-16', 2, '113.00', '20.34', '133.34', 1),
-(16, 2, 4, 5, '2016-03-16', 2, '23.50', '4.23', '27.73', 1),
-(17, 2, 5, 6, '2016-03-16', 2, '252.70', '45.49', '298.19', 1);
+INSERT INTO `orden_compras` (`id`, `socio_id`, `compra_id`, `ingreso_id`, `fecha`, `estado`, `total`, `impuesto`, `grantotal`, `status`, `user_id`, `created`, `modified`) VALUES
+(15, 2, 3, 4, '2016-03-16', 2, '113.00', '20.34', '133.34', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(16, 2, 4, 5, '2016-03-16', 2, '23.50', '4.23', '27.73', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, 2, 5, 6, '2016-03-16', 2, '252.70', '45.49', '298.19', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(18, 2, 6, 7, '2016-04-07', 2, '75.50', '13.59', '89.09', 1, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1573,7 +1604,7 @@ CREATE TABLE IF NOT EXISTS `orden_compras_detalle` (
   PRIMARY KEY (`id`),
   KEY `orden_compra_id_fk_ocd_idx` (`orden_compra_id`),
   KEY `articulo_id_fk_ocd_idx` (`articulo_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=44 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=46 ;
 
 --
 -- Volcado de datos para la tabla `orden_compras_detalle`
@@ -1588,7 +1619,9 @@ INSERT INTO `orden_compras_detalle` (`id`, `orden_compra_id`, `articulo_id`, `ca
 (40, 17, 10, '1.00', '0.50', 0, '18.00'),
 (41, 17, 9, '10.00', '5.10', 0, '18.00'),
 (42, 17, 4, '1.00', '112.00', 0, '18.00'),
-(43, 17, 11, '25.00', '3.40', 0, '18.00');
+(43, 17, 11, '25.00', '3.40', 0, '18.00'),
+(44, 18, 9, '5.00', '5.10', 0, '18.00'),
+(45, 18, 10, '100.00', '0.50', 0, '18.00');
 
 -- --------------------------------------------------------
 
@@ -1616,7 +1649,7 @@ CREATE TABLE IF NOT EXISTS `orden_ventas` (
   KEY `deposito_id_fk_ov_idx` (`deposito_id`),
   KEY `user_id_fk_ov_idx` (`user_id`),
   KEY `forma_pago_id_fk_ov_idx` (`forma_pago_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
 --
 -- Volcado de datos para la tabla `orden_ventas`
@@ -1624,7 +1657,10 @@ CREATE TABLE IF NOT EXISTS `orden_ventas` (
 
 INSERT INTO `orden_ventas` (`id`, `user_id`, `deposito_id`, `socio_id`, `forma_pago_id`, `fecha`, `estado`, `guia_id`, `venta_id`, `status_venta`, `status_guia`, `total`, `impuesto`, `grantotal`) VALUES
 (3, 5, 1, 5, 1, '2016-03-16', 1, 3, 6, 1, 1, '34.00', '6.12', '40.12'),
-(5, 5, 1, 5, 1, '2016-03-16', 1, 4, 7, 1, 1, '6.80', '1.22', '8.02');
+(5, 5, 1, 5, 1, '2016-03-16', 1, 4, 7, 1, 1, '6.80', '1.22', '8.02'),
+(28, 5, 1, 8, 1, '2016-04-07', 2, 16, 12, 1, 1, '11.60', '2.09', '13.69'),
+(29, 5, 1, 1, 1, '2016-04-07', 1, 17, 13, 1, 1, '10.00', '1.80', '11.80'),
+(30, 5, 1, 1, 2, '2016-04-07', 2, 18, 14, 1, 1, '17.40', '3.13', '20.53');
 
 --
 -- Disparadores `orden_ventas`
@@ -1659,7 +1695,7 @@ CREATE TABLE IF NOT EXISTS `orden_ventas_detalle` (
   PRIMARY KEY (`id`),
   KEY `orden_venta_id_fk_ovd_idx` (`orden_venta_id`),
   KEY `articulo_id_fk_ovd_idx` (`articulo_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
 
 --
 -- Volcado de datos para la tabla `orden_ventas_detalle`
@@ -1669,7 +1705,11 @@ INSERT INTO `orden_ventas_detalle` (`id`, `orden_venta_id`, `articulo_id`, `cant
 (11, 3, 8, '5.00', '5.80', 4, 1, 0, '18.00'),
 (12, 3, 10, '5.00', '1.00', 4, 1, 0, '18.00'),
 (13, 5, 8, '1.00', '5.80', 4, 1, 0, '18.00'),
-(14, 5, 10, '1.00', '1.00', 4, 1, 0, '18.00');
+(14, 5, 10, '1.00', '1.00', 4, 1, 0, '18.00'),
+(46, 28, 8, '2.00', '5.80', 2, 1, 0, '18.00'),
+(47, 29, 3, '3.00', '2.00', 4, 1, 0, '18.00'),
+(48, 29, 2, '2.00', '2.00', 4, 1, 0, '18.00'),
+(49, 30, 8, '3.00', '5.80', 2, 1, 0, '18.00');
 
 --
 -- Disparadores `orden_ventas_detalle`
@@ -2001,7 +2041,7 @@ CREATE TABLE IF NOT EXISTS `socios` (
   `estado` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1= activo\n0=inactivo',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Volcado de datos para la tabla `socios`
@@ -2013,7 +2053,8 @@ INSERT INTO `socios` (`id`, `tipo_doc`, `codigo`, `nombre`, `descripcion`, `tele
 (3, 1, 44729752, 'OMAR SABOYA CARO', '', '253745', '956683860', 'omarsc17@gmail.com', 0, 0, 0, 1, 1),
 (5, 0, 2147483647, 'OBRAS DE INGENIERIA S.A.', 'OBRAINSA', '6164646', '', '', 1, 1, 0, 0, 1),
 (6, 1, 43215925, 'ROSARIO DEL PILAR SANCHEZ AGUILAR', '', '253313', '944649409', 'charito_0625@hotmail.com', 0, 0, 0, 1, 1),
-(8, 1, 0, 'ESTANDAR', 'CLIENTE ESTANDAR PARA VENTAS RAPIDAS CON TICKET', '', '', '', 0, 1, 0, 0, 1);
+(8, 1, 0, 'ESTANDAR', 'CLIENTE ESTANDAR PARA VENTAS RAPIDAS CON TICKET', '', '', '', 0, 1, 0, 0, 1),
+(9, 0, 2147483647, 'GRUPO UPGRADE SAC', '', '256458', '956686414', 'info@grupoupgrade.com', 0, 1, 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -2100,7 +2141,7 @@ CREATE TABLE IF NOT EXISTS `ventas` (
   KEY `deposito_id_fk_v_idx` (`deposito_id`),
   KEY `user_id_fk_v_idx` (`user_id`),
   KEY `forma_pago_id_fk_v_idx` (`forma_pago_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Volcado de datos para la tabla `ventas`
@@ -2108,7 +2149,10 @@ CREATE TABLE IF NOT EXISTS `ventas` (
 
 INSERT INTO `ventas` (`id`, `user_id`, `socio_id`, `orden_venta_id`, `documento_id`, `deposito_id`, `forma_pago_id`, `fecha`, `serie`, `numero`, `estado`, `docserie_id`, `codigo_unico`, `total`, `impuesto`, `grantotal`, `cobrado`, `created`, `modified`, `saldo`) VALUES
 (6, 5, 5, 3, 2, 1, 1, '2016-03-16', 001, 0000005, 1, 2, '1.5.2.1', '34.00', '6.12', '40.12', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
-(7, 5, 5, 5, 2, 1, 1, '2016-03-16', 001, 0000006, 1, 2, '1.6.2.1', '6.80', '1.22', '8.02', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL);
+(7, 5, 5, 5, 2, 1, 1, '2016-03-16', 001, 0000006, 1, 2, '1.6.2.1', '6.80', '1.22', '8.02', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
+(12, 5, 8, 28, 5, 1, 1, '2016-04-07', 001, 0000004, 1, 7, '1.4.6.1', '11.60', '2.09', '13.69', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
+(13, 5, 1, 29, 2, 1, 1, '2016-04-07', 001, 0000007, 1, 2, '1.7.2.1', '10.00', '1.80', '11.80', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
+(14, 5, 1, 30, 6, 1, 2, '2016-04-07', 001, 0000001, 1, 8, '1.1.6.1', '17.40', '3.13', '20.53', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL);
 
 --
 -- Disparadores `ventas`
@@ -2150,7 +2194,7 @@ CREATE TABLE IF NOT EXISTS `ventas_detalle` (
   PRIMARY KEY (`id`),
   KEY `venta_id_fk_vd_idx` (`venta_id`),
   KEY `articulo_id_fk_vd_idx` (`articulo_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
 -- Volcado de datos para la tabla `ventas_detalle`
@@ -2160,7 +2204,11 @@ INSERT INTO `ventas_detalle` (`id`, `venta_id`, `articulo_id`, `cantidad`, `prec
 (12, 6, 8, '5.00', '5.80', NULL, 0, '18.00'),
 (13, 6, 10, '5.00', '1.00', NULL, 0, '18.00'),
 (14, 7, 8, '1.00', '5.80', NULL, 0, '18.00'),
-(15, 7, 10, '1.00', '1.00', NULL, 0, '18.00');
+(15, 7, 10, '1.00', '1.00', NULL, 0, '18.00'),
+(20, 12, 8, '2.00', '5.80', NULL, 0, '18.00'),
+(21, 13, 3, '3.00', '2.00', NULL, 0, '18.00'),
+(22, 13, 2, '2.00', '2.00', NULL, 0, '18.00'),
+(23, 14, 8, '3.00', '5.80', NULL, 0, '18.00');
 
 -- --------------------------------------------------------
 
@@ -2342,11 +2390,11 @@ ALTER TABLE `orden_ventas_detalle`
 -- Filtros para la tabla `pos_settings`
 --
 ALTER TABLE `pos_settings`
-  ADD CONSTRAINT `user_id_fk_ps` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `caja_id_fk_ps` FOREIGN KEY (`caja_id`) REFERENCES `cajas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `deposito_id_fk_ps` FOREIGN KEY (`deposito_id`) REFERENCES `depositos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `docserie_id_fk_ps` FOREIGN KEY (`docserie_id`) REFERENCES `docseries` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `socio_id_fk_ps` FOREIGN KEY (`socio_id`) REFERENCES `socios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `caja_id_fk_ps` FOREIGN KEY (`caja_id`) REFERENCES `cajas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `user_id_fk_ps` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `provincias`

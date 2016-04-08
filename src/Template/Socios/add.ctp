@@ -2,9 +2,9 @@
 	<div class="panel-heading">
 		Socios de Negocio
 	</div>
-	<div class="panel-body">
+	<div class="box-body">
 		<?= $this->Form->create($socio) ?>
-		<div class="form-group has-success">
+		<div class="form-group">
 			<?php 
 				echo $this->Form->input('nombre',array('class'=>'form-control','for'=>'inputSuccess'));
 				echo $this->Form->input('descripcion',array('class'=>'form-control','for'=>'inputSuccess'));
@@ -26,47 +26,48 @@
 					<?php echo $this->Form->input('movil',array('class'=>'form-control','for'=>'inputSuccess')); ?>
 				</div>
 			</div>
-				<div class="row">
-					<div class="col-lg-4">
-						<?php echo $this->Form->input('addresses.0.departamento_id',array('options'=>$departamento,'empty'=>true,'class'=>'form-control','for'=>'inputSuccess','id'=>'departamento-id')); ?>
-					</div>
-					<div class="col-lg-4">
-						<?php echo $this->Form->input('addresses.0.provincia_id',array('options'=>'','class'=>'form-control','for'=>'inputSuccess','id'=>'provincia-id')); ?>
-					</div>
-					<div class="col-lg-4">
-						<?php echo $this->Form->input('addresses.0.distrito_id',array('options'=>'','class'=>'form-control','for'=>'inputSuccess','id'=>'distrito-id')); ?>
-					</div>
+			<div class="row">
+				<div class="col-lg-4">
+					<?php echo $this->Form->input('addresses.0.departamento_id',array('options'=>$departamento,'empty'=>true,'class'=>'form-control select2','for'=>'inputSuccess','id'=>'departamento-id')); ?>
 				</div>
-				<div class="row">
-					<div class="col-lg-4">
-						<?php echo $this->Form->input('addresses.0.zona',array('class'=>'form-control','for'=>'inputSuccess')); ?>
-					</div>
-					<div class="col-lg-8">
-						<?php echo $this->Form->input('addresses.0.direccion',array('class'=>'form-control','for'=>'inputSuccess')); ?>
-					</div>
+				<div class="col-lg-4">
+					<?php echo $this->Form->input('addresses.0.provincia_id',array('options'=>'','class'=>'form-control select2','for'=>'inputSuccess','id'=>'provincia-id')); ?>
 				</div>
-				<div class="panel-body">
-					<div class="col-lg-6">
-						<div class="form-group well panel-body">
-							<label class="checkbox-inline">
-								<?php echo $this->Form->input('cliente',['type'=>'checkbox']); ?>
-							</label>
-							<label class="checkbox-inline">
-								<?php echo $this->Form->input('proveedor',['type'=>'checkbox']); ?>
-							</label>
-							<label class="checkbox-inline">
-								<?php echo $this->Form->input('empleado',['type'=>'checkbox']); ?>
-							</label>
-						</div>							
-					</div>
-					<div class="col-lg-6">
-						<?php echo $this->Form->input('estado',array('options'=>array('1'=>'Activo','0'=>'Inactivo'),'class'=>'form-control','for'=>'inputSuccess')); ?>
-					</div>
+				<div class="col-lg-4">
+					<?php echo $this->Form->input('addresses.0.distrito_id',array('options'=>'','class'=>'form-control','for'=>'inputSuccess','id'=>'distrito-id')); ?>
 				</div>
-			
 			</div>
-		<?= $this->Form->button(__('Guardar'),array('class'=>'btn btn-primary')) ?>
-		<?= $this->Html->link(__('Cancelar'),['action' => 'index'],array('class'=>'btn btn-danger','action'=>'index')) ?>
+			<div class="row">
+				<div class="col-lg-4">
+					<?php echo $this->Form->input('addresses.0.zona',array('class'=>'form-control','for'=>'inputSuccess')); ?>
+				</div>
+				<div class="col-lg-8">
+					<?php echo $this->Form->input('addresses.0.direccion',array('class'=>'form-control','for'=>'inputSuccess')); ?>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 checkbox">
+					<div class="form-group">
+						<label class="checkbox-inline">
+							<?php echo $this->Form->input('cliente',['type'=>'checkbox','class'=>'minimal']); ?>
+						</label>
+						<label class="checkbox-inline">
+							<?php echo $this->Form->input('proveedor',['type'=>'checkbox','class'=>'minimal']); ?>
+						</label>
+						<label class="checkbox-inline">
+							<?php echo $this->Form->input('empleado',['type'=>'checkbox','class'=>'minimal']); ?>
+						</label>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<?php echo $this->Form->input('estado',array('options'=>array('1'=>'Activo','0'=>'Inactivo'),'class'=>'form-control','for'=>'inputSuccess')); ?>
+				</div>
+			</div>
+		</div>
+		<div class="box-footer">
+			<?= $this->Html->link(__('Cancelar'),['action' => 'index'],array('class'=>'btn btn-default','action'=>'index')) ?>
+			<?= $this->Form->button(__('Guardar'),array('class'=>'btn btn-success')) ?>
+		</div>
 		<?= $this->Form->end() ?>
 	</div>
 </div>

@@ -4,20 +4,12 @@
 		<div class="col-lg-6">
 			<div class="panel panel-primary" style="padding:5px">
 				<div class="row">
-					<div class="col-lg-12">
+					<div class="col-lg-8">
 						<div class="form-group input-group has-default col-lg-12">
-							<?php echo $this->Form->input('socio_id',array('div'=>false,'label'=>false,'empty'=>'Cliente','class'=>'form-control addText')); ?>
-							<span class="input-group-btn">
-								<?= $this->Html->link(__('<i class="fa fa-plus"></i>'),['controller'=>'compras','action' => 'ctapagar'],['escape'=>false,'class'=>'btn btn-success','data-toggle'=>'modal','data-target'=>'#NuevoCliente']) ?>
-							</span>
+							<?php echo $this->Form->input('socio_id',array('div'=>false,'label'=>false,'default'=>$posSetting->socio_id,'style'=>'width:100%','class'=>'form-control addText select2')); ?>
 						</div>
 					</div>
-					<div class="col-lg-6">
-						<div class="form-group">
-							<?php echo $this->Form->input('articulo', ['label'=>false,'class'=>'form-control','for'=>'inputSuccess','placeholder'=>'Buscar producto por código de barra']); ?>
-						</div>
-					</div>
-					<div class="col-lg-6">
+					<div class="col-lg-4">
 						<div class="form-group">
 							<select name="docserie_id" id ="docserie-id" class="form-control" for="inputSuccess">
 								<?php foreach($documentos as $ds){?>
@@ -26,12 +18,17 @@
 							</select>
 						</div>
 					</div>
+					<div class="col-lg-12">
+						<div class="form-group">
+							<?php echo $this->Form->input('articulo', ['label'=>false,'class'=>'form-control','for'=>'inputSuccess','placeholder'=>'Buscar producto por código de barra']); ?>
+						</div>
+					</div>
 				</div>				
 				<div class="row">
 					<div class="col-lg-12">
-						<div class="dataTable_wrapper">
+						<div class="panel dataTable_wrapper">
 							<table class="table table-striped table-bordered table-hover" id="dataTables-pos">
-								<thead class="btn-success">
+								<thead class="label-default">
 									<tr>
 										<th>Item</th>
 										<th>Articulo</th>
@@ -44,13 +41,12 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="panel-body"></div>
 						<div class="panel-primary" style="margin-top:-25px; padding-top:5px; font-size:12px">
 							<div class="table-responsive table-bordered">
 								<table class="table table-striped table-hover">
 								 <tr>
 								  <td>Total Items</td>
-								  <td></td>
+								  <td class="total_items"></td>
 								  <th>Subtotal</th>
 								  <td>
 									<?= $this->Form->input('total', ['label'=>false,'type'=>'text', 'required'=>true,'class'=>'grantotal','style'=>'text-align:right;border:0; background:transparent; width:100%','for'=>'inputSuccess','readonly'=>true]); ?>
@@ -59,7 +55,7 @@
 								 <tr>
 								  <td>Descuento</td>
 								  <td>
-									<?= $this->Form->input('descuento', ['label'=>false,'type'=>'text', 'required'=>true,'style'=>'text-align:right;border:0; background:transparent; width:100%','for'=>'inputSuccess']); ?>
+									<?= $this->Form->input('descuento', ['label'=>false,'type'=>'text', 'readonly'=>true,'style'=>'text-align:right;border:0; background:transparent; width:100%','for'=>'inputSuccess']); ?>
 								  </td>
 								  <th>Impuesto</th>
 								  <td>
@@ -68,12 +64,12 @@
 								 </tr>
 								 <tr>
 								  <td colspan="2"></td>
-								  <th class="btn-success">Total</th>
-								  <td class="btn-success">
+								  <th class="label-default">Total</th>
+								  <td class="label-default">
 									<?= $this->Form->input('grantotal', ['label'=>false,'type'=>'text', 'required'=>true,'style'=>'text-align:right;border:0; background:transparent; width:100%','for'=>'inputSuccess','readonly'=>true,'class'=>'grantotal_total']); ?>
 								  </td>
 								 </tr>
-								</table>								
+								</table>
 							</div>
 						</div>
 					</div>
@@ -81,29 +77,73 @@
 			</div>
 		</div>
 		<div class="col-lg-6">
-			<div class="panel panel-primary" style="padding:5px">
-				<div class="row">
-					<div class="col-lg-12" style="font-size:10px">
+			<div class="panel panel-primary" style="padding:3px;">
+                    <ul class="bs-glyphicons">
 					<!-- foreach -->
-						 <?php foreach($productos as $producto) { ?>
-							  <!-- if pdv is one -->
-							  <?php if($producto->articulo->pdv) {?>
-							  <div class="col-lg-3 panel-heading btn-default" title="<?= $producto->articulo->descripcion ?>" style="padding:5px; border:1px solid #f2f2f2; text-align:center;" onClick="AgregarProductosPOS('<?= $producto->articulo->id ?>','<?= $producto->articulo->nombre ?>','<?= $producto->articulo_precio->precio_estandar ?>','<?= $producto->lista_precio->incluir_impuesto ?>','<?= $producto->articulo_precio->impuesto->tasa ?>')">
-								<div class="success"><?php echo substr($producto->articulo->nombre,0,20); ?></div>
-								<div class="form-group" style="text-align:center">
-								<?php if($producto->articulo->imagen){ ?>
-									<?= $this->Html->image('../files/Articulos/imagen/'.$producto->articulo->id.'/'.$producto->articulo->imagen,['width'=>'80','heigth'=>'80']) ?>
-								<?php } else{ ?>
-									<?= $this->Html->image('../files/Articulos/imagen/images.jpg',['width'=>'80','heigth'=>'80']) ?>
-								<?php } ?>
-								</div>
-							  </div>
-							  <?php } ?>
-							  <!-- end pdv if -->
+					 <?php foreach($productos as $producto) { ?>
+					  <!-- if pdv is one -->
+					  <?php //if($producto->articulo->pdv) {?>
+						<li title="<?= $producto->articulo->nombre ?>" onClick="AgregarProductosPOS('<?= $producto->articulo->id ?>','<?= $producto->articulo->nombre ?>','<?= $producto->articulo_precio->precio_estandar ?>','<?= $producto->lista_precio->incluir_impuesto ?>','<?= $producto->articulo_precio->impuesto->tasa ?>')">
+						<span class="glyphicon-class"><?php echo substr($producto->articulo->nombre,0,20); ?></span>
+						<?php if($producto->articulo->imagen){ ?>
+							<?= $this->Html->image('../files/Articulos/imagen/'.$producto->articulo->id.'/'.$producto->articulo->imagen,['width'=>'70','heigth'=>'70']) ?>
+						<?php } else{ ?>
+							<?= $this->Html->image('../files/Articulos/imagen/images.jpg',['width'=>'70','heigth'=>'70']) ?>
 						<?php } ?>
-					<!-- end foreach -->
+					  <?php //} ?><!-- end if pdv is one -->
+						</li>
+					 <?php } ?>
+					</ul>
+			</div>
+			<div class="row">
+			<div class="col-lg-8">
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						Registrar Pago
+					</div>
+					<div class="dataTable_wrapper">
+					<table class="table table-striped text-success">
+					 <tr>
+					  <th>Medio de Pago</th>
+					  <td class="form-control">
+						<?= $this->Form->input('forma_pago_id', ['label'=>false,'options'=>$formaPagos, 'style'=>'text-align:left;border:0; background:transparent; width:100%','for'=>'inputSuccess']); ?>
+					  </td>
+					 </tr>
+					 <tr>
+					  <th class="chg_txt_1">Pago con</th>
+					  <td class="chg_txt_paga_con form-control">
+						<?= $this->Form->input('paga_con', ['label'=>false,'type'=>'text', 'class'=>'text-success', 'style'=>'text-align:right;border:0; background:transparent; width:100%','for'=>'inputSuccess']); ?>
+					  </td>
+					  <td class="chg_txt_tipo_tarjeta form-control" style="display:none">
+						<?= $this->Form->input('tipo_tarjeta', ['label'=>false,'options'=>[0=>'Visa',1=>'Mastercard',2=>'American Express'], 'style'=>'text-align:left;border:0; background:transparent; width:100%','for'=>'inputSuccess']); ?>
+					  </td>
+					  <td class="chg_txt_nro_cheque form-control" style="display:none">
+						<?= $this->Form->input('nro_cheque', ['label'=>false,'type'=>'text', 'style'=>'text-align:center;border:0; background:transparent; width:100%','for'=>'inputSuccess']); ?>
+					  </td>
+					 </tr>
+					 <tr>
+					  <th class="chg_txt_2">Cambio</th>
+					  <td class="chg_txt_cambio form-control">
+						<?= $this->Form->input('cambio', ['label'=>false,'type'=>'text', 'class'=>'text-success', 'style'=>'text-align:right;border:0; width:100%','for'=>'inputSuccess']); ?>
+					  </td>
+					  <td class="chg_txt_cuenta_abono form-control" style="display:none">
+						<?= $this->Form->input('ctacorriente_id', ['label'=>false,'options'=>'', 'style'=>'text-align:left;border:0; background:transparent; width:100%','for'=>'inputSuccess']); ?>
+					  </td>
+					 </tr>
+					</table>
+					<div class="box-footer">
+						<?= $this->Form->button(__('<i class="fa fa-usd"></i> Finalizar Venta'),array('class'=>'btn btn-success pull-right','escape'=>false)) ?>
+					</div>
 					</div>
 				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						Acciones
+					</div>
+				</div>
+			</div>
 			</div>
 		</div>
 	</div>
@@ -111,6 +151,41 @@
 <script>
 var taddPOS = '';
 $('document').ready(function(){
+	/*medio de pago*/
+	combo = document.getElementById('ctacorriente-id');
+	<?php foreach($ctacorrientes as $cc){ ?>
+		combo.options[combo.length] = new Option("<?php echo $cc->nro_cuenta.' - '.$cc->descripcion; ?>", "<?= $cc->id; ?>");
+	<?php } ?>
+	$('select#forma-pago-id').on('change', function(){
+		if($(this).val()==2){
+			$('th.chg_txt_1').html('Tipo Tarjeta');
+			$('th.chg_txt_2').html('Cuenta de abono');
+			$('td.chg_txt_tipo_tarjeta').css('display','block');
+			$('td.chg_txt_cuenta_abono').css('display','block');
+			$('td.chg_txt_paga_con').css('display','none');
+			$('td.chg_txt_cambio').css('display','none');
+			$('td.chg_txt_nro_cheque').css('display','none');
+		}
+		else if($(this).val()==3){
+			$('th.chg_txt_1').html('Nro de cheque');
+			$('th.chg_txt_2').html('Cuenta de abono');
+			$('td.chg_txt_nro_cheque').css('display','block');
+			$('td.chg_txt_cuenta_abono').css('display','block');
+			$('td.chg_txt_tipo_tarjeta').css('display','none');
+			$('td.chg_txt_paga_con').css('display','none');
+			$('td.chg_txt_cambio').css('display','none');
+		} else{
+			$('th.chg_txt_1').html('Paga con');
+			$('th.chg_txt_2').html('Cambio');
+			$('td.chg_txt_tipo_tarjeta').css('display','none');
+			$('td.chg_txt_cuenta_abono').css('display','none');
+			$('td.chg_txt_paga_con').css('display','block');
+			$('td.chg_txt_cambio').css('display','block');
+			$('td.chg_txt_nro_cheque').css('display','none');
+		}
+	})
+	/*items table*/
+	var alto_ventana = parseInt($(window).height()) - 360;
 	$("input.addText").val("<?= $posSetting->socio->nombre ?>");
 	$("input[name='socio_id']").val("<?= $posSetting->socio_id ?>");
 	taddPOS = $('#dataTables-pos').DataTable({
@@ -133,7 +208,7 @@ $('document').ready(function(){
 			{"orderable": false, "width": "10%" },
 			{"orderable": false, "width": "5%"}
 		],
-        scrollY:'43vh',
+        scrollY:alto_ventana + 'px',
         scrollCollapse: false
 	});
 	
@@ -143,7 +218,10 @@ $('document').ready(function(){
         } );
     }).draw();
 	
-	$('#articulo').on('change', function(){
+	$('#articulo').on('keypress', function(e){
+		if(e.keyCode == 13){
+			e.preventDefault();
+		}
 		<?php foreach($productos as $producto) { ?>
 			if($(this).val()=="<?= $producto->articulo->codigo ?>"){
 				$(this).val('');
@@ -151,6 +229,14 @@ $('document').ready(function(){
 			}
 		<?php } ?>
 	});
+	
+	$('input#paga-con').on('keyup', function(){
+		var cambio = parseFloat($(this).val()) - parseFloat($('input.grantotal_total').val());
+		if(cambio){
+			$('input#cambio').val(cambio.toFixed(2));
+		}
+	});
+	
 });
 	function AgregarProductosPOS(id,nombre, precio, incluir_impuesto, tasa_impuesto){
 		var c = 0;
@@ -175,9 +261,9 @@ $('document').ready(function(){
 				<input type="hidden" class="tasa_impuesto" value="'+tasa_impuesto+'" name="orden_ventas_detalle['+counter+'][tasa_impuesto]">\
 				<input type="hidden" class="articuloID" value="'+id+'" name="orden_ventas_detalle['+counter+'][articulo_id]">\
 				<input type="text" value="1" class="cantidad" name="orden_ventas_detalle['+counter+'][cantidad]">',
-				'<input type="hidden" value="'+precio+'" class="precio">\
+				'<input type="hidden" value="'+precio+'" class="precio" name="orden_ventas_detalle['+counter+'][precio]">\
 				<input type="text" value="'+precio+'" class="importe" disabled="true">', //cantidad * precio
-				'<a href="#" class="fa fa-trash del-productPOS"></a>	'
+				'<a href="#" class="fa fa-trash del-productPOS"></a>'
 			] ).draw( false );
 		}
 		delLineProductPOS();
@@ -206,7 +292,7 @@ $('document').ready(function(){
 				precio = fila.find('input.precio').val();
 				importe = cantidad * precio;
 				fila.find('input.importe').val(importe.toFixed(2));
-				calculaTotal();
+				calculaTotalPOS();
 			});
 		});
 		$('select.precio').each(function(){
@@ -216,7 +302,7 @@ $('document').ready(function(){
 				precio = $(this).val();
 				importe = cantidad * precio;
 				fila.find('input.importe').val(importe.toFixed(2));
-				calculaTotal();
+				calculaTotalPOS();
 			});
 		});
 	}
@@ -240,9 +326,10 @@ $('document').ready(function(){
 				impuesto = grantotal - total;
 			}
 		})
+		$('input.grantotal').val(total.toFixed(2));
 		$('input.impuesto_total').val(impuesto.toFixed(2));
 		$('input.grantotal_total').val(grantotal.toFixed(2));
-		$('input.grantotal').val(total.toFixed(2));
-
+		
+		$('td.total_items').html(taddPOS.rows().count());
 	}
 </script>

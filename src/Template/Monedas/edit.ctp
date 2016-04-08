@@ -4,15 +4,17 @@
 	</div>
 	<div class="panel-body">
 		<?= $this->Form->create($moneda) ?>
-		<div class="form-group has-success">
+		<div class="form-group has-box-body">
 			<?php 
 				echo $this->Form->input('nombre',array('class'=>'form-control','for'=>'inputSuccess'));
 				echo $this->Form->input('simbolo',array('class'=>'form-control','for'=>'inputSuccess'));
 				echo $this->Form->input('iso',array('class'=>'form-control','for'=>'inputSuccess'));
 			?>
 		</div>
-		<?= $this->Form->button(__('Guardar'),array('class'=>'btn btn-primary')) ?>
-		<?= $this->Html->link(__('Cancelar'),['action' => 'index'],array('class'=>'btn btn-danger','action'=>'index')) ?>
+		<div class="box-footer">
+			<?= $this->Html->link(__('Cancelar'),['action' => 'index'],array('class'=>'btn btn-default','action'=>'index')) ?>
+			<?= $this->Form->button(__('Guardar'),array('class'=>'btn btn-success')) ?>
+		</div>
 		<?= $this->Form->end() ?>
 	</div>
 </div>

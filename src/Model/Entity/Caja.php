@@ -18,6 +18,7 @@ use Cake\ORM\Entity;
  * @property int $estado
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $updated
+ * @property int $user_id
  * @property \App\Model\Entity\CajasMovimiento[] $cajas_movimientos
  */
 class Caja extends Entity

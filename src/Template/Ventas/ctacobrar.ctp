@@ -2,13 +2,13 @@
 	<div class="panel-heading">
 		Cuentas por Cobrar
 	</div>
-	<div class="panel-body">
+	<div class="box-body">
 <!-- /.row -->
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<!-- /.panel-heading -->
-					<div class="panel-body">
+					<div class="box-body">
 						<div class="dataTable_wrapper">
 							<table class="table table-striped table-bordered table-hover" id="dataTables-example">
 								<thead>
@@ -38,7 +38,7 @@
 									<td>S/. <?= $this->Number->precision($venta->saldo,2) ?></td>
 									<td><?php if($venta->cobrado==0){ echo 'Por cobrar'; } ?></td>
 									<td class="actions">
-										<button type="button" class="btn btn-success btn-default btn-xs" onClick="AgregarFactura('<?= $venta->socio->id ?>','<?= $venta->socio->nombre ?>','<?= $venta->id ?>','<?= $venta->serie.'-'.$venta->numero ?>','<?= $venta->grantotal ?>','<?= $venta->saldo ?>','<?= $venta->fecha->format('Y-m-d') ?>');"><i class="fa fa-check"></i></button>
+										<button type="button" class="btn btn-info btn-xs" onClick="AgregarFactura('<?= $venta->socio->id ?>','<?= $venta->socio->nombre ?>','<?= $venta->id ?>','<?= $venta->serie.'-'.$venta->numero ?>','<?= $venta->grantotal ?>','<?= $venta->saldo ?>','<?= $venta->fecha->format('Y-m-d') ?>');"><i class="fa fa-check"></i></button>
 									</td>
 								</tr>
 								<?php endforeach; ?>
@@ -47,7 +47,7 @@
 						</div>
 						<!-- /.table-responsive -->
 					</div>
-					<!-- /.panel-body -->
+					<!-- /.box-body -->
 				</div>
 				<!-- /.panel -->
 			</div>

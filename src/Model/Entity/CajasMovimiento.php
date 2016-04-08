@@ -33,6 +33,9 @@ use Cake\ORM\Entity;
  * @property string $venta_text
  * @property string $compra_text
  * @property string $descripcion
+ * @property float $paga_con
+ * @property float $cambio
+ * @property int $tipo_tarjeta
  */
 class CajasMovimiento extends Entity
 {

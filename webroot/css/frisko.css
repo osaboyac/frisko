@@ -9,3 +9,42 @@
 .cantidad, .importe, .precio{text-align:center; border:0; background: transparent; width:100px}
 .descripcion{text-align:left; border:0; background: transparent; width:98%}
 .actions{text-align:center;}
+
+/*POS*/
+.bs-glyphicons {
+	padding-left: 0;
+	padding-bottom: 1px;
+	margin-bottom: 2px;
+	list-style: none;
+	overflow: hidden;
+}
+.bs-glyphicons li {
+	float: left;
+	width: 25%;
+	height: 105px;
+	padding: 5px;
+	margin: 0 -1px -1px 0;
+	font-size: 10px;
+	line-height: 1.2;
+	text-align: center;
+	border: 1px solid #ddd;
+}
+.bs-glyphicons .glyphicon {
+	margin-top: 5px;
+	margin-bottom: 2px;
+	font-size: 10px;
+}
+.bs-glyphicons .glyphicon-class {
+	display: block;
+	text-align: center;
+	word-wrap: break-word; /* Help out IE10+ with class names */
+}
+.bs-glyphicons li:hover {
+	background-color: rgba(86,61,124,.1);
+}
+
+@media (min-width: 768px) {
+	.bs-glyphicons li {
+	  width: 25%;
+	}
+}

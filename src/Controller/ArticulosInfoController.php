@@ -24,12 +24,14 @@ class ArticulosInfoController extends AppController
         ];
         $articulosInfo = $this->paginate($this->ArticulosInfo);*/
 		if($detalle=='orden_compras_detalle' || $detalle=='compras_detalle' || $detalle == 'ingresos_detalle'){
+			$this->viewBuilder()->layout('ajax');
 			$articulosInfo = $this->ArticulosInfo->find('all', [
 				'contain' => ['Articulos', 'Depositos', 'ListaPrecios','ArticuloPrecios','ArticuloPrecios.Impuestos'],
 				'conditions' => ['ListaPrecios.tipo_lista'=>0,'ArticulosInfo.deposito_id'=>$this->Auth->user('visibility_roles')]
 			]);
 			$listaPrecios = $this->ArticulosInfo->ListaPrecios->find('list',['conditions'=>['tipo_lista'=>0]]);
 		} else if($detalle=='orden_ventas_detalle' || $detalle=='ventas_detalle' || $detalle == 'guias_detalle'){
+			$this->viewBuilder()->layout('ajax');
 			$articulosInfo = $this->ArticulosInfo->find('all', [
 				'contain' => ['Articulos', 'Depositos', 'ListaPrecios','ArticuloPrecios','ArticuloPrecios.Impuestos'],
 				'conditions' => ['ListaPrecios.tipo_lista'=>1,'ArticulosInfo.deposito_id'=>$this->Auth->user('visibility_roles')]

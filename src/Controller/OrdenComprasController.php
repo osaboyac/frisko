@@ -131,6 +131,7 @@ class OrdenComprasController extends AppController
      */
     public function info($detalle=null)
     {
+		$this->viewBuilder()->layout('ajax');
         if($detalle == 'compras_detalle' ){
             $ordenCompras = $this->OrdenCompras->find('list',['conditions' => ['compra_id is null','estado'=>1]]);
     		$oc = $this->OrdenCompras->find('all',['contain'=>['Socios'],'conditions' => ['compra_id is null','OrdenCompras.estado'=>1]]);
@@ -139,7 +140,7 @@ class OrdenComprasController extends AppController
     		$oc = $this->OrdenCompras->find('all',['contain'=>['Socios'],'conditions' => ['ingreso_id is null','OrdenCompras.status'=>0,'OrdenCompras.estado in'=>[1,2]]]);
         }
 		$id = '';
-		$socios = '';
+		$socios[0] = array('socio_id'=>'', 'socio_nombre'=>'', 'orden_compra_id'=>'');
 		$c = 0;
 		foreach($oc as $rs){
 			$id[$c] = $rs->id;
@@ -150,5 +151,22 @@ class OrdenComprasController extends AppController
         $this->set(compact('ordenCompras','ordenComprasDetalle','socios','detalle'));
         $this->set('_serialize', ['ordenCompras']);
     }
-
+    /**
+     * info method
+     *
+     * @param string|null $id Orden Compra id.
+     * @return \Cake\Network\Response|null Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function printer($id=null, $theme=null)
+    {
+		if($theme){
+			$this->viewBuilder()->layout('print');
+		}
+        $ordenCompra = $this->OrdenCompras->get($id, [
+            'contain' => ['Socios','Users','OrdenComprasDetalle','OrdenComprasDetalle.Articulos']
+        ]);
+        $this->set(compact('ordenCompra'));
+        $this->set('_serialize', ['ordenCompra']);	
+	}
 }
